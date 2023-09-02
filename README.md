@@ -1,6 +1,6 @@
 # AI-powered Dungeons and Dragons
 
-This is a senior-design project developed by Prateek Kharangate [](@kharanpv) and Sam Weese (@SamuelWeese). This project 
+This is a senior-design project developed by Prateek Kharangate [@kharanpv](@kharanpv) and Sam Weese [@SamuelWeese](@SamuelWeese). This project 
 
 ## Prateek Kharangate
 ### Contact Information
