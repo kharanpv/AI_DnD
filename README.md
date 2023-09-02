@@ -1,6 +1,14 @@
 # AI-powered Dungeons and Dragons
 
-This is a senior-design project developed by Prateek Kharangate ([@kharanpv](https://github.com/kharanpv)) and Sam Weese ([@SamuelWeese](https://github.com/SamuelWeese)). This project 
+This is a senior-design project developed by Prateek Kharangate ([@kharanpv](https://github.com/kharanpv)) and Sam Weese ([@SamuelWeese](https://github.com/SamuelWeese)). The end-goal of this project is to have functional game of Dungeons and Dragons that operates purely based on player interactions with multiple AI systems that will be completely responsible for narration, story-building, and world generation. Since this is an ambitious project, we have divided the project into milestones, and we would be satisfied with whatever milestone we end up completing the project to, though we will ideally strive for a complete product.
+
+The milestones are
+
+1. Developing the AI models necessary for world generation, asset generation, and story generation.
+2. Creating a model Dungeons and Dragons game that can be played with a human dungeon master.
+3. Creating a complete Dungeons and Dragons game that has an AI dungeon master.
+
+# Project Team Bios
 
 ## Prateek Kharangate
 ### Contact Information
