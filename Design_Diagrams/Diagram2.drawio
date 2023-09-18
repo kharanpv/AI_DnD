@@ -1,0 +1,119 @@
+<mxfile host="app.diagrams.net" modified="2023-09-18T00:56:06.008Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0" etag="f-E3-cDDEl-c8oO9fXRV" version="21.7.5" type="google">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1674" dy="1933" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-7" value="Map Generation Text to Image Model" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry y="-50" width="1160" height="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-10" target="0G4lVkhtOMsoOFC6H4ij-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-10" value="User Input" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="10" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-11" target="0G4lVkhtOMsoOFC6H4ij-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="50" />
+              <mxPoint x="600" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-11" value="LLM Input to Command fxn" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="440" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-17" target="0G4lVkhtOMsoOFC6H4ij-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-17" target="0G4lVkhtOMsoOFC6H4ij-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="410" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="990" y="70" />
+              <mxPoint x="1140" y="70" />
+              <mxPoint x="1140" y="275" />
+              <mxPoint x="1050" y="275" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-33" value="&lt;h1&gt;User Input&lt;br&gt;&lt;/h1&gt;&lt;p&gt;User input could be a number of things, but for the most part this is a description given by the user, such as &quot;A bay with crystal clear water and 3 boats in it, with no docks&quot;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="20" y="110" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-20" target="0G4lVkhtOMsoOFC6H4ij-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-20" target="0G4lVkhtOMsoOFC6H4ij-24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="350" />
+              <mxPoint x="1120" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-20" value="Stable Diffusion" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="980" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-22" target="0G4lVkhtOMsoOFC6H4ij-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-22" value="Color Map of Output" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="300" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-24" target="0G4lVkhtOMsoOFC6H4ij-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="605" />
+              <mxPoint x="810" y="605" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-24" value="Map Output" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="940" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-26" target="0G4lVkhtOMsoOFC6H4ij-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="410" />
+              <mxPoint x="980" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="0G4lVkhtOMsoOFC6H4ij-7" source="0G4lVkhtOMsoOFC6H4ij-26" target="0G4lVkhtOMsoOFC6H4ij-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-26" value="2 Layer Map Linter" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="300" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-30" value="Composite Map of Outputs" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="300" y="900" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-32" value="&lt;h1&gt;LLM&lt;br&gt;&lt;/h1&gt;&lt;p&gt;This is where the user input is converted into a proper command for the stable diffusion model. The text &quot;A bay with crystal clear water and 3 boats in it, with no docks&quot; might turn into something such as &quot;bay, water --crystal, boats --num3 --wood, --SUPER --overhead --map --board-game&quot;. Additionally, this is the part where we seperate out into two commands, one for the color map.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="360" y="110" width="325" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-17" value="Stable Diffusion Command Linter" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="930" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-34" value="&lt;h1&gt;Command Linter&lt;br&gt;&lt;/h1&gt;&lt;p&gt;Given that the LLM can hallucinate, and documentation / prompts can cause incorrect command combinations, we check the output of the LLM against the stable diffusion command linter for correctness. If the command is incorrectly formed, we send it back until we either have a correct command OR we surpass the maximum attempt threshold. &lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="780" y="110" width="340" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-36" value="&lt;h1&gt;Stable Diffusion&lt;br&gt;&lt;/h1&gt;&lt;p&gt;This is where the images are generated by our prompt. Aside from back propagation, we are at the mercy of the model. We input the commands from the linter, and then send the two outputs to a linter to compare the two on top of each other&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="785" y="420" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-37" value="&lt;h1&gt;Color Map&lt;br&gt;&lt;/h1&gt;&lt;p&gt;This is used for back propagation and mechanics. Realistically, this should be separated out into a different data structure which is populated during stable diffusion generation &lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="20" y="380" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-38" value="&lt;h1&gt;Map Output&lt;br&gt;&lt;/h1&gt;&lt;p&gt;This is what the user will use to play DnD on (visually). &lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="640" y="650" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-39" value="&lt;h1&gt;Map Linter&lt;br&gt;&lt;/h1&gt;&lt;p&gt;We have to lay the two generation on top of each other, as the color map should be the same as the initial output, but instead have hidden color attributes (such as foreground, background, etc) which will be used by LLMs in the future. If the linter detects a mismatch, the color map will be regenerated using the map output and initial command with a new seed to attempt to get an aligned color map.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="30" y="640" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0G4lVkhtOMsoOFC6H4ij-40" value="&lt;h1&gt;Composite&lt;br&gt;&lt;/h1&gt;&lt;p&gt;This is the file which would be loaded by a LLM at a later date, the map output being for a user, and the color map for the LLM&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="0G4lVkhtOMsoOFC6H4ij-7">
+          <mxGeometry x="420" y="780" width="330" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
