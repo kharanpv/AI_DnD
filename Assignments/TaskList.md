@@ -1,7 +1,7 @@
-## Task List
+# Task List
 
-# Prateek Tasks
+### Prateek Tasks
 
-# Sam Tasks
+### Sam Tasks
 
-# Unassigned Tasks
+### Unassigned Tasks
