@@ -12,3 +12,10 @@
 - Research stable diffusion models.
 - Research command interface LLM options.
 - Develop LLM commmand interface module.
+- Design map tool UI
+- Develop map tool user interface
+- Specify a constraint to map size
+- Research back propogation
+- Design back propogation UI
+- Research map stitching methods
+- Specify map stitching requirements
