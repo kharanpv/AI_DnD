@@ -19,10 +19,13 @@ Generation of map objects is consistant
 
 Generation of maps is consistant
 - The qualifications for maps are relative location, and lack of anomaly. An example of an anomaly would be an open cave being next to the ocean, which is below sea level but not flooded. We will have a secondary LLM check the first LLM's output using self evaluation. Consistency will be achieved once both positioning (text output by LLM matches graphical output of map, ie rock north of river should have a rock above a river in X,Y) and non-anomaly output reach a combined rating of 95% for 100 outputs.
+
 Maps can be accessed later and iterated upon
 - This will be achieved once a map can change features, with commands such as "remove all barrels and replace them with boxes". Once again, 95% 100 tries for consistancy.
+
 User maps can be iterated upon
 - This will be achieved once a map can change features added by a human, with commands such as "remove all barrels and replace them with boxes". Once again, 95% 100 tries for consistancy. The distiction is due to the user not automatically adding tags and descriptions to the map, which means we must add a system to allow the LLM to detect and add them.
+
 Generation of maps is non graph based
 - This is changing from the current X by Y system of one item per square, to instead allow items to position themselves in coordinates of a larger scale. Consistency will be when 95% of 100 tries do not have overlap of item.
 
