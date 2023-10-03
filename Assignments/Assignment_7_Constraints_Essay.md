@@ -1,1 +1,7 @@
+# Project Constraints
+
+Building and deploying our vision for an AI-Powered Dungeons and Dragons project will be faced with many constraints, and the aim of this essay is to highlight all such constaints that we can imagine, and how they will come into play. From a our team discussion, we have come to a conclusion that we will face time, economic, and diversity/cultural constraints. It must also be noted that there can always be additional constraints that are unforseen or those that we may only uncover by working towards completing our project.
+
+While time may be considered a universal constraint for any project, we believe the way it impacts our project is somewhat distinct from most. The issue is not that we do not or will not have enough time to complete the project; we have already anticipated what to do if in case we find ourselves short of time in way by dividing our project into two potential deliverables. We are constrained by time in the sense that we are working with technology that is seemingly on the "bleeding edge" and how we are able to fulfill our project depends greatly on what is available at that given time. Specifically, new AI models are released everyday, so our choice for what to pick may very well depend on what is available at the time we need to look for AI models for a specific use case. As they develop, so will our project, and as they development lags, our project will be limited as well.
+
 
