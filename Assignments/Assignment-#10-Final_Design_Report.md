@@ -13,9 +13,9 @@
 ## Team Names
 **Team Name:** The Jaran Project
 
-**Team Members:** 1. Prateek Kharangate (@kharanpv)
-                  
-                  2. Samuel Weese (@SamuelWeese)
+**Team Members:** 
+    1. Prateek Kharangate (@kharanpv)
+    2. Samuel Weese (@SamuelWeese)
                   
 **Advisor**: Dr. Tianyu Jiang
 
