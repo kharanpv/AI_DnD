@@ -30,6 +30,14 @@ The milestones are
     3. Creating a complete Dungeons and Dragons game that has an AI dungeon master.
 
 ## Project Description
+### Task List
+| Task No.| Team Member | Task |
+| --------|-------------|------|
+| 1 | Prateek | Develop UI for back propogation selection in stable diffusion. |
+|---|         |----------------------------------------------------------------|
+| 2 |         | Research stable diffusion models. |
+|---|---------|-----------------------------------|
+
 ## User Stories
 ## Project Tasks and Timeline
 ## ABET Concerns
