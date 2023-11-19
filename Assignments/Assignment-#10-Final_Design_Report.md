@@ -31,13 +31,39 @@ The milestones are
 
 ## Project Description
 ### Task List
-| Task No.| Team Member | Task |
-| --------|-------------|------|
-| 1 | Prateek | Develop UI for back propogation selection in stable diffusion. |
-| 2 | ^ | Research stable diffusion models. |
-| 3 | ^ | Research back propogation |
-| 4 | ^ | Design back propogation UI |
-| 5 | ^ | Research LLM to stable diffusion interfaces |
+<table>
+  <thead>
+    <tr>
+      <th>Task No.</th>
+      <th>Team Member</th>
+      <th>Task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td rowspan="5">Prateek</td>
+      <td>Develop UI for back propagation selection in stable diffusion.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Research stable diffusion models.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Research back propagation</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Design back propagation UI</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Research LLM to stable diffusion interfaces</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## User Stories
 ## Project Tasks and Timeline
