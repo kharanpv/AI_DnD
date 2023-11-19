@@ -10,6 +10,8 @@
 7. [Presentation](#presentation)
 8. [Self Assessments](#self-assessments)
 9. [Professional Biographies](#professional-biographies)
+10. [Budget](#budget)
+11. [Appendix](#appendix)
 
 ## Team Names
 **Team Name:** The Jaran Project
