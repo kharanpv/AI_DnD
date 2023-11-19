@@ -34,7 +34,10 @@ The milestones are
 | Task No.| Team Member | Task |
 | --------|-------------|------|
 | 1 | Prateek | Develop UI for back propogation selection in stable diffusion. |
-| 2 |         | Research stable diffusion models. |
+| 2 | ^ | Research stable diffusion models. |
+| 3 | ^ | Research back propogation |
+| 4 | ^ | Design back propogation UI |
+| 5 | ^ | Research LLM to stable diffusion interfaces |
 
 ## User Stories
 ## Project Tasks and Timeline
