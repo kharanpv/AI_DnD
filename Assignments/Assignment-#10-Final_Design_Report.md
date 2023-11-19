@@ -4,11 +4,12 @@
 1. [Team Names](#team-names)
 2. [Project Description](#project-description)
 3. [User Stories](#user-stories)
-4. [Project Tasks and Timeline](#project-tasks-timeline)
-5. [ABET Concerns](#abet-concerns)
-6. [Presentation](#presentation)
-7. [Self Assessments](#self-assessments)
-8. [Professional Biographies](#professional-biographies)
+4. [Design Diagrams](#design-diagrams)
+5. [Project Tasks and Timeline](#project-tasks-timeline)
+6. [ABET Concerns](#abet-concerns)
+7. [Presentation](#presentation)
+8. [Self Assessments](#self-assessments)
+9. [Professional Biographies](#professional-biographies)
 
 ## Team Names
 **Team Name:** The Jaran Project
@@ -30,6 +31,35 @@ The milestones are
     3. Creating a complete Dungeons and Dragons game that has an AI dungeon master.
 
 ## Project Description
+**Project Topic Area:** Natural Language Processing & Deep Learning
+
+This project seeks to use **Large Language Models (LLM)** to create narrative based battle maps, character sheets, and items for the table top role playing game, Dungeons and Dragons. The project will use a combination of **Static** and **Relational** memory to load details in and out of the LLM to infer important context for each task. The project also uses **Stable Diffusion** to create images which are used in the visual display of each piece of the project. The end goal is to develop these tools that a LLM can later use them to help players in automating Dungeons and Dragons world development.
+
+## User Stories
+### 1. Configuring the dungeon master's behavior
+
+   Sara, ready for a new AI-driven D&D adventure, shapes the AI Dungeon Master's personality. She envisions a wise, enigmatic guide with a hint of whimsy, encouraging creativity and adaptability. The Dungeon master adds mystery, offering cryptic hints, fostering camaraderie, and making sessions memorable.
+   
+### 2. Generating characters for a new DnD game
+
+   Carlos and friends gather for an AI-driven DnD game. Carlos sets the player count and opts for a Fantasy theme. Lacking character design skills, theyrely on the AI dungeon master. Each player submits       character stories, and the dungeon master uses these as prompts to generate stats fitting the Fantasy theme.
+
+### 3. Generating a custom world from a custom theme
+
+   Juan seeks a unique DnD experience, desiring a utopian French steampunk setting. The AI dungeon master assists by outlining a plot, guiding Juan's character and backstory choices, and instructing the       image generator AI to create the map and setting.
+
+### 4. Interacting with the world
+
+   Elena begins a new DnD game. The dungeon master describes the starting scene. Elena writes her next action, and the dungeon master responds, visually reflecting her choices in the game world.
+
+### 5. Engaging in turn-based combat
+
+   Alejandro's DnD party encounters a group of menacing creatures in the AI-driven DnD video game. As the party's warrior, he wishes to engage in a combat scenario. Alejandro communicates his intentions to    the AI dungeon master, describing his combat strategy and desired outcomes. The dungeon master processes his input, simulating the combat encounter, calculating dice rolls, and narrating the unfolding      battle. The image generator AI visually represents the combat, displaying character sprites, enemy creatures, and the evolving battlefield as the encounter intensifies.   
+
+## Design Diagrams
+
+
+## Project Tasks and Timeline
 ### Task List
 <table>
   <thead>
@@ -105,10 +135,6 @@ The milestones are
   </tbody>
 </table>
 
-
-
-## User Stories
-## Project Tasks and Timeline
 ## ABET Concerns
 ## Presentation
 ## Self Assessments
