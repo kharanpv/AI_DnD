@@ -59,10 +59,13 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
 ## Design Diagrams
 
 ### Level 0
+![Design Diagram L0](https://github.com/kharanpv/AI_DnD/blob/main/Assignments/Assignment-10/DesignDiagram0.png)
 
 ### Level 1
+![Design Diagram L1](https://github.com/kharanpv/AI_DnD/blob/main/Assignments/Assignment-10/Design_Diagram_D1.png)
 
 ### Level 2
+![Design Diagram L2](https://github.com/kharanpv/AI_DnD/blob/main/Design_Diagrams/Design_Diagram_D2.png)
 
 ## Project Tasks and Timeline
 ### Task List
