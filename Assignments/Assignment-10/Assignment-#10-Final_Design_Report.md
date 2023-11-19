@@ -155,7 +155,7 @@ I argue that our project also faces diversity/cultural constraints because we fe
 It is important to note that it is not guaranteed nor certain that these are the constraints we will face. It is always likely that there are more of fewer, or misunderstood constraints. However, in any case, we do not want to label these constraints as limiting factors, but as challenges to work around. Our biggest obstacle of course, is picking up the right momentum to complete our project on time as we want it.
 
 ## Presentation
-[![YouTube Video](https://img.youtube.com/vi/KZptVl2xiI8/0.jpg)](https://www.youtube.com/watch?v=KZptVl2xiI8)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KZptVl2xiI8" frameborder="0" allowfullscreen></iframe>
 
 ## Self Assessments
 
