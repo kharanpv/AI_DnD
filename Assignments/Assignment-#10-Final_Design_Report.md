@@ -61,8 +61,42 @@ The milestones are
       <td>5</td>
       <td>Research LLM to stable diffusion interfaces</td>
     </tr>
+    <tr>
+      <td>6</td>
+      <td rowspan="7">Sam</td>
+      <td>Specify a proper result for map.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Investigate proper subsets for complex structures in a map.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Design back trace method for map comparison.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Research command interface LLM options.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Develop LLM command interface module.</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Design map tool UI.</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Develop map tool user interface.</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Specify a constraint to map size.</td>
+    </tr>
   </tbody>
 </table>
+
 
 
 ## User Stories
