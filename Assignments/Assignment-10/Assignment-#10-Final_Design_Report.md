@@ -144,8 +144,11 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
   </tbody>
 </table>
+
 ### TimeLine
+
 ### Effort Matrix
+
 ## ABET Concerns
 uilding and deploying our vision for an AI-Powered Dungeons and Dragons project will be faced with many constraints, and the aim of this essay is to highlight all such constaints that we can imagine, and how they will come into play. From a our team discussion, we have come to a conclusion that we will face time, economic, and diversity/cultural constraints. It must also be noted that there can always be additional constraints that are unforseen or those that we may only uncover by working towards completing our project.
 
