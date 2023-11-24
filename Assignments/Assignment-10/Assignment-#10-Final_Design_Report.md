@@ -102,44 +102,48 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
       <td>Research LLM to stable diffusion interfaces</td>
     </tr>
     <tr>
-      <td> 6 </td>
-      <td>Research map stitching methods</td>
+      <td>6</td>
+      <td>Investigate methods for relative positioning of images with LLM</td>
     </tr>
     <tr>
       <td>7</td>
+      <td>Research map stitching methods</td>
+    </tr>
+    <tr>
+      <td>8</td>
       <td rowspan="9">Sam</td>
       <td>Specify a proper result for map.</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>9</td>
       <td>Investigate proper subsets for complex structures in a map.</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>10</td>
       <td>Design back trace method for map comparison.</td>
     </tr>
     <tr>
-      <td>10</td>
+      <td>11</td>
       <td>Research command interface LLM options.</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>12</td>
       <td>Develop LLM command interface module.</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>13</td>
       <td>Design map tool UI.</td>
     </tr>
     <tr>
-      <td>13</td>
+      <td>14</td>
       <td>Develop map tool user interface.</td>
     </tr>
     <tr>
-      <td>14</td>
+      <td>15</td>
       <td>Specify a constraint to map size.</td>
     </tr>
     <tr>
-      <td>15</td>
+      <td>16</td>
       <td>Specify map stitching requirements.</td>
     </tr>
   </tbody>
