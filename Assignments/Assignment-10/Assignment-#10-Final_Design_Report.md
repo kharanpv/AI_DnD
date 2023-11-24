@@ -150,6 +150,7 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
 </table>
 
 ### TimeLine
+![TimeLine](https://github.com/kharanpv/AI_DnD/assets/126278220/12b7ce23-4fcb-42d0-99f0-5da3be0d67d6)
 
 ### Effort Matrix
 
