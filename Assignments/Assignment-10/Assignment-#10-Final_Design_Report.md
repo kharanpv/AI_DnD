@@ -82,7 +82,7 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
   <tbody>
     <tr>
       <td>1</td>
-      <td rowspan="6">Prateek</td>
+      <td rowspan="7">Prateek</td>
       <td>Develop UI for back propagation selection in stable diffusion.</td>
     </tr>
     <tr>
