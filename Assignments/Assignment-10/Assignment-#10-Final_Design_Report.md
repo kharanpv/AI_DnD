@@ -146,6 +146,19 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
       <td>16</td>
       <td>Specify map stitching requirements.</td>
     </tr>
+    <tr>
+      <td>17</td>
+      <td rowspan="3">Joint</td>
+      <td>Merge LLM with Map UI</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Fine-tune LLM to interact with Map</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Test final application</td>
+    </tr>
   </tbody>
 </table>
 
