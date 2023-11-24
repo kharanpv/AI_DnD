@@ -91,11 +91,11 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>3</td>
-      <td>Research back propagation</td>
+      <td>Research image-to-text models</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>Design back propagation UI</td>
+      <td>Design image generation pipeline</td>
     </tr>
     <tr>
       <td>5</td>
