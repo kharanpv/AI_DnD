@@ -365,6 +365,17 @@ Python, C/C++, Linux, Ghidra, Bash
 
 ## Budget
 
-There have not been any expenses incurred for this project.
+We limited ourselves to 500 USD for this project. We have spent 20 USD upon OpenAI chatgpt tokens.
 
 ## Appendix
+
+# Additional Sources
+  // The slack stuff goes here
+# Source Code
+All source code is stored in the sub folder ["Source Code"](./Source%20Code/). Below are links and explanations of each file.
+  1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](), [Character Sheet](), or [Item Listing](). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to .
+  2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf.
+  3. [token_lib](./Source%20Code/chatgpt_lib.py) This 
+# Examples
+
+
