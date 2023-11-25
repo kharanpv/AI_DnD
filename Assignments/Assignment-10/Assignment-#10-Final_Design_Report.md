@@ -111,7 +111,7 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>8</td>
-      <td rowspan="8">Sam</td>
+      <td rowspan="9">Sam</td>
       <td>Specify a proper result for map.</td>
     </tr>
     <tr>
@@ -136,23 +136,27 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>14</td>
-      <td>Specify a constraint to map size.</td>
-    </tr>
-    <tr>
-      <td>15</td>
       <td>Specify map stitching requirements.</td>
     </tr>
     <tr>
+      <td>15</td>
+      <td>Specify a constraint to map size.</td>
+    </tr>
+    <tr>
       <td>16</td>
+      <td>Specify map stitching requirements.</td>
+    </tr>
+    <tr>
+      <td>17</td>
       <td rowspan="3">Joint</td>
       <td>Merge LLM with Map UI</td>
     </tr>
     <tr>
-      <td>17</td>
+      <td>18</td>
       <td>Fine-tune LLM to interact with Map</td>
     </tr>
     <tr>
-      <td>18</td>
+      <td>19</td>
       <td>Test final application</td>
     </tr>
   </tbody>
@@ -234,8 +238,13 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>Design map tool UI</td>
-      <td>40%</td>
-      <td>60%</td>
+      <td>45%</td>
+      <td>55%</td>
+    </tr>
+    <tr>
+      <td>Develop map tool user interface</td>
+      <td>45%</td>
+      <td>55%</td>
     </tr>
     <tr>
       <td>Specify a constraint to map size</td>
@@ -259,7 +268,6 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
   </tbody>
 </table>
-
 
 ## ABET Concerns
 uilding and deploying our vision for an AI-Powered Dungeons and Dragons project will be faced with many constraints, and the aim of this essay is to highlight all such constaints that we can imagine, and how they will come into play. From a our team discussion, we have come to a conclusion that we will face time, economic, and diversity/cultural constraints. It must also be noted that there can always be additional constraints that are unforseen or those that we may only uncover by working towards completing our project.
