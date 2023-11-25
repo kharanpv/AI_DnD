@@ -111,7 +111,7 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>8</td>
-      <td rowspan="9">Sam</td>
+      <td rowspan="8">Sam</td>
       <td>Specify a proper result for map.</td>
     </tr>
     <tr>
@@ -136,27 +136,23 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
     </tr>
     <tr>
       <td>14</td>
-      <td>Develop map tool user interface.</td>
-    </tr>
-    <tr>
-      <td>15</td>
       <td>Specify a constraint to map size.</td>
     </tr>
     <tr>
-      <td>16</td>
+      <td>15</td>
       <td>Specify map stitching requirements.</td>
     </tr>
     <tr>
-      <td>17</td>
+      <td>16</td>
       <td rowspan="3">Joint</td>
       <td>Merge LLM with Map UI</td>
     </tr>
     <tr>
-      <td>18</td>
+      <td>17</td>
       <td>Fine-tune LLM to interact with Map</td>
     </tr>
     <tr>
-      <td>19</td>
+      <td>18</td>
       <td>Test final application</td>
     </tr>
   </tbody>
@@ -167,6 +163,103 @@ This project seeks to use **Large Language Models (LLM)** to create narrative ba
 
 
 ### Effort Matrix
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Prateek's Effort</th>
+      <th>Sam's Effort</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Develop UI for back propagation selection</td>
+      <td>60%</td>
+      <td>40%</td>
+    </tr>
+    <tr>
+      <td>Research stable diffusion models</td>
+      <td>90%</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Research image-to-text models</td>
+      <td>95%</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>Design image generation pipeline</td>
+      <td>90%</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Research LLM to stable diffusion interfaces</td>
+      <td>67%</td>
+      <td>33%</td>
+    </tr>
+    <tr>
+      <td>Investigate methods for relative positioning</td>
+      <td>60%</td>
+      <td>40%</td>
+    </tr>
+    <tr>
+      <td>Research map stitching methods</td>
+      <td>55%</td>
+      <td>45%</td>
+    </tr>
+    <tr>
+      <td>Specify a proper result for map</td>
+      <td>45%</td>
+      <td>55%</td>
+    </tr>
+    <tr>
+      <td>Investigate proper subsets for complex structures</td>
+      <td>25%</td>
+      <td>75%</td>
+    </tr>
+    <tr>
+      <td>Design back trace method for map comparison</td>
+      <td>40%</td>
+      <td>60%</td>
+    </tr>
+    <tr>
+      <td>Research command interface LLM options</td>
+      <td>30%</td>
+      <td>70%</td>
+    </tr>
+    <tr>
+      <td>Develop LLM command interface module</td>
+      <td>20%</td>
+      <td>80%</td>
+    </tr>
+    <tr>
+      <td>Design map tool UI</td>
+      <td>40%</td>
+      <td>60%</td>
+    </tr>
+    <tr>
+      <td>Specify a constraint to map size</td>
+      <td>25%</td>
+      <td>75%</td>
+    </tr>
+    <tr>
+      <td>Merge LLM with Map UI</td>
+      <td>50%</td>
+      <td>50%</td>
+    </tr>
+    <tr>
+      <td>Fine-tune LLM to interact with Map</td>
+      <td>45%</td>
+      <td>55%</td>
+    </tr>
+    <tr>
+      <td>Test final application</td>
+      <td>50%</td>
+      <td>50%</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## ABET Concerns
 uilding and deploying our vision for an AI-Powered Dungeons and Dragons project will be faced with many constraints, and the aim of this essay is to highlight all such constaints that we can imagine, and how they will come into play. From a our team discussion, we have come to a conclusion that we will face time, economic, and diversity/cultural constraints. It must also be noted that there can always be additional constraints that are unforseen or those that we may only uncover by working towards completing our project.
