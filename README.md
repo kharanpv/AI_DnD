@@ -14,7 +14,6 @@ The milestones are
 ### Contact Information
 
 - Email: kharanpv@mail.uc.edu
-- Phone Number: (513)-850-7476
 
 ### Work Experience
 
@@ -47,7 +46,6 @@ My main aim is to work on a project that hasn't been implemented prior in a caps
 ### Contact Information
 
 - Email: weesesr@mail.uc.edu
-- Phone Number: (513)-886-4073
 
 ### Work Experience
 
