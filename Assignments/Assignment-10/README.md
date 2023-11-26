@@ -393,12 +393,13 @@ All source code is stored in the sub folder ["Source Code"](./Source%20Code/). B
 ### Glossary 
 
 
-#### Abstract Terms
 Dungeon Master (DM), Game Master (GM) - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
 
-Player - a person playing dungeons and dragons who controls a character
+Player - a person playing dungeons and dragons who controls a player character
 
-Character - a 
+Character - any actor within Dungeons and Dragons. All actors are currently represented as a json object, and an image.
+
+Player Character -  a character within the Dungeons and Dragons game which is represented and controlled anyone other than the the Dungeon Master. It is currently represented as a json object, and an image.
 
 Nonplayer Character - a character within the Dungeons and Dragons game which is represented and controlled by the Dungeon Master. It is currently represented as a json object, and an image.
 
@@ -406,15 +407,13 @@ Battle Map - a visual display for characters and nonplayer characters to move an
 
 Combat - a phase of Dungeons and Dragons which enforces turn based movement and actions
 
-Character Sheet - a sheet which has listed a character's statistics, such as health, damage, and items. In technical terms, this a pdf.
+Character Sheet - a sheet which has listed a character's statistics, such as health, damage, and items. This is currently represented as a pdf.
 
-Backstory - a story for a character which was agreed to by the Player and DM prior to begining the game of Dungeons and Dragons. In technical terms, this is simply a text string.
+Backstory - a story for a character which was agreed to by the Player and DM prior to begining the game of Dungeons and Dragons.It is contained as a field within the character sheet. This is currently represented as a text string.
 
 Dungeons and Dragons, 5e, DnD - A table top role playing game. 
 
 LLM - Large language model, or any AI which takes regular text input and returns regular text input
 
-Stable Diffusion - 
-
-Story Generation - 
+Image Generation - Any function, or AI which can be fed a prompt as a string, which then produces an image. 
 
