@@ -375,7 +375,33 @@ We limited ourselves to 500 USD for this project. We have spent 20 USD upon Open
 All source code is stored in the sub folder ["Source Code"](./Source%20Code/). Below are links and explanations of each file.
   1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](), [Character Sheet](), or [Item Listing](). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to .
   2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf.
-  3. [token_lib](./Source%20Code/chatgpt_lib.py) This 
+  3. [token_lib](./Source%20Code/chatgpt_lib.py) This library is used for quick insertion of api calls. It creates a wrapper for the API of different AI services, so that only the token and the function pointer need to be swapped out in a global setup function.
+  4. [character_generator](./Source%20Code/character_generator.py) This script in takes a character sheet and user input. It converts the character sheet to a json dict, and then asks specific prompts based upon the user input, which is parsed by calls out to a LLM API.
 # Examples
 
+# Glossary 
+
+Dungeon Master (DM), Game Master (GM) - The player who operates as the narrorator and referee for a game of Dungeons and Dragons
+
+Player - a person playing dungeons and dragons who controls a character
+
+Character - a 
+
+Nonplayer Character - a character within the Dungeons and Dragons game which is represented and controlled by the Dungeon Master
+
+Battle Map - a visual display for characters and nonplayer characters to move and play upon during combat
+
+Combat - a phase of Dungeons and Dragons which enforces turn based movement and actions
+
+Character Sheet - a sheet which has listed a character's statistics, such as health, damage, and items
+
+Backstory - a story for a character which was agreed to by the Player and DM prior to begining the game of Dungeons and Dragons. In technical terms, this is simply a text string.
+
+Dungeons and Dragons, 5e, DnD - A table top role playing game. 
+
+LLM - Large language model, or any 
+
+Stable Diffusion - 
+
+Story Generation - 
 

@@ -32,7 +32,7 @@ def pdf_to_json(pdf_path, json_path):
         # Dump the output
         return json.dump(form_data, indent=2)
 
-
+# Below is all testing stuff
 if __name__ == "__main__":
     # Replace 'input.pdf' with the path to your form-fillable PDF
     input_pdf_path = 'input.pdf'
