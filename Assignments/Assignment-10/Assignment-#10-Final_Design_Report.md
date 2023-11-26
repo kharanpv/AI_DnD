@@ -369,17 +369,27 @@ We limited ourselves to 500 USD for this project. We have spent 20 USD upon Open
 
 ## Appendix
 
-# Additional Sources
-  // The slack stuff goes here
-# Source Code
+### Additional Sources
+Below are papers and websites we have been using for technical references when conducting research. 
+
+1. [Jurafsky-Stanford Paper](https://web.stanford.edu/~jurafsky/slp3/) - This is a book/collection of papers on natural language processing, and how to effectively implement text standardization. This directly has affected our project by informing us upon filtration methods for output of large language models.
+2. [The Handbook of Computational Linquistics and Natural Language Processing - Chapter 11, Evaluation of NLP Systems](https://home.cs.colorado.edu/~jbg/teaching/CMSC_773_2012/reading/evaluation.pdf) - This chapter covers the methodology of using fuzzy logic to evaluate tuples. It goes into detail by nuancing the evaluation into 
+3. [Generative Adversarial Network Rooms in Generative Graph Grammar Dungeons for The Legend of Zelda](https://arxiv.org/pdf/2001.05065.pdf) - 
+4. We have a number of different articles and papers on graphs we have read. They are all directly related to the problem of emplacing generated images upon a 2d network (which we can abstract to a graph). 
+- [Graph Transformation in a Nutshell](https://www.sciencedirect.com/science/article/pii/S157106610600048X) - 
+- [Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 1](https://www.youtube.com/watch?v=kNOtZ7P4FHk) - 
+- [Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 2](https://www.youtube.com/watch?v=dqHTplkOSfo)
+- [Graph Rewriting for Procedural Level Generation](https://www.boristhebrave.com/2021/04/02/graph-rewriting/)
+- [Paul Merrel, Procedural Modeling using Graph Grammars](https://www.youtube.com/watch?v=FG3LbcOGHqw)
+
+### Source Code
 All source code is stored in the sub folder ["Source Code"](./Source%20Code/). Below are links and explanations of each file.
   1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](), [Character Sheet](), or [Item Listing](). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to .
-  2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf.
+  2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf. It also includes detailed json format for components within DnD character generation.
   3. [token_lib](./Source%20Code/chatgpt_lib.py) This library is used for quick insertion of api calls. It creates a wrapper for the API of different AI services, so that only the token and the function pointer need to be swapped out in a global setup function.
   4. [character_generator](./Source%20Code/character_generator.py) This script in takes a character sheet and user input. It converts the character sheet to a json dict, and then asks specific prompts based upon the user input, which is parsed by calls out to a LLM API.
-# Examples
 
-# Glossary 
+### Glossary 
 
 Dungeon Master (DM), Game Master (GM) - The player who operates as the narrorator and referee for a game of Dungeons and Dragons
 
