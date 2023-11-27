@@ -384,7 +384,7 @@ Below are papers and websites we have been using for technical references when c
 
 ### Source Code
 All source code is stored in the sub folder ["Source Code"](./Source%20Code/). Below are links and explanations of each file.
-  1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](), [Character Sheet](), or [Item Listing](). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to an output pdf.
+  1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](https://www.reddit.com/r/dndnext/comments/7y1eay/expanded_spell_sheets_5e/), [Character Sheet](https://dnd.wizards.com/resources/character-sheets), or [Item Listing](https://www.reddit.com/r/dndnext/comments/5r5zkj/dd_5e_party_inventory_sheet_updated_character/). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to an output pdf.
   2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf. It also includes detailed json format for components within DnD character generation.
   3. [token_lib](./Source%20Code/chatgpt_lib.py) This library is used for quick insertion of api calls. It creates a wrapper for the API of different AI services, so that only the token and the function pointer need to be swapped out in a global setup function.
   4. [character_generator](./Source%20Code/character_generator.py) This script in takes a character sheet and user input. It converts the character sheet to a json dict, and then asks specific prompts based upon the user input, which is parsed by calls out to a LLM API.
@@ -393,7 +393,7 @@ All source code is stored in the sub folder ["Source Code"](./Source%20Code/). B
 ### Glossary 
 
 
-[Dungeon Master (DM), Game Master (GM)]() - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
+Dungeon Master (DM), Game Master (GM) - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
 
 Player - a person playing dungeons and dragons who controls a player character
 
@@ -418,4 +418,4 @@ LLM - Large language model, or any AI which takes regular text input and returns
 Image Generation - Any function, or AI which can be fed a prompt as a string, which then produces an image. 
 
 ### Additional Work [WIP]
-Currently, under the supervision of Dr. Jiang, we are writing [a paper]() which better details the problem, and gives background to why it exists. Dungeons and Dragons is a niche game, and we cannot expect all reviewers of our work to understand or have a background of the game. Additionally, due to the large variances between different community interpretations and implmentations of the game, reducing Dungeons and Dragons to a glossary term does not accurately nuance or explain our target goals.
+Currently, under the supervision of Dr. Jiang, we are writing [a paper](https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcB85mRibm8ZRtBj2361CTSrw?e=fxVSRe) which better details the problem, and gives background to why it exists. Dungeons and Dragons is a niche game, and we cannot expect all reviewers of our work to understand or have a background of the game. Additionally, due to the large variances between different community interpretations and implmentations of the game, reducing Dungeons and Dragons to a glossary term does not accurately nuance or explain our target goals.
