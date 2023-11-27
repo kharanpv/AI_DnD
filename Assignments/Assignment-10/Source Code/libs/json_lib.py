@@ -13,7 +13,7 @@ def insert_data_into_pdf(template_path, json_path, output_path):
         data = json.load(json_file)
 
     # Create a PDF writer object
-    pdf_writer = PyPDF2.PdfFileWriter()
+    pdf_writer = PyPDF2.PdfWriter()
 
     # Open the PDF template
     with open(template_path, 'rb') as template_file:
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
 # this is generated via a dnd 5e character sheet
 structure_characterSheet = {
-'CharacterName 2': '',
+ 'CharacterName': '',
  'Age': '',
  'Height': '',
  'Weight': '',

@@ -374,7 +374,7 @@ Below are papers and websites we have been using for technical references when c
 
 1. [Jurafsky-Stanford Paper](https://web.stanford.edu/~jurafsky/slp3/) - This is a book/collection of papers on natural language processing, and how to effectively implement text standardization. This directly has affected our project by informing us upon filtration methods for output of large language models.
 2. [The Handbook of Computational Linquistics and Natural Language Processing - Chapter 11, Evaluation of NLP Systems](https://home.cs.colorado.edu/~jbg/teaching/CMSC_773_2012/reading/evaluation.pdf) - This chapter covers the methodology of using fuzzy logic to evaluate tuples, how to construct automatic and manual evaluations, and how to accurately catagorize data from textual responses using a tuple method. This directly informs our methods for linting responses given by a LLM.
-3. [Generative Adversarial Network Rooms in Generative Graph Grammar Dungeons for The Legend of Zelda](https://arxiv.org/pdf/2001.05065.pdf) - The paper describes how implement methodology for ranking and refining objects constructed with graph grammar, which are subject to human use and evaluation. The paper also details a similar problem, and has helped us in developing criteria for 
+3. [Generative Adversarial Network Rooms in Generative Graph Grammar Dungeons for The Legend of Zelda](https://arxiv.org/pdf/2001.05065.pdf) - The paper describes how implement methodology for ranking and refining objects constructed with graph grammar, which are subject to human use and evaluation. The paper also details a similar problem, and has helped us in developing criteria for what we want our project to accomplish.
 4. We have a number of different articles and papers on graphs we have read. They are all directly related to the problem of emplacing generated images upon a 2d network (which we can abstract to a graph). The first 3 are general knowldege on the science of graph transformations, which helped inform our decisions on where else to research within the field of graph transformations.
 - [Graph Transformation in a Nutshell](https://www.sciencedirect.com/science/article/pii/S157106610600048X)
 - [Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 1](https://www.youtube.com/watch?v=kNOtZ7P4FHk)
@@ -393,7 +393,7 @@ All source code is stored in the sub folder ["Source Code"](./Source%20Code/). B
 ### Glossary 
 
 
-Dungeon Master (DM), Game Master (GM) - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
+[Dungeon Master (DM), Game Master (GM)]() - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
 
 Player - a person playing dungeons and dragons who controls a player character
 
