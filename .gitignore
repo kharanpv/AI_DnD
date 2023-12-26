@@ -1,1 +1,7 @@
 *.DS_STORE
+# Ignore everything
+*
+
+# Unignore specific directories
+!ComfyUI_windows_portable/Custom_Scripts/
+!ComfyUI_windows_portable/ComfyUI/ComfyUI-to-Python-Extension/
