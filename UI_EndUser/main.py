@@ -27,8 +27,6 @@ class ImageOnCanvas(QGraphicsPixmapItem):
         image = QPixmap(image_path)
         self.setPixmap(image)
 
-
-
 class ImageWidget(QGraphicsView):
     def __init__(self, parent=None):
         super(ImageWidget, self).__init__(parent)
@@ -63,6 +61,13 @@ class ImageWidget(QGraphicsView):
             self.middle_mouse_pressed = True
             self.last_middle_pos = event.pos()
 
+        elif event.button() == Qt.RightButton:  # Handle right-click event
+            pos = self.mapToScene(event.pos())
+            image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
+            if image_path:
+                new_image_item = ImageOnCanvas(pos.x(), pos.y(), 1.0, image_path)
+                self.scene.addItem(new_image_item)
+
     def mouseReleaseEvent(self, event):
         super(ImageWidget, self).mouseReleaseEvent(event)
 
@@ -77,57 +82,6 @@ class ImageWidget(QGraphicsView):
             self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta.x())
             self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta.y())
             self.last_middle_pos = event.pos()
-
-# Below is a copy of code which uses ImageOnCanvas. Commented out before push.
-# if DEBUGGING:
-#
-# class ImageWidget(QGraphicsView):
-#     def __init__(self, parent=None):
-#         super(ImageWidget, self).__init__(parent)
-
-#         self.scene = QGraphicsScene(self)
-#         self.setScene(self.scene)
-#         self.setRenderHint(QPainter.Antialiasing, True)
-#         self.setRenderHint(QPainter.SmoothPixmapTransform, True)
-
-#         self.custom_item = ImageOnCanvas(0, 0, 1.0, "")  # Create an instance of ImageOnCanvas
-#         self.scene.addItem(self.custom_item)
-
-#         self.setDragMode(QGraphicsView.ScrollHandDrag)
-#         self.middle_mouse_pressed = False
-#         self.setMouseTracking(True)
-
-#     def set_image(self, image_path):
-#         self.custom_item.set_image(image_path)
-
-#     def wheelEvent(self, event: QGraphicsSceneWheelEvent):
-#         factor = 1.2
-#         if event.angleDelta().y() < 0:
-#             factor = 1.0 / factor
-
-#         self.custom_item.setScale(self.custom_item.scale() * factor)
-
-#     def mousePressEvent(self, event):
-#         super(ImageWidget, self).mousePressEvent(event)
-
-#         if event.button() == Qt.MiddleButton:
-#             self.middle_mouse_pressed = True
-#             self.last_middle_pos = event.pos()
-
-#     def mouseReleaseEvent(self, event):
-#         super(ImageWidget, self).mouseReleaseEvent(event)
-
-#         if event.button() == Qt.MiddleButton:
-#             self.middle_mouse_pressed = False
-
-#     def mouseMoveEvent(self, event):
-#         super(ImageWidget, self).mouseMoveEvent(event)
-
-#         if self.middle_mouse_pressed:
-#             delta = event.pos() - self.last_middle_pos
-#             self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta.x())
-#             self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta.y())
-#             self.last_middle_pos = event.pos()
 
 class MainWindow(QMainWindow):
     def __init__(self):
