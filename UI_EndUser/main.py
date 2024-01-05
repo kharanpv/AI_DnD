@@ -17,10 +17,11 @@ if DEBUGGING:
     DEBUG_NAME = Repository('.').head.shorthand 
 
 class ImageOnCanvas(QGraphicsPixmapItem):
-    def __init__(self, x, y, scale, image_path):
+    def __init__(self, x, y, scale, rotation, image_path):
         super(ImageOnCanvas, self).__init__()
         self.setPos(x, y)
         self.setScale(scale)
+        self.setRotation(rotation)
         self.set_image(image_path)
 
     def set_image(self, image_path):
@@ -66,7 +67,7 @@ class ImageWidget(QGraphicsView):
             self.middle_mouse_pressed = True
             self.last_middle_pos = event.pos()
 
-        elif event.button() == Qt.RightButton:  # Handle right-click event
+        elif event.button() == Qt.RightButton: 
             pos = self.mapToScene(event.pos())
             image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
             if image_path:
@@ -152,14 +153,15 @@ class MainWindow(QMainWindow):
         for index, image_info in enumerate(image_list):
             print(f"Image {index + 1}:")
             print(f"  Location: ({image_info['x']}, {image_info['y']})")
+            print(f"  Rotation: {image_info['rotation']} degrees")
             print(f"  File Name: {image_info['image_path']}")
             print()
     # This will eventually consume some other kind of data, ie a text file full of image links
     # this is proof of concept for now
     def populate_canvas(self):
         image_list = [
-            ImageOnCanvas(100, 100, 1.0, './test_images/tree.jpg'),
-            ImageOnCanvas(200, 200, 1.0, './test_images/Cincinnati_Bearcats_logo.png'),
+            ImageOnCanvas(100, 100, 1.0, 45, './test_images/tree.jpg'),
+            ImageOnCanvas(200, 200, 1.0, 180, './test_images/Cincinnati_Bearcats_logo.png'),
         ]
 
         for image_item in image_list:
