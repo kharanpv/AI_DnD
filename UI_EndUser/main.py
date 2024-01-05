@@ -128,6 +128,16 @@ class MainWindow(QMainWindow):
         list_images_action = QAction('List Images', self)
         list_images_action.triggered.connect(self.list_images)
         file_menu.addAction(list_images_action)
+        # Canvas Menu
+        canvas_menu = menubar.addMenu('Canvas')
+
+        list_images_action = QAction('List Images', self)
+        list_images_action.triggered.connect(self.list_images)
+        canvas_menu.addAction(list_images_action)
+
+        populate_canvas_action = QAction('Populate Canvas', self)
+        populate_canvas_action.triggered.connect(self.populate_canvas)
+        canvas_menu.addAction(populate_canvas_action)
 
     def open_image(self):
         options = QFileDialog.Options()
@@ -144,6 +154,17 @@ class MainWindow(QMainWindow):
             print(f"  Location: ({image_info['x']}, {image_info['y']})")
             print(f"  File Name: {image_info['image_path']}")
             print()
+    # This will eventually consume some other kind of data, ie a text file full of image links
+    # this is proof of concept for now
+    def populate_canvas(self):
+        image_list = [
+            ImageOnCanvas(100, 100, 1.0, './test_images/tree.jpg'),
+            ImageOnCanvas(200, 200, 1.0, './test_images/Cincinnati_Bearcats_logo.png'),
+        ]
+
+        for image_item in image_list:
+            self.image_widget.scene.addItem(image_item)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
