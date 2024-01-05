@@ -14,7 +14,7 @@ from PyQt5.QtCore import Qt
 DEBUGGING = True
 if DEBUGGING:
     from pygit2 import Repository
-    DEBUG_NAME = Repository('.').head.shorthand  # 'master'
+    DEBUG_NAME = Repository('.').head.shorthand 
 
 class ImageOnCanvas(QGraphicsPixmapItem):
     def __init__(self, x, y, scale, image_path):
@@ -31,6 +31,7 @@ class ImageWidget(QGraphicsView):
     def __init__(self, parent=None):
         super(ImageWidget, self).__init__(parent)
 
+        # Qt Rendering
         self.scene = QGraphicsScene(self)
         self.setScene(self.scene)
         self.setRenderHint(QPainter.Antialiasing, True)
@@ -39,6 +40,10 @@ class ImageWidget(QGraphicsView):
         self.image_item = QGraphicsPixmapItem()
         self.scene.addItem(self.image_item)
 
+        # Images
+        self.image_items = []  
+
+        # Mouse
         self.setDragMode(QGraphicsView.ScrollHandDrag)
         self.middle_mouse_pressed = False
         self.setMouseTracking(True)
@@ -67,6 +72,7 @@ class ImageWidget(QGraphicsView):
             if image_path:
                 new_image_item = ImageOnCanvas(pos.x(), pos.y(), 1.0, image_path)
                 self.scene.addItem(new_image_item)
+                self.image_items.append({'x': pos.x(), 'y': pos.y(), 'image_path': image_path})
 
     def mouseReleaseEvent(self, event):
         super(ImageWidget, self).mouseReleaseEvent(event)
@@ -82,6 +88,9 @@ class ImageWidget(QGraphicsView):
             self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta.x())
             self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta.y())
             self.last_middle_pos = event.pos()
+
+    def list_images_on_canvas(self):
+        return self.image_items
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -116,6 +125,10 @@ class MainWindow(QMainWindow):
         exit_action.triggered.connect(self.close)
         file_menu.addAction(exit_action)
 
+        list_images_action = QAction('List Images', self)
+        list_images_action.triggered.connect(self.list_images)
+        file_menu.addAction(list_images_action)
+
     def open_image(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -124,85 +137,16 @@ class MainWindow(QMainWindow):
         if file_name:
             self.image_widget.set_image(file_name)
 
+    def list_images(self):
+        image_list = self.image_widget.list_images_on_canvas()
+        for index, image_info in enumerate(image_list):
+            print(f"Image {index + 1}:")
+            print(f"  Location: ({image_info['x']}, {image_info['y']})")
+            print(f"  File Name: {image_info['image_path']}")
+            print()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
-
-
-# Below is a rough first draft. I started mixing QtPy and Qt5, and that caused issues (interop in QtCreator , but not python alone)
-# import sys
-# from qtpy.QtWidgets import QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QGraphicsRectItem, QVBoxLayout, QMenu, QAction, QWidget
-
-# from ui_map import MyGraphicsView
-# class DraggableGridItem(QGraphicsRectItem):
-#     def __init__(self, x, y, size):
-#         super().__init__(x, y, size, size)
-#         self.setFlag(QGraphicsRectItem.ItemIsMovable)
-
-
-# class SimpleImageViewer(QMainWindow):
-#     def __init__(self):
-#         super().__init__()
-
-#         self.initUI()
-
-#     def initUI(self):
-#         # Create the main layout
-#         main_layout = QVBoxLayout()
-
-#         # Create QGraphicsScene and a our viewer for displaying images
-#         self.scene = QGraphicsScene()
-#         self.view = MyGraphicsView(self.scene)
-#         main_layout.addWidget(self.view)
-
-#         # Create a central widget and set the layout
-#         central_widget = QWidget()
-#         central_widget.setLayout(main_layout)
-#         self.setCentralWidget(central_widget)
-
-#         # Create top drop down menu
-#         self.createTopMenu()
-
-#         # Add a draggable grid to the scene
-#         grid_size = 50
-#         for x in range(0, 500, grid_size):
-#             for y in range(0, 500, grid_size):
-#                 grid_item = DraggableGridItem(x, y, grid_size)
-#                 self.scene.addItem(grid_item)
-
-#         # Set up the main window
-#         self.setGeometry(100, 100, 800, 600)
-#         self.setWindowTitle('Draggable Grid Image Viewer')
-
-#     def openImage(self):
-#         # In a real application, you would implement image loading logic here
-#         # For simplicity, let's just show a placeholder message
-#         self.showMessage('Open Image', 'Placeholder: Implement image loading logic here')
-
-#     def showMessage(self, title, message):
-#         # Show a simple message box
-#         msg_box = QMenu(title)
-#         msg_box.addAction(message)
-#         msg_box.exec_()
-
-#     def createTopMenu(self):
-#         # Create a simple menu bar with a File menu
-#         menubar = self.menuBar()
-#         file_menu = menubar.addMenu('File')
-
-#         # Create actions for the File menu
-#         open_action = QAction('Open', self)
-#         open_action.triggered.connect(self.openImage)
-#         file_menu.addAction(open_action)
-
-#         exit_action = QAction('Exit', self)
-#         exit_action.triggered.connect(self.close)
-#         file_menu.addAction(exit_action)
-
-# if __name__ == '__main__':
-#     app = QApplication(sys.argv)
-#     window = SimpleImageViewer()
-#     window.show()
-#     sys.exit(app.exec_())
