@@ -6,7 +6,7 @@
 3. [User Stories](#user-stories)
 4. [Design Diagrams](#design-diagrams)
 5. [Project Tasks and Timeline](#project-tasks-and-timeline)
-6. [ABET Concerns](#abet-concerns)
+6. [ABET Concerns](#abet-concerns)  
 7. [Presentation](#presentation)
 8. [Self Assessments](#self-assessments)
 9. [Professional Biographies](#professional-biographies)
