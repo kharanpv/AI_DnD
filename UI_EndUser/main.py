@@ -11,6 +11,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction,
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 
+from OtherCode.libs import token_lib as token_lib
+
 DEBUGGING = True
 if DEBUGGING:
     from pygit2 import Repository
@@ -69,9 +71,10 @@ class ImageWidget(QGraphicsView):
 
         elif event.button() == Qt.RightButton: 
             pos = self.mapToScene(event.pos())
+            rotation = QInput
             image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
             if image_path:
-                new_image_item = ImageOnCanvas(pos.x(), pos.y(), 1.0, image_path)
+                new_image_item = ImageOnCanvas(pos.x(), pos.y(), 1.0, 1.0, image_path)
                 self.scene.addItem(new_image_item)
                 self.image_items.append({'x': pos.x(), 'y': pos.y(), 'image_path': image_path})
 
@@ -140,6 +143,24 @@ class MainWindow(QMainWindow):
         populate_canvas_action.triggered.connect(self.populate_canvas)
         canvas_menu.addAction(populate_canvas_action)
 
+        # API Menu
+        api_menu = menubar.addMenu('API')
+        
+        sublist_api_menu = api_menu.addMenu('Select API')
+        for a_name, a_function in token_lib.list_of_apis.items():
+            api_name = a_name
+            api_function = a_function
+
+            api_action = QAction(api_name, self)
+            api_action.triggered.connect(api_function)
+
+            sublist_api_menu.addAction(api_action)
+            
+
+
+
+
+
     def open_image(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -166,6 +187,14 @@ class MainWindow(QMainWindow):
 
         for image_item in image_list:
             self.image_widget.scene.addItem(image_item)
+
+
+    # API Stuff
+    def select_api(self):
+        pass
+        #for item in token_lib.api_list:
+        #    pass
+
 
 
 if __name__ == '__main__':
