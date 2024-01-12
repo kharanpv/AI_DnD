@@ -184,9 +184,9 @@ class MainWindow(QMainWindow):
             ImageOnCanvas(100, 100, 1.0, 45, './test_images/tree.jpg'),
             ImageOnCanvas(200, 200, 1.0, 180, './test_images/Cincinnati_Bearcats_logo.png'),
         ]
-
+        
         for image_item in image_list:
-            self.image_widget.scene.addItem(image_item)
+            self.image_widget.addImageOnCanvas(image_item)
 
 
     # API Stuff
