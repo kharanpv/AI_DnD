@@ -7,7 +7,9 @@
 # This is all garbage I will clean later I swear jk sorry
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QGraphicsView, QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
+
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 
@@ -25,6 +27,7 @@ class ImageOnCanvas(QGraphicsPixmapItem):
         self.setScale(scale)
         self.setRotation(rotation)
         self.set_image(image_path)
+        self.image_path = image_path
 
     def set_image(self, image_path):
         image = QPixmap(image_path)
@@ -62,6 +65,10 @@ class ImageWidget(QGraphicsView):
 
         self.scale(factor, factor)
 
+    def addImageOnCanvas(self, image_on_canvas):
+        self.scene.addItem(image_on_canvas)
+        self.image_items.append({'x': image_on_canvas.x, 'y': image_on_canvas.x, 'image_path': image_on_canvas.image_path})
+
     def mousePressEvent(self, event):
         super(ImageWidget, self).mousePressEvent(event)
 
@@ -71,12 +78,10 @@ class ImageWidget(QGraphicsView):
 
         elif event.button() == Qt.RightButton: 
             pos = self.mapToScene(event.pos())
-            rotation = QInput
+            #rotation = Qt.QInput
             image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
             if image_path:
-                new_image_item = ImageOnCanvas(pos.x(), pos.y(), 1.0, 1.0, image_path)
-                self.scene.addItem(new_image_item)
-                self.image_items.append({'x': pos.x(), 'y': pos.y(), 'image_path': image_path})
+                self.addImageOnCanvas(ImageOnCanvas(pos.x(), pos.y(), 1.0, 1.0, image_path))
 
     def mouseReleaseEvent(self, event):
         super(ImageWidget, self).mouseReleaseEvent(event)
@@ -156,11 +161,6 @@ class MainWindow(QMainWindow):
 
             sublist_api_menu.addAction(api_action)
             
-
-
-
-
-
     def open_image(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
