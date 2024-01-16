@@ -2,7 +2,4 @@
 # Ignore all files and directories under ComfyUI_windows_portable
 ComfyUI_windows_portable/*
 
-# Unignore specific directories and files
-!ComfyUI_windows_portable/Custom_Scripts/**
-!ComfyUI_windows_portable/ComfyUI/ComfyUI-to-Python-Extension/**
 
