@@ -179,14 +179,25 @@ class MainWindow(QMainWindow):
             print()
     # This will eventually consume some other kind of data, ie a text file full of image links
     # this is proof of concept for now
-    def populate_canvas(self):
-        image_list = [
-            ImageOnCanvas(100, 100, 1.0, 45, './test_images/tree.jpg'),
-            ImageOnCanvas(200, 200, 1.0, 180, './test_images/Cincinnati_Bearcats_logo.png'),
-        ]
-        
-        for image_item in image_list:
-            self.image_widget.addImageOnCanvas(image_item)
+    def populate_canvas(self, data_file):
+        image_list = []
+
+        with open(data_file) as handle:
+            for line in handle:
+                # Split the line by commas and extract values
+                x, y, scale, rotation, image_path = map(str.strip, line.split(','))
+
+                # Convert numeric values to appropriate types
+                x = int(x)
+                y = int(y)
+                scale = float(scale)
+                rotation = int(rotation)
+
+                # Create ImageOnCanvas instance and append to image_list
+                image_item = ImageOnCanvas(x, y, scale, rotation, image_path)
+                self.image_widget.addImageOnCanvas(image_item)
+
+
 
 
     # API Stuff

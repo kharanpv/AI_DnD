@@ -1,0 +1,5 @@
+"Return a list of objects generated from the following text. Return the values in the {format} asked previously." 
+
+
+"For each object, give it a logical set of coordinates based upon the original description. The coordinates should be in the form {x, y}, where positive x correlates to east, positive y correlates to y. x and y should be in the range  {-64, 64}. Return the list in {format}."
+
