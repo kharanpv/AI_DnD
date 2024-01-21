@@ -57,16 +57,39 @@ For this project, we will primarily focus on black-box style testing because of 
   ### 7 - Asset Placement Accuracy Test
 
   **Test Indication:** Normal/Functional Test
-  THe purpose of this test is to verify whether an image with a standard location description can successfully be placed in or near the specified location on the map. For this test, a generic test image will be queued into the asset placement pipeline with the location of "upper-right corner". After the position tracking MiniLlama instance is free to take requests, the location of asset image will be pulled by verifying its coordinates. if the coordinates returned are greater than 75% X and 75% Y (indicating it is near the upper-right corner), the test will be considered a success.
+  The purpose of this test is to verify whether an image with a standard location description can successfully be placed in or near the specified location on the map. For this test, a generic test image will be queued into the asset placement pipeline with the location of "upper-right corner". After the position tracking MiniLlama instance is free to take requests, the location of asset image will be pulled by verifying its coordinates. if the coordinates returned are greater than 75% X and 75% Y (indicating it is near the upper-right corner), the test will be considered a success.
   <br><br>
   **Input:** A test image is fed into the asset placement queue.<br>
   **Expected Output:** A coordinate for the placed image that has at least 75% X and 75% Y in coordinates (depending on the size of the canvas).
 
-  ### 8 - 
+  ### 8 - Outdoor Map Creation Test
 
-  ### 9 -
+  **Test Indication**: Normal/Functional Test
 
-  ### 10 -
-  
+  The purpose of this test is to verify whether the system can successfully create and place assets in an outdoor environment. This test aims to assess the capability of the system to handle scenarios related to outdoor landscapes.
+
+  **Input:** A specific prompt related to outdoor environments, such as "sunny meadow" or "dense forest," is fed into the image generation pipeline.
+  <br><br>
+  **Expected Output:** Asset images depicting outdoor scenes are added to the Assets folder. The MiniLlama instance for positional tracking successfully recalls the placed outdoor images on the map.
+  <br>
+  Adjust the details based on the specific requirements of your project and the types of outdoor environments you want to test.
+
+  ### 9 - Indoor / Cave Creation Test
+
+  **Test Indication**: Normal/Functional Test
+  The purpose of this test is to verify whether the system can successfully create and place assets in an indoor or cave environment. This test aims to assess the capability of the system to handle different environmental scenarios.
+  <br><br>
+  **Input:** A specific prompt related to indoor or cave environments is fed into the image generation pipeline. The prompt has enumerated n entrances/exits, allowing it to connect to other maps. 
+  <br>
+  **Expected Output:** Asset images related to indoor or cave walls are added to the Assets folder. The MiniLlama instance for positional tracking successfully recalls the placed images on the map. The spatial LLM assembles the walls without gaps. Overlaps are acceptable, up to 50%. The map has entrances/exits are visible, and not covered by images/assets. 
+
+  #### 10 - Performance Test
+  **Test Indication**: Performance Test
+  The purpose of this test is to evaluate the performance of the system under different conditions, including load testing and response time analysis.
+  <br><br>
+  **Input:** The same prompts from each previous test [1-9] will be used. Additionally, another input to be used will be an enumeration of item fills from the range of 0 to 100 with steps of 5, instructing the LLM to place them in equal minimum proximity to each other. 
+  <br>
+  **Expected Output:** The system should handle the increased load without significant degradation in performance. The system should not exceed 30 seconds for any prompt. Response times should remain within acceptable limits, and the system should not experience crashes or failures.
+
   
 ## Test Case Matrix
