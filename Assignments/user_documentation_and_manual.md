@@ -44,7 +44,15 @@ The _pause menu_ button leads to the _pause menu_, which looks similar the _main
 
 ### Playing AI DnD
 
+To play the game, you must first either choose _New Game_ or _Load Game_ (if you are resuming another game) from the _main menu_. This will bring up the game session with the two windows - the _world window_, and the _chat window_. The game functions identically to Dungeons and Dragons. If you are unfamiliar with Dungeons and Dragons, please refer to [a guide found here](https://dnd.wizards.com/how-to-play).
 
+#### Dungeon Master Interaction
+In this game, the dungeon Master (DM) is operated by a Large Language Model (LLM), which means it is run by AI. No human input is needed to asssume the role of the DM. In the text box at the bottom of the _chat window_, you will interact with the DM, and above, in the chat history, the DM will respond. Simultaneously, AI-generated images will populate the _world window_ reflecting any changes that occured since your prompt was entered.
+
+#### World Map Interaction
+The world map of the Dungeons and Dragons game will be displayed on the _world view_ window. Aside from the controls described in the [Running AI DnD for the firt time](#running-ai-dnd-for-the-first-time) section, you will be able to drag AI-generated sprites spawned in. This feature is intended to be used if the AI-determined placement is incorrect, but it is not limited to such uses.
+
+If the DM deems that the scene needs to change, you will receive a pop-up box confirming the change of scene. If you either requested a change of scene, or you believe the plot requires a change of scene, then click the _yes_ button found on the pop-up and a new scene will be generated. If not, then click _no_ and the scene will resume.
 
 ## User Documentation
 
