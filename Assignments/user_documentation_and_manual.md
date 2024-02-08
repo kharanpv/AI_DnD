@@ -29,7 +29,20 @@ To run AI DnD, you must double click and execute `main.exe` found within the out
 
 After a while, a UI will show up with three buttons, which confirms that the application is running successfully. This is what we will refer to as the _main menu_. You will notice that there are 3 options available -- _load game_, _new game_, and _quit_. The purpose of each of these options is as follows:
 1. New Game - In order to start a new game of AI DnD, click this option. Upon clicking, it will bring up a dialog box confirming that this is your choice. If you choose to continue by clicking _yes_, it will overwrite any previous game session that you had started and start a new game. If you choose _no_, it will simply take you back to the main menu.
-2. Load Game - This will load the previous game session again
+2. Load Game - This will load the previous game session again from the previous section. For information on how to save a game, please continue reading down below for _Save Game_.
+3. Quit - This simply shuts down the application.
+
+Once you enter a game session, you will see two windows. One is a larger window to the right called the "World" window and a smaller window to the left called the "Chat" window.
+- Chat Window: The chat window is where you will interact with the (LLM-powered) Dungeon Master (DM). This is also the only way you can interact with the game. At the bottom of this window you will see a text-box with a button to the right of it saying _Send_. The prompt you want to pose to the DM will be entered into this text box, that we will call the prompt box. Once you are ready with the prompt in the box, you must click _Send_ to send it through. The prompt you put in will be displayed just above the text box. The DM will process this prompt and then above the text box and below your prompt displayed. Older conversations will be pushed upwards as the conversation progresses. There is a scroll-bar to the right to access older parts of the conversation that may have left the screen.
+- World Window: The world window reflects the consequences/output generated from the reaction of the AI models running behind the scenes in the form of images that stitch themselves together to create a cohesive world/map of the immediate surrounding. You will be able to zoom in and zoom out (using the mouse scroll wheel) and drag around the map to view all different parts of it (using the mouse left and right buttons). It only reacts after you put in a prompt, and until then, the world remains stationary. At the top-right of the world window is a button with 3 horizontal bars. This is the _pause menu_ button, which can also be reached at any time by hitting _escape_ on your keyboard.
+
+The _pause menu_ button leads to the _pause menu_, which looks similar the _main menu_, except for a few key differences. Of the similarities, you will notice the _New Game_ and _Quit_ buttons. However, there is no _Load Game_ button. Instead, you will now see
+1. Save Game - Pressing this button saves the current session in its current state, and can be accessed again at any other time using the _Load Game_ button.
+2. Save and Quit Game - This combines the effects of the _Save Game_ and _Quit_ buttons in succession, i.e., it first saves the game in its current state and then quits the application.
+
+### Playing AI DnD
+
+
 
 ## User Documentation
 
