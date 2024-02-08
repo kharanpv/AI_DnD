@@ -1,6 +1,12 @@
 #
 # Currently scrolling works fine, dragging doesn't
 # TODO finish dragging, I will probably separate out mouse when I fix this
+# - fix Z, it currently is generated but not used. Higher Z should over lay lower Z images
+#        - this will require someform of Z system probably
+# - add rotation to generations
+# - add wall combinations
+#   - this will probably be hard
+#   
 #
 #
 
@@ -81,7 +87,7 @@ class ImageWidget(QGraphicsView):
             #rotation = Qt.QInput
             image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
             if image_path:
-                self.addImageOnCanvas(ImageOnCanvas(pos.x(), pos.y(), 1.0, 1.0, image_path))
+                self.addImageOnCanvas(ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
 
     def mouseReleaseEvent(self, event):
         super(ImageWidget, self).mouseReleaseEvent(event)
@@ -174,27 +180,37 @@ class MainWindow(QMainWindow):
         for index, image_info in enumerate(image_list):
             print(f"Image {index + 1}:")
             print(f"  Location: ({image_info['x']}, {image_info['y']})")
-            print(f"  Rotation: {image_info['rotation']} degrees")
+            # Below broke upon importing images from cont files, don't know why
+            #print(f"  Rotation: {image_info['rotation']} degrees")
             print(f"  File Name: {image_info['image_path']}")
             print()
     # This will eventually consume some other kind of data, ie a text file full of image links
     # this is proof of concept for now
-    def populate_canvas(self, data_file):
-        image_list = []
+    def populate_canvas(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        file_name, _ = QFileDialog.getOpenFileName(self, "Open Set", "", "Custom Continuity files (*.cont);;All Files (*)", options=options)
 
-        with open(data_file) as handle:
+        asset_folder = "./assets/"
+        with open(file_name) as handle:
             for line in handle:
-                # Split the line by commas and extract values
-                x, y, scale, rotation, image_path = map(str.strip, line.split(','))
-
+                image_path, x, y, z, scale =  map(str.strip, line.split(','))
+                # Rotation is currently unused for our generations
+                # So is Z, it would require a queing system or something
+                rotation = 0
+                # Currently X and Y have a bad offset, as images are positioned to the top left corner not the middle
+                # We need to calculate this based off of scale, where positioning is x-scale/2, y-scale/2
                 # Convert numeric values to appropriate types
                 x = int(x)
                 y = int(y)
                 scale = float(scale)
+                
+                x = x - int(scale/2)
+                y = y - int(scale/2)
                 rotation = int(rotation)
 
                 # Create ImageOnCanvas instance and append to image_list
-                image_item = ImageOnCanvas(x, y, scale, rotation, image_path)
+                image_item = ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
                 self.image_widget.addImageOnCanvas(image_item)
 
 

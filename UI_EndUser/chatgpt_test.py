@@ -12,7 +12,7 @@ client = OpenAI(
     )
 
 
-USER_PROMPT = "I want a hill with a tree and a well on top. I want a dragon statue surrounding it."
+USER_PROMPT = "I want a hill with a tree and a well on top"
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
 The user will give you a description of a place.
@@ -22,15 +22,18 @@ Make the paragraph description be only physical.
 For each object in the `objects` list, give it a logical set of coordinates (x,y,z), as if we were looking from a top down view. Z represents height. This coordinate set is unrelated to the size.
 For example, if a tree is on a hill, it would share x,y coordinates and have a larger z coordinate than the hill.
 Make each pair of coordinates be based upon the description paragraphs generated. 
-Before each paragraph send the message "(" on its own line.
+Before each paragraph send the message "{" on its own line.
 Write the name of the object on its own line.
 Respond with corresponding paragraph a line below.
-After each paragraph send the message ")" on its own line.
+After each paragraph send the message "}" on its own line.
 Example:
 {
 Name
+(coordinates as integers), (size as integer) 
 Paragraph
 }
+
+Size should only be 1 integer, and wrapped in (). Coordinates should be separated by commas.
 """
 
 # 
@@ -69,29 +72,36 @@ def image_prompt_url(text_prompt:str, gen_model:str="dall-e-3", gen_size:str='25
     )
     return response.data[0].url 
 
-
-
-
-
-
-
+name_for_files = input("What name is this saved as?")
 output = text_prompt()
 
 
 save_path = "./assets/"
 
-pattern = r'\(((?:.|\n)*?)\)'
+pattern = r'\{((?:.|\n)*?)\}'
 matches = re.findall(pattern, output)
 print(matches)
-
+pattern_coords = r'\(((?:.|\n)*?)\)'
+ 
 
 for match in matches:
-    now = datetime.datetime.now()
+    coords, scale_size = re.findall(pattern_coords, match)
+    coords.replace(" ", "")
+    scale_size.replace(" ", "")
+    now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    dateStr = str(now)
+    with open(save_path + name_for_files + ".cont", 'a') as file:
+        file.write(dateStr)
+        file.write(',' + coords)
+        file.write(',' + scale_size)
+        file.write('\n')
+    with open(save_path + dateStr + ".txt", 'w') as file:
+        file.write(match)   
     url = image_prompt_url(text_prompt=match)
     print(url)
     response = requests.get(url)
     if response.status_code == 200:
-        with open(str(now) +".png", 'wb') as file:
+        with open(save_path + dateStr +".png", 'wb') as file:
             file.write(response.content)
         print(f"Image downloaded successfully and saved at: {save_path}")
     else:
