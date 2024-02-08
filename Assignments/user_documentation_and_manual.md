@@ -8,7 +8,12 @@ The purpose of this document is to assist users of the application AI DnD to ins
    - [How to install AI DnD](#how-to-install-ai-dnd)
    - [Running AI DnD for the first time](#running-ai-dnd-for-the-first-time)
    - [Playing AI DnD](#playing-ai-dnd)
+     - [Dungeon Master Interaction](#dungeon-master-interaction)
+     - [World Map Interaction](#world-map-interaction)
 3. [User Documentation](#user-documentation)
+   - [Hardware Specifications](#hardware-specifications)
+   - [Run times](#run-times)
+   - [Troubleshooting](#troubleshooting)
 
 ## What is AI DnD?
 
@@ -47,7 +52,7 @@ The _pause menu_ button leads to the _pause menu_, which looks similar the _main
 To play the game, you must first either choose _New Game_ or _Load Game_ (if you are resuming another game) from the _main menu_. This will bring up the game session with the two windows - the _world window_, and the _chat window_. The game functions identically to Dungeons and Dragons. If you are unfamiliar with Dungeons and Dragons, please refer to [a guide found here](https://dnd.wizards.com/how-to-play).
 
 #### Dungeon Master Interaction
-In this game, the dungeon Master (DM) is operated by a Large Language Model (LLM), which means it is run by AI. No human input is needed to asssume the role of the DM. In the text box at the bottom of the _chat window_, you will interact with the DM, and above, in the chat history, the DM will respond. Simultaneously, AI-generated images will populate the _world window_ reflecting any changes that occured since your prompt was entered.
+In this game, the dungeon Master (DM) is operated by a Large Language Model (LLM), which means it is run by AI. No human input is needed to asssume the role of the DM. In the text box at the bottom of the _chat window_, you will interact with the DM, and above, in the chat history, the DM will respond. Simultaneously, AI-generated images will populate the _world window_ reflecting any changes that occured since your prompt was entered. If you do not like the assets/sprites the DM generates or believe there is an issue with the DM's response, you can ask to create the sprites or a new response again.
 
 #### World Map Interaction
 The world map of the Dungeons and Dragons game will be displayed on the _world view_ window. Aside from the controls described in the [Running AI DnD for the firt time](#running-ai-dnd-for-the-first-time) section, you will be able to drag AI-generated sprites spawned in. This feature is intended to be used if the AI-determined placement is incorrect, but it is not limited to such uses.
@@ -56,6 +61,31 @@ If the DM deems that the scene needs to change, you will receive a pop-up box co
 
 ## User Documentation
 
+### Hardware Specification
+
+In order to run AI DnD on your personal machine, your system will require some minimum specifications that it must meet in order to run the application effectively. We have not set out a precise minimum hardware specification for this program, but as long as your system meets the following general guidelines, it can be considered sufficiently powerful to run our application.
+
+- Windows 64-bit 10/11 operating system
+- An Intel i5, i7, i9, or above processor. For AMD, an R5, R7, R9, or above processor.
+- 16 GB or more of RAM
+- An Nvidia GPU (GTX 1070 or above)
+  NOTE: Our image generation models use CUDA, which is an Nvidia technology, so our program is intended for Nvidia GPUs. They may or may not run on AMD and Intel GPUs.
+- 20 GB of spare storage
+
+### Run times
+
+Since a bulk of this application relies on generative AI to process either text or images, there will be a processing time delay between interactions. Below are some estimates on the run-time of the application. Note that the times taken are reflected for a system with a Ryzen R7 5800H, 32 GB RAM, and an RTX 3070. All times displayed in seconds and are average, rounded to one decimal point.
+
+Application Boot-Up Time:      15.7s
+DM Prompt Response:            4.0s
+Image Generation Time(Each):   2.5s
+World map Image Placement:     29.4s  
+
+Please note that all these numbers will vary based on your hardware specifications and the specific prompts that you enter.
+
+### Troubleshooting
+
+As of this moment, we are not providing any troubleshooting or debugging tools available directly to the user. Therefore, if you believe there is an error in the the images generated or the prompt generated, you can request the DM to recreate those assets or response. If there are persisting or glaring issues, please contact Prateek Kharangate (kharanpv@mail.uc.edu) or Sam Weese (weesesr@mail.uc.edu).
 
 
 
