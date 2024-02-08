@@ -201,12 +201,12 @@ class MainWindow(QMainWindow):
                 # Currently X and Y have a bad offset, as images are positioned to the top left corner not the middle
                 # We need to calculate this based off of scale, where positioning is x-scale/2, y-scale/2
                 # Convert numeric values to appropriate types
-                x = int(x)
-                y = int(y)
+                x = int(float(x)*1024)
+                y = int(float(y)*1024)
                 scale = float(scale)
-                
-                x = x - int(scale/2)
-                y = y - int(scale/2)
+
+                x = x - int(scale*1024/2)
+                y = y - int(scale*1024/2)
                 rotation = int(rotation)
 
                 # Create ImageOnCanvas instance and append to image_list

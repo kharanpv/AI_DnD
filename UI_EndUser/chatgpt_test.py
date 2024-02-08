@@ -12,10 +12,10 @@ client = OpenAI(
     )
 
 
-USER_PROMPT = "I want a hill with a tree and a well on top"
+USER_PROMPT = input("What are we generating?")
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
-The user will give you a description of a place.
+The user will give you a description of a place. 
 Put each described object in the scene in the list `objects`.
 For each description in `objects`, write a 1 paragraph description of the object. Catagorized the size of the object in meters, using x and y.
 Make the paragraph description be only physical. 
@@ -65,7 +65,7 @@ valid_sizes =  ['256x256', '512x512', '1024x1024', '1024x1792', '1792x1024']
 def image_prompt_url(text_prompt:str, gen_model:str="dall-e-3", gen_size:str='256x256', gen_quality="standard"):
     response = client.images.generate(
     model=gen_model,
-    prompt=text_prompt,
+    prompt="For the following, generate a top down view. Make it 2d. "+ text_prompt,
     size='1024x1024',
     quality="standard",
     n=1,
@@ -83,6 +83,9 @@ matches = re.findall(pattern, output)
 print(matches)
 pattern_coords = r'\(((?:.|\n)*?)\)'
  
+
+with open (save_path + name_for_files + '.cont', 'a') as file:
+    file.write(USER_PROMPT)
 
 for match in matches:
     coords, scale_size = re.findall(pattern_coords, match)
