@@ -7,6 +7,7 @@ The purpose of this document is to assist users of the application AI DnD to ins
 2. [User Manual](#user-manual)
    - [How to install AI DnD](#how-to-install-ai-dnd)
    - [Running AI DnD for the first time](#running-ai-dnd-for-the-first-time)
+   - [Playing AI DnD](#playing-ai-dnd)
 3. [User Documentation](#user-documentation)
 
 ## What is AI DnD?
