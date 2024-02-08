@@ -77,9 +77,13 @@ In order to run AI DnD on your personal machine, your system will require some m
 Since a bulk of this application relies on generative AI to process either text or images, there will be a processing time delay between interactions. Below are some estimates on the run-time of the application. Note that the times taken are reflected for a system with a Ryzen R7 5800H, 32 GB RAM, and an RTX 3070. All times displayed in seconds and are average, rounded to one decimal point.
 
 Application Boot-Up Time:      15.7s
+
 DM Prompt Response:            4.0s
+
 Image Generation Time(Each):   2.5s
+
 World map Image Placement:     29.4s  
+
 
 Please note that all these numbers will vary based on your hardware specifications and the specific prompts that you enter.
 
