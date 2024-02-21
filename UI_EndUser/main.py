@@ -16,6 +16,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
 
+
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 
@@ -34,10 +35,18 @@ class ImageOnCanvas(QGraphicsPixmapItem):
         self.setRotation(rotation)
         self.set_image(image_path)
         self.image_path = image_path
+        self.selected = False
 
     def set_image(self, image_path):
         image = QPixmap(image_path)
         self.setPixmap(image)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.selected = not self.selected
+            self.setOpacity(0.7 if self.selected else 1.0)
+            self.setStyleSheet("border: 2px solid red;")
+
 
 class ImageWidget(QGraphicsView):
     def __init__(self, parent=None):
@@ -58,6 +67,7 @@ class ImageWidget(QGraphicsView):
         # Mouse
         self.setDragMode(QGraphicsView.ScrollHandDrag)
         self.middle_mouse_pressed = False
+        self.left_mouse_pressed = False
         self.setMouseTracking(True)
 
     def set_image(self, image_path):
@@ -77,8 +87,13 @@ class ImageWidget(QGraphicsView):
 
     def mousePressEvent(self, event):
         super(ImageWidget, self).mousePressEvent(event)
+        # Maybe swap this to a switch (match in py 3.10)
+        # waiting until guarenteed stability of pyqt5
+        if event.button() == Qt.LeftButton:
+            self.left_mouse_pressed = True
+            self.last_left_pos = event.pos()
 
-        if event.button() == Qt.MiddleButton:
+        elif event.button() == Qt.MiddleButton:
             self.middle_mouse_pressed = True
             self.last_middle_pos = event.pos()
 
@@ -99,9 +114,9 @@ class ImageWidget(QGraphicsView):
         super(ImageWidget, self).mouseMoveEvent(event)
 
         if self.middle_mouse_pressed:
-            delta = event.pos() - self.last_middle_pos
-            self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta.x())
-            self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta.y())
+            delta_middle = event.pos() - self.last_middle_pos
+            self.horizontalScrollBar().setValue(self.horizontalScrollBar().value() - delta_middle.x())
+            self.verticalScrollBar().setValue(self.verticalScrollBar().value() - delta_middle.y())
             self.last_middle_pos = event.pos()
 
     def list_images_on_canvas(self):
