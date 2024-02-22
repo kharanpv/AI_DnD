@@ -1,3 +1,7 @@
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
+from PyQt5.QtGui import QPixmap, QPainter
+from PyQt5.QtCore import Qt
 
 class ImageOnCanvas(QGraphicsPixmapItem):
     def __init__(self, x, y, scale, rotation, image_path):

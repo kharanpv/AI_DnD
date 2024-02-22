@@ -2,6 +2,10 @@ from . import ImageOnCanvas
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
 
+
+from PyQt5.QtGui import QPixmap, QPainter
+from PyQt5.QtCore import Qt
+
 class ViewWindow(QGraphicsView):
     def __init__(self, parent=None):
         super(ViewWindow, self).__init__(parent)
@@ -56,7 +60,7 @@ class ViewWindow(QGraphicsView):
             #rotation = Qt.QInput
             image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
             if image_path:
-                self.addImageOnCanvas(ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
+                self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
 
     def mouseReleaseEvent(self, event):
         super(ViewWindow, self).mouseReleaseEvent(event)

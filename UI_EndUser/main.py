@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
 
         self.layout = QVBoxLayout(self.central_widget)
-        self.image_widget = ViewWindow(self)
+        self.image_widget = ViewWindow.ViewWindow(self)
         self.layout.addWidget(self.image_widget)
 
         self.setup_menu_bar()
