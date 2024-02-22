@@ -51,6 +51,7 @@ class ViewWindow(QGraphicsView):
             self.left_mouse_pressed = True
             self.last_left_pos = event.pos()
 
+
         elif event.button() == Qt.MiddleButton:
             self.middle_mouse_pressed = True
             self.last_middle_pos = event.pos()
@@ -79,3 +80,10 @@ class ViewWindow(QGraphicsView):
 
     def list_images_on_canvas(self):
         return self.image_items
+
+    def get_selected_images(self):
+        retValue = []
+        for x_image in self.image_items:
+            if x_image.selected == True:
+                retValue += x_image
+        return retValue
