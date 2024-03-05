@@ -42,12 +42,13 @@ class ImageControllerPopup(Popup.Popup):
 
     def handle_move(self):
         # Implement logic for the move button here
+
         pass
 
-    @pyqtSlot()
-    def on_alternate_parent_destroyed(self):
+    #@pyqtSlot()
+    #def on_alternate_parent_destroyed(self):
         # Custom slot to handle destroyed signal
-        self.close()
+    #    self.close()
 
     def handle_delete(self):
         self.alternate_parent.remove_self()
@@ -55,9 +56,11 @@ class ImageControllerPopup(Popup.Popup):
     def handle_rotate(self):
         # Implement your logic for the rotate button here
         print("Rotate button clicked")
+
     def closeEvent(self, event):
         # Close the popup when its parent (main window) is closed
         self.close()
+        self.alternate_parent.swap_selection()
 
 class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     # Define a custom signal
@@ -82,11 +85,17 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            self.selected = not self.selected
+            self.swap_selection()
+        if (self.selected):
             self.popup = ImageControllerPopup(alternate_parent=self)
             self.popup.show()
             # Somehow we need a highlight function here
-            self.setOpacity(0.7 if self.selected else 1.0)
+        else:
+            self.popup.closeEvent(None)
+
+    def swap_selection(self):
+        self.selected = not self.selected
+        self.setOpacity(0.7 if self.selected else 1.0)
 
     def remove_self(self):
         #
