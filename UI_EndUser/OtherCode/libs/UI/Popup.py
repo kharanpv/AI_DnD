@@ -11,31 +11,21 @@ class Popup(QWidget):
 
         layout = QVBoxLayout(self)
 
-        scroll_area = QScrollArea(self)
-        scroll_area.setWidgetResizable(True)
-        scroll_content = QWidget(scroll_area)
-        scroll_area.setWidget(scroll_content)
+        self.scroll_area = QScrollArea(self)
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_content = QWidget(self.scroll_area)
+        self.scroll_area.setWidget(self.scroll_content)
 
-        scroll_layout = QVBoxLayout(scroll_content)
+        self.scroll_layout = QVBoxLayout(self.scroll_content)
 
-        label = QLabel(text)
-        scroll_layout.addWidget(label)
-
-        layout.addWidget(scroll_area)
+        layout.addWidget(self.scroll_area)
 
     # Enable window dragging
-        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt.Window)
+        # Not sure below does anything any more
         self.setAttribute(Qt.WA_TranslucentBackground)
 
         self.drag_position = None
-
-    # Closing (button is wack, TODO)
-        close_button = QPushButton("Close", self)
-        close_button.clicked.connect(self.close)
-        button_layout = QHBoxLayout()
-        button_layout.addStretch(1)
-        button_layout.addWidget(close_button)
-        layout.addLayout(button_layout)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -45,9 +35,16 @@ class Popup(QWidget):
         if event.buttons() == Qt.LeftButton:
             self.move(event.globalPos() - self.drag_position)
 
-    def change_text(self, text):
-        pass
+    def add_text(self, new_text):
+        label = QLabel(new_text)
+        label.setWordWrap(True)
 
+        self.scroll_layout.addWidget(label)
+
+        
+    def clear_scroll(self):
+        self.scroll_layout = None
+        self.scroll_layout = QVBoxLayout(self.scroll_content)
     def closeEvent(self, event):
         # Close the popup when its parent (main window) is closed
         self.close()

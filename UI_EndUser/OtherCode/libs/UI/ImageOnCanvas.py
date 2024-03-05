@@ -3,59 +3,126 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QW
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 from . import Popup
-
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
-
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QTabWidget, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QLabel, QLineEdit
+#
+# Below should eventually be replaced with 
+#
 class ImageControllerPopup(Popup.Popup):
     def __init__(self, parent=None, text:str=None, title:str="Controller Image", alternate_parent=None):
         super().__init__(parent, text, title)
-        # Adding buttons for data, move, delete, and rotate
-        data_button = QPushButton("Data", self)
-        move_button = QPushButton("Move", self)
-        delete_button = QPushButton("Delete", self)
-        rotate_button = QPushButton("Rotate", self)
 
-        # Connect buttons to corresponding slots/methods
-        data_button.clicked.connect(self.handle_data)
-        move_button.clicked.connect(self.handle_move)
-        delete_button.clicked.connect(self.handle_delete)
-        rotate_button.clicked.connect(self.handle_rotate)
-
-        # Create a layout for buttons
-        button_layout = QHBoxLayout()
-        button_layout.addWidget(data_button)
-        button_layout.addWidget(move_button)
-        button_layout.addWidget(delete_button)
-        button_layout.addWidget(rotate_button)
-
-        # Add the button layout to the main layout
-        self.layout().addLayout(button_layout)
         if alternate_parent:
             self.alternate_parent = alternate_parent
-        # Connect custom slot to destroyed signal of alternate_parent
-        #if alternate_parent:
-        #    alternate_parent.destroyed.connect(self.on_alternate_parent_destroyed)
+            self.add_text(alternate_parent.image_path)
+
+        # Create a tab widget
+        self.tab_widget = QTabWidget(self)
+
+        # Adding buttons for data, move, delete, and rotate to separate tabs
+        self.add_tab("Data", self.handle_data)
+        self.add_move_tab()
+        self.add_tab("Delete", self.handle_delete)
+        self.add_rotate_tab()
+
+        # Add the tab widget to the main layout
+        self.layout().addWidget(self.tab_widget)
+
+    def add_tab(self, title, handler_function):
+        # Create a tab and layout
+        tab = QWidget()
+        tab_layout = QVBoxLayout()
+
+        # Adding buttons to the tab
+        button = QPushButton(title, self)
+        button.clicked.connect(handler_function)
+
+        # Add the button to the layout
+        tab_layout.addWidget(button)
+
+        # Set the layout for the tab
+        tab.setLayout(tab_layout)
+
+        # Add the tab to the tab widget
+        self.tab_widget.addTab(tab, title)
+
+    def add_move_tab(self):
+        title = "Move"
+
+        # Create a tab and layout
+        tab = QWidget()
+        tab_layout = QVBoxLayout()
+        # Add labels and input boxes for X, Y, and Z coordinates
+        x_label = QLabel("X:")
+        x_input = QLineEdit(self)
+        tab_layout.addWidget(x_label)
+        tab_layout.addWidget(x_input)
+
+        y_label = QLabel("Y:")
+        y_input = QLineEdit(self)
+        tab_layout.addWidget(y_label)
+        tab_layout.addWidget(y_input)
+
+        z_label = QLabel("Z:")
+        z_input = QLineEdit(self)
+        tab_layout.addWidget(z_label)
+        tab_layout.addWidget(z_input)
+        # Adding buttons to the tab
+        button = QPushButton(title, self)
+
+        handler_function = lambda: self.alternate_parent.move_item(x_input.text(), y_input.text(), z_input.text())
+        button.clicked.connect(handler_function)
+
+        # Add the button to the layout
+        tab_layout.addWidget(button)
+
+        # Set the layout for the tab
+        tab.setLayout(tab_layout)
+
+        # Add the tab to the tab widget
+        self.tab_widget.addTab(tab, title)
+
+    def add_rotate_tab(self):
+        title = "Rotate"
+        # Create a tab and layout
+        tab = QWidget()
+        tab_layout = QVBoxLayout()
+        # Add labels and input boxes for X, Y, and Z coordinates
+        rot_label = QLabel("Angle:")
+        rot_input = QLineEdit(self)
+        tab_layout.addWidget(rot_label)
+        tab_layout.addWidget(rot_input)
+        # Adding buttons to the tab
+        button = QPushButton(title, self)
+        handler_function = lambda: self.alternate_parent.rotate_item(rot_input.text())
+        button.clicked.connect(handler_function)
+        # Add the button to the layout
+        tab_layout.addWidget(button)
+
+        button = QPushButton(title + " Absolute", self)
+        handler_function = lambda: self.alternate_parent.rotate_item(rot_input.text(), absolute=True)
+        button.clicked.connect(handler_function)
+        tab_layout.addWidget(button)
+        
+
+        # Set the layout for the tab
+        tab.setLayout(tab_layout)
+
+        # Add the tab to the tab widget
+        self.tab_widget.addTab(tab, title)
 
     def handle_data(self):
-        # implements file reading here
+        # Implements file reading here
         pass
-
-    def handle_move(self):
-        # Implement logic for the move button here
-
+    
+    # below should be useed to handle moving on the board which has yet to be implemented
+    def handle_update(self):
         pass
-
-    #@pyqtSlot()
-    #def on_alternate_parent_destroyed(self):
-        # Custom slot to handle destroyed signal
-    #    self.close()
-
+        
+    # below must be wrapped in local fxn
     def handle_delete(self):
         self.alternate_parent.remove_self()
-
-    def handle_rotate(self):
-        # Implement your logic for the rotate button here
-        print("Rotate button clicked")
 
     def closeEvent(self, event):
         # Close the popup when its parent (main window) is closed
@@ -64,7 +131,7 @@ class ImageControllerPopup(Popup.Popup):
 
 class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     # Define a custom signal
-    destroyed = pyqtSignal()
+    #destroyed = pyqtSignal()
 
     def __init__(self, x, y, scale, rotation, image_path, parent=None):
         super(ImageOnCanvas, self).__init__()
@@ -75,6 +142,8 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         self.image_path = image_path
         self.selected = False
         self.parent = parent
+        # TODO, saving
+        self.z = None
 
     def set_image(self, image_path):
         image = QPixmap(image_path)
@@ -83,11 +152,37 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     def set_parent(self, parent):
         self.parent = parent
 
+    #
+    # TODO: Swap below to rotate around middle
+    # Currently below rotates around the top left corner
+    # IE the rotation of 1 would be 00 ->  10
+    #                               01 ->  00
+    #
+    def rotate_item(self, angle, absolute=False):
+        angle = float(angle)
+        if absolute:
+            new_rotation = angle
+        else:
+            current_rotation = self.rotation()
+            new_rotation = current_rotation + angle
+        self.setRotation(new_rotation)
+    
+    def scale_item(self, factor):
+        current_scale = self.scale()
+        new_scale = current_scale * factor
+        self.setScale(new_scale)
+    
+    def move_item(self, x, y, z=None):
+        if x and y:
+            self.setPos(int(x), int(y))
+        if z:
+            self.z = int(z)
+
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.swap_selection()
         if (self.selected):
-            self.popup = ImageControllerPopup(alternate_parent=self)
+            self.popup = ImageControllerPopup(parent=self.parent, alternate_parent=self)
             self.popup.show()
             # Somehow we need a highlight function here
         else:
