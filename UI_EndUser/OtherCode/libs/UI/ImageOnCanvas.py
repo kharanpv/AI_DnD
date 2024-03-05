@@ -4,10 +4,11 @@ from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 from . import Popup
 
-class ImageControllerPopup(Popup.Popup):
-    def __init__(self, parent=None, text:str=None, title:str="Controller Image", another_object=None):
-        super().__init__(parent, text, title)
+from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 
+class ImageControllerPopup(Popup.Popup):
+    def __init__(self, parent=None, text:str=None, title:str="Controller Image", alternate_parent=None):
+        super().__init__(parent, text, title)
         # Adding buttons for data, move, delete, and rotate
         data_button = QPushButton("Data", self)
         move_button = QPushButton("Move", self)
@@ -29,21 +30,27 @@ class ImageControllerPopup(Popup.Popup):
 
         # Add the button layout to the main layout
         self.layout().addLayout(button_layout)
-
-        # Connect destroyed signal of another_object to close method of ImageControllerPopup
-        if another_object:
-            another_object.destroyed.connect(self.close)
+        if alternate_parent:
+            self.alternate_parent = alternate_parent
+        # Connect custom slot to destroyed signal of alternate_parent
+        #if alternate_parent:
+        #    alternate_parent.destroyed.connect(self.on_alternate_parent_destroyed)
 
     def handle_data(self):
         # implements file reading here
         pass
 
     def handle_move(self):
-        # Implement your logic for the move button here
+        # Implement logic for the move button here
         pass
 
+    @pyqtSlot()
+    def on_alternate_parent_destroyed(self):
+        # Custom slot to handle destroyed signal
+        self.close()
+
     def handle_delete(self):
-        another_object.remove_self()
+        self.alternate_parent.remove_self()
 
     def handle_rotate(self):
         # Implement your logic for the rotate button here
@@ -52,8 +59,11 @@ class ImageControllerPopup(Popup.Popup):
         # Close the popup when its parent (main window) is closed
         self.close()
 
-class ImageOnCanvas(QGraphicsPixmapItem):
-    def __init__(self, x, y, scale, rotation, image_path):
+class ImageOnCanvas(QGraphicsPixmapItem, QObject):
+    # Define a custom signal
+    destroyed = pyqtSignal()
+
+    def __init__(self, x, y, scale, rotation, image_path, parent=None):
         super(ImageOnCanvas, self).__init__()
         self.setPos(x, y)
         self.setScale(scale)
@@ -61,21 +71,37 @@ class ImageOnCanvas(QGraphicsPixmapItem):
         self.set_image(image_path)
         self.image_path = image_path
         self.selected = False
+        self.parent = parent
 
     def set_image(self, image_path):
         image = QPixmap(image_path)
         self.setPixmap(image)
+    
+    def set_parent(self, parent):
+        self.parent = parent
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.selected = not self.selected
-            #popup = ImageControllerPopup(another_object=self)
+            self.popup = ImageControllerPopup(alternate_parent=self)
+            self.popup.show()
             # Somehow we need a highlight function here
             self.setOpacity(0.7 if self.selected else 1.0)
 
     def remove_self(self):
-        # Remove the item from the scene
-        scene = self.scene()
-        if scene:
-            scene.removeItem(self)
-
+        #
+        # Emit the custom destroyed signal before removing the item
+        # Below cannot convert to QOBject
+        # it creates errors
+        #
+        #self.destroyed.emit()
+        self.popup.close()
+        if self.parent:
+            #print(self.parent)
+            self.parent.removeItem(self)
+        
+    #
+    # Unnecessary 
+    #
+    #def __del__(self):
+    #    remove_self()

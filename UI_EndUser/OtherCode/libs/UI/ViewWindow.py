@@ -40,8 +40,12 @@ class ViewWindow(QGraphicsView):
         self.scale(factor, factor)
 
     def addImageOnCanvas(self, image_on_canvas):
+        image_on_canvas.set_parent(self)
         self.scene.addItem(image_on_canvas)
         self.image_items.append({'x': image_on_canvas.x, 'y': image_on_canvas.x, 'image_path': image_on_canvas.image_path})
+    
+    def removeItem(self, image_on_canvas):
+        self.scene.removeItem(image_on_canvas)
 
     def mousePressEvent(self, event):
         super(ViewWindow, self).mousePressEvent(event)
