@@ -2,6 +2,11 @@ CHAT_GPT_TOKEN = "Put your token here. This has been removed due to not wanting 
 HUGGING_FACE_TOKEN = "Put your token here. This has been removed due to not wanting to have it be grabbed by a bot."
 PROMPT_FXN = None
 
+# with open('../../../../chat_gpt_key.key', 'r') as file:
+#     # Read a single line from the file
+#     CHAT_GPT_TOKEN = file.readline()
+
+
 AI_SYSTEM_INSTRUCTION : str = None
 # Hugging face
 API_HEADERS : str = None
