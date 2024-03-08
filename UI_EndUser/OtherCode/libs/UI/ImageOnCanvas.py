@@ -21,6 +21,8 @@ class ImageControllerPopup(Popup.Popup):
         self.tab_widget = QTabWidget(self)
 
         # Adding buttons for data, move, delete, and rotate to separate tabs
+        # add_tab is a place holder currently
+        # these should be staticly encoded
         self.add_tab("Data", self.handle_data)
         self.add_move_tab()
         self.add_tab("Delete", self.handle_delete)
@@ -142,7 +144,8 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         self.image_path = image_path
         self.selected = False
         self.parent = parent
-        # TODO, saving
+        # TODO, saving Z value, needs to reorder height of images it overlaps with upon update
+        # possibly ViewWindow needs to be updated
         self.z = None
 
     def set_image(self, image_path):
@@ -203,6 +206,18 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         if self.parent:
             #print(self.parent)
             self.parent.removeItem(self)
+    
+
+    def save_state(self):
+        state = {
+            'x': self.x(),
+            'y': self.y(),
+            'z': self.z,
+            'scale': self.scale(),
+            'rotation': self.rotation(),
+            'image_path': self.image_path
+        }
+        return state
         
     #
     # Unnecessary 

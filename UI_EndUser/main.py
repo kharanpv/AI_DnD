@@ -13,15 +13,15 @@
 # This is all garbage I will clean later I swear jk sorry
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
+from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QHBoxLayout, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
 
 
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 
 from OtherCode.libs import token_lib as token_lib
-from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup
+from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup, ScrollableTextEdit
 
 DEBUGGING = True
 if DEBUGGING:
@@ -39,9 +39,21 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
 
-        self.layout = QVBoxLayout(self.central_widget)
+        # Create a QSplitter to manage the resizing of the widgets
+        splitter = QSplitter(Qt.Horizontal)
+
+        # Create the image_widget on the left
         self.image_widget = ViewWindow.ViewWindow(self)
-        self.layout.addWidget(self.image_widget)
+        splitter.addWidget(self.image_widget)
+
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory()
+        splitter.addWidget(self.side_bar)
+
+        # Set the size ratio for the widgets (80% - 20%)
+        splitter.setSizes([4 * splitter.size().width() // 5, splitter.size().width() // 5])
+
+        layout = QVBoxLayout(self.central_widget)
+        layout.addWidget(splitter)
 
         self.setup_menu_bar()
 
@@ -98,6 +110,8 @@ class MainWindow(QMainWindow):
 
             sublist_api_menu.addAction(api_action)
             
+    def setup_side_bar(self):
+        pass
     def open_image(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -141,7 +155,7 @@ class MainWindow(QMainWindow):
                 rotation = int(rotation)
 
                 # Create ImageOnCanvas instance and append to image_list
-                image_item = ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
+                image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
                 self.image_widget.addImageOnCanvas(image_item)
 
 
