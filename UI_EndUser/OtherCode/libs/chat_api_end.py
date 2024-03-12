@@ -1,21 +1,21 @@
+### Ok, What am I doing
+
+# We have the UI accept a different fxn in ScrollableTextEdit, so we simply pass one of the functions from here to it
+# 
+# The things I need to do still:
+# 1. Constructor which reads API key. TODO later Maybe options to describe what should be generated?
+# 2. Function which passes text input to chatgpt_api
+# 3. PIL generator which builds square functions
+# 4. Inserting onto canvas
+# 5. save
+
+
 from openai import OpenAI
 import re 
 import requests
 import datetime
 
 
-
-
-with open('../../chat_gpt_key.key', 'r') as file:
-    # Read a single line from the file
-    CHAT_GPT_TOKEN = file.read().splitlines()
-
-client = OpenAI(
-    api_key = CHAT_GPT_TOKEN[0],
-    )
-
-
-USER_PROMPT = input("What are we generating?")
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
 The user will give you a description of a place. 
@@ -38,80 +38,56 @@ Paragraph
 
 Size should only be 1 integer, and wrapped in (). Coordinates should be separated by commas.
 """
-
-# 
-# The user should only touch user_prompt. Everything else we should have set in some other way.
-# Realistically we need to reincorporate this and everything in this file back into token_lib.py
-# If I had time to clean, I would, but I hate cleaning.
 #
-def text_prompt(user_prompt:str=USER_PROMPT, prompt_ai:str=PROMPT_AI, model_used:str="gpt-4"):
-    stream = client.chat.completions.create(
-        model=model_used,
-        messages=[
-        {"role": "system", "content": prompt_ai,
-        },
-        {"role": "user", "content": user_prompt,}
-            ],
-        stream=True,
-    )
-    retVal = ""
-    for chunk in stream:
-        if chunk.choices[0].delta.content is not None:
-            print(chunk.choices[0].delta.content, end="")
-            retVal += chunk.choices[0].delta.content
+# We aren't saving yet, TODO
+#
+# The cont file system is flawed, redo
+#
+class ChatGPTCalls():
+    self.pattern_coords = r'\(((?:.|\n)*?)\)'
+    self.pattern = r'\{((?:.|\n)*?)\}'
+    def __init__(self):
+        with open('../../chat_gpt_key.key', 'r') as file:
+            CHAT_GPT_TOKEN = file.read().splitlines()
+
+        self.client = OpenAI(
+            api_key = CHAT_GPT_TOKEN[0],
+            )
+    # 
+    # The user should only touch user_prompt. Everything else we should have set in some other way.
+    #
+    def text_prompt(self, user_prompt:str=USER_PROMPT, prompt_ai:str=PROMPT_AI, model_used:str="gpt-4", print_fxn=print):
+        stream = client.chat.completions.create(
+            model=model_used,
+            messages=[
+            {"role": "system", "content": prompt_ai,
+            },
+            {"role": "user", "content": user_prompt,}
+                ],
+            stream=True,
+        )
+        retVal = ""
+        for chunk in stream:
+            if chunk.choices[0].delta.content is not None:
+                print_fxn(str(chunk.choices[0].delta.content), end="")
+                retVal += chunk.choices[0].delta.content
+        self.text = retVal
+        return retVal
+
+    def get_coords_and_text(self, text:str=None):
+        if not text:
+            text = self.text
+
+        matches = re.findall(self.pattern, text)
+        for match in matches:
+            coords, scale_size = re.findall(self.pattern_coords, match)
+            coords.replace(" ", "")
+            scale_size.replace(" ", "")
+        return matches
     
-    print()
-    return retVal
-
-# The user should not touch this function. The only function the user should touch is text_prompt.
-valid_sizes =  ['256x256', '512x512', '1024x1024', '1024x1792', '1792x1024']
-def image_prompt_url(text_prompt:str, gen_model:str="dall-e-3", gen_size:str='256x256', gen_quality="standard"):
-    response = client.images.generate(
-    model=gen_model,
-    prompt="For the following, generate a top down view. Make it 2d. "+ text_prompt,
-    size='1024x1024',
-    quality="standard",
-    n=1,
-    )
-    return response.data[0].url 
-
-name_for_files = input("What name is this saved as?")
-output = text_prompt()
-
-
-save_path = "./assets/"
-
-pattern = r'\{((?:.|\n)*?)\}'
-matches = re.findall(pattern, output)
-print(matches)
-pattern_coords = r'\(((?:.|\n)*?)\)'
- 
-
-with open (save_path + name_for_files + '.cont', 'a') as file:
-    file.write(USER_PROMPT)
-
-for match in matches:
-    coords, scale_size = re.findall(pattern_coords, match)
-    coords.replace(" ", "")
-    scale_size.replace(" ", "")
-    now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    dateStr = str(now)
-    with open(save_path + name_for_files + ".cont", 'a') as file:
-        file.write(dateStr)
-        file.write(',' + coords)
-        file.write(',' + scale_size)
-        file.write('\n')
-    with open(save_path + dateStr + ".txt", 'w') as file:
-        file.write(match)   
-    url = image_prompt_url(text_prompt=match)
-    print(url)
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open(save_path + dateStr +".png", 'wb') as file:
-            file.write(response.content)
-        print(f"Image downloaded successfully and saved at: {save_path}")
-    else:
-        print(f"Failed to download image. Status code: {response.status_code}")
+    def user_prompt(self, user_input:str):
+        return self.get_coords_and_text(self.text_prompt(user_input))
+    
 
 
 
