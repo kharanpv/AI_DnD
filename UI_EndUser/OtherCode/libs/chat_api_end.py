@@ -2,11 +2,12 @@ from openai import OpenAI
 import re 
 import requests
 import datetime
+import os
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, 'chat_gpt_key.txt')
 
-
-
-with open('../../chat_gpt_key.key', 'r') as file:
+with open(file_path, 'r') as file:
     # Read a single line from the file
     CHAT_GPT_TOKEN = file.read().splitlines()
 

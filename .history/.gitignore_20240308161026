@@ -1,0 +1,5 @@
+*.DS_STORE
+# Ignore all files and directories under ComfyUI_windows_portable
+ComfyUI_windows_portable/*
+*/assets/*
+
