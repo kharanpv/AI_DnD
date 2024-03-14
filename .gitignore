@@ -1,6 +1,15 @@
 *.DS_STORE
-# Ignore all files and directories under ComfyUI_windows_portable
-ComfyUI_windows_portable/*
+# Ignore all model files
+*.h5
+*.bin
+*.safetensors
+
+# Ignore the torch folder
+ComfyUI_windows_portable/python_embeded/Lib/site-packages/torch/*
+
+# ignore pycache
+__pycache__/
+
 */assets/*
 # Ignore chat_gpt_key.txt
 chat_gpt_key.txt

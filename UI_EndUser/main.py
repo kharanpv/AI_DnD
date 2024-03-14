@@ -12,13 +12,14 @@
 
 # This is all garbage I will clean later I swear jk sorry
 import sys
+import os
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter, QMenuBar, QMenu, QAction, QFileDialog, QInputDialog, QGraphicsView
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QHBoxLayout, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
 
 
 from PyQt5.QtGui import QPixmap, QPainter
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
 from OtherCode.libs import token_lib as token_lib
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup, ScrollableTextEdit
@@ -48,6 +49,7 @@ class MainWindow(QMainWindow):
 
         self.side_bar = ScrollableTextEdit.TextEntryAndHistory()
         splitter.addWidget(self.side_bar)
+        self.side_bar.image_ready.connect(self.open_latest_image)
 
         # Set the size ratio for the widgets (80% - 20%)
         splitter.setSizes([4 * splitter.size().width() // 5, splitter.size().width() // 5])
@@ -119,6 +121,27 @@ class MainWindow(QMainWindow):
 
         if file_name:
             self.image_widget.set_image(file_name)
+    
+    @pyqtSlot()
+    def open_latest_image(self):
+        folder_path = os.path.join(os.path.dirname(__file__), "test_images")
+        files = os.listdir(folder_path)
+        if not files:
+            print("No images found in test_images folder.")
+            return
+
+        # Filter only image files
+        image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.bmp', '.gif', '.jpeg'))]
+
+        if not image_files:
+            print("No image files found in test_images folder.")
+            return
+
+        # Get the latest modified image file
+        latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
+        latest_image_path = os.path.join(folder_path, latest_image)
+        self.image_widget.set_image(latest_image_path)
+
 
     def list_images(self):
         image_list = self.image_widget.list_images_on_canvas()
