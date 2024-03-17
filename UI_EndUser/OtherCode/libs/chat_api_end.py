@@ -9,7 +9,6 @@
 # 4. Inserting onto canvas
 # 5. save
 
-
 from openai import OpenAI
 import re 
 import requests

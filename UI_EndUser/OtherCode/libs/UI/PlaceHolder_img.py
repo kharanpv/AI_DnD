@@ -1,7 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 import random
 
-def generate_image(word, size=300, border_size=10, font_size=30, seed=1, font_path=None):
+
+def generate_image(word, size=300, border_size=10, font_size=None, seed=1, font_path=None):
     # Set the random seed based on the input word
     if seed is not None:
         random.seed(hash(word))
@@ -15,14 +16,23 @@ def generate_image(word, size=300, border_size=10, font_size=30, seed=1, font_pa
     image = Image.new("RGB", (img_size, img_size), (255, 255, 255))
     draw = ImageDraw.Draw(image)
 
-    # Load a font (you can customize the font_path or use the default font)
-    if font_path is None:
-        font = ImageFont.load_default()
-    else:
-        font = ImageFont.truetype(font_path, font_size)
+    # Find the largest font size that fits the text within the box
+    if font_size is None:
+        font_size = 1
+    
+    font = ImageFont.load_default() if font_path is None else ImageFont.truetype(font_path, font_size)
+
+    text_width = draw.textlength(text=word, font=font)
+    text_height = 1
+    print(f"We need this thing correct: {size - 2 * border_size}")
+    while text_width < size - 2 * border_size and text_height < size - 2 * border_size:
+        font_size += 1
+        font = ImageFont.load_default(size=font_size) if font_path is None else ImageFont.truetype(font_path, font_size)
+        text_width = font.getmask(word).getbbox()[2]
+        text_height = font.getmask(word).getbbox()[3]
+
 
     # Calculate the position to center the text
-    text_width, text_height = draw.textsize(word, font)
     x_position = (img_size - text_width) // 2
     y_position = (img_size - text_height) // 2
 
@@ -33,10 +43,3 @@ def generate_image(word, size=300, border_size=10, font_size=30, seed=1, font_pa
     draw.text((x_position, y_position), word, font=font, fill=text_color)
 
     return image
-
-# Example usage:
-word_to_display = "Hello"
-generated_image = generate_image(word_to_display, seed=1)
-
-# Save the generated image
-generated_image.save("generated_image.png")
