@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTextEdit
-from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget
+from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget, QListWidgetItem
+from PyQt5.QtGui import QColor
 
 class ScrollableTextEdit(QTextEdit):
     enterPressed = pyqtSignal()
@@ -32,21 +33,28 @@ class HistoryWidget(QListWidget):
         super().__init__()
 
     def updateHistory(self, text):
-        self.addItem(text)
+        item = QListWidgetItem(text)
+        self.addItem(item)
         self.scrollToBottom()
 
+    def updateResponse(self, text):
+        item = QListWidgetItem(text)
+        # Set background color for the item
+        item.setBackground(QColor("lightgray"))
+        self.addItem(item)
+        self.scrollToBottom()
 
 class TextEntryAndHistory(QWidget):
-    def __init__(self, fxn_connection=None):
+    def __init__(self, fxn_connection=None, gpt_endpoint_fxn=None):
         super().__init__()
-
+        self.gpt_endpoint = gpt_endpoint_fxn
         layout = QVBoxLayout()
 
         self.historyWidget = HistoryWidget()
         self.scrollableTextEdit = ScrollableTextEdit()
         if fxn_connection != None:
             self.scrollableTextEdit.enterPressed.connect(fxn_connection)
-        self.scrollableTextEdit.enterPressed.connect(self.updateHistoryClearText)
+        self.scrollableTextEdit.enterPressed.connect(self.interaction)
 
         layout.addWidget(self.historyWidget, 9)  # 80 of the content
         layout.addWidget(self.scrollableTextEdit, 1)  # 20 of the content
@@ -54,6 +62,14 @@ class TextEntryAndHistory(QWidget):
         self.setLayout(layout)
 
     def updateHistoryClearText(self):
-        text = self.scrollableTextEdit.toPlainText()
-        self.historyWidget.updateHistory(text)
+        self.text = self.scrollableTextEdit.toPlainText()
+        self.historyWidget.updateHistory(self.text)
         self.scrollableTextEdit.clear()
+    
+    def interaction(self):
+        self.updateHistoryClearText()
+        if self.gpt_endpoint:
+            text = self.gpt_endpoint(text)
+            self.historyWidget.updateResponse(text)
+        
+    

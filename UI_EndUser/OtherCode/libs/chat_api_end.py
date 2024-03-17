@@ -87,11 +87,3 @@ class ChatGPTCalls():
     
     def user_prompt(self, user_input:str):
         return self.get_coords_and_text(self.text_prompt(user_input))
-    
-
-
-
-
-
-
-
