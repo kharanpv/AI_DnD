@@ -69,7 +69,7 @@ class TextEntryAndHistory(QWidget):
     def interaction(self):
         self.updateHistoryClearText()
         if self.gpt_endpoint:
-            text = self.gpt_endpoint(text)
+            text = self.gpt_endpoint(self.text)
             self.historyWidget.updateResponse(text)
         
     

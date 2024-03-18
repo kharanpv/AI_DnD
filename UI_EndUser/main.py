@@ -23,6 +23,8 @@ from PyQt5.QtCore import Qt
 from OtherCode.libs import token_lib as token_lib
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup, ScrollableTextEdit
 
+from OtherCode.libs import chat_api_end as chat_api_end
+
 DEBUGGING = True
 if DEBUGGING:
     from pygit2 import Repository
@@ -46,7 +48,11 @@ class MainWindow(QMainWindow):
         self.image_widget = ViewWindow.ViewWindow(self)
         splitter.addWidget(self.image_widget)
 
-        self.side_bar = ScrollableTextEdit.TextEntryAndHistory()
+
+# Init API TODO move to self function which then forces init_ui to have a dependancy upon it
+        self.current_api = chat_api_end.ChatGPTCalls()
+# END API INIT
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.current_api.text_prompt)
         splitter.addWidget(self.side_bar)
 
         # Set the size ratio for the widgets (80% - 20%)
@@ -179,8 +185,6 @@ class MainWindow(QMainWindow):
 
     def open_selected_popup(self, title, text):
         Popup = Popup.Popup(self, "")
-
-
 
 
 if __name__ == '__main__':

@@ -14,6 +14,7 @@ import re
 import requests
 import datetime
 
+local_debug_img = True
 
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
@@ -43,9 +44,9 @@ Size should only be 1 integer, and wrapped in (). Coordinates should be separate
 # The cont file system is flawed, redo
 #
 class ChatGPTCalls():
-    self.pattern_coords = r'\(((?:.|\n)*?)\)'
-    self.pattern = r'\{((?:.|\n)*?)\}'
     def __init__(self):
+        self.pattern_coords = r'\(((?:.|\n)*?)\)'
+        self.pattern = r'\{((?:.|\n)*?)\}'
         with open('../../chat_gpt_key.key', 'r') as file:
             CHAT_GPT_TOKEN = file.read().splitlines()
 
@@ -55,8 +56,8 @@ class ChatGPTCalls():
     # 
     # The user should only touch user_prompt. Everything else we should have set in some other way.
     #
-    def text_prompt(self, user_prompt:str=USER_PROMPT, prompt_ai:str=PROMPT_AI, model_used:str="gpt-4", print_fxn=print):
-        stream = client.chat.completions.create(
+    def text_prompt(self, user_prompt:str, prompt_ai:str=PROMPT_AI, model_used:str="gpt-4", print_fxn=print):
+        stream = self.client.chat.completions.create(
             model=model_used,
             messages=[
             {"role": "system", "content": prompt_ai,
