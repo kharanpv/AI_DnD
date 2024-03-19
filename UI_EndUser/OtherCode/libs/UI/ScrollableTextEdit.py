@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtCore import Qt, pyqtSignal
+from PyQt5.QtCore import Qt, pyqtSignal, QObject, QThread
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTextEdit
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget, QListWidgetItem
 from PyQt5.QtGui import QColor
@@ -39,7 +39,6 @@ class HistoryWidget(QListWidget):
 
     def updateResponse(self, text):
         item = QListWidgetItem(text)
-        # Set background color for the item
         item.setBackground(QColor("lightgray"))
         self.addItem(item)
         self.scrollToBottom()
@@ -65,11 +64,25 @@ class TextEntryAndHistory(QWidget):
         self.text = self.scrollableTextEdit.toPlainText()
         self.historyWidget.updateHistory(self.text)
         self.scrollableTextEdit.clear()
-    
+
     def interaction(self):
         self.updateHistoryClearText()
         if self.gpt_endpoint:
-            text = self.gpt_endpoint(self.text)
-            self.historyWidget.updateResponse(text)
-        
-    
+            self.worker = Worker(self.gpt_endpoint, self.text)
+            self.worker.finished.connect(self.handle_response)
+            self.worker.start()
+
+    def handle_response(self, text):
+        self.historyWidget.updateResponse(text)
+
+class Worker(QThread):
+    finished = pyqtSignal(str)
+
+    def __init__(self, gpt_endpoint, text):
+        super().__init__()
+        self.gpt_endpoint = gpt_endpoint
+        self.text = text
+
+    def run(self):
+        response = self.gpt_endpoint(self.text)
+        self.finished.emit(response)
