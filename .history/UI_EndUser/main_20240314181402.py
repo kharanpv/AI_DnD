@@ -29,7 +29,6 @@ if DEBUGGING:
     from pygit2 import Repository
     DEBUG_NAME = Repository('.').head.shorthand 
 
-pipeline_parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Pipeline"))
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -208,11 +207,6 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == '__main__':
-    json_path = os.path.join(pipeline_parent_dir, "chat_history.json")
-    if os.path.exists(json_path):
-        os.remove(json_path)
-    else:
-        print("File does not exist.")
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()

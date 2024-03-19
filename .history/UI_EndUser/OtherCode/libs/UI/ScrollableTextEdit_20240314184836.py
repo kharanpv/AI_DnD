@@ -24,7 +24,7 @@ def extract_json_response():
     last_user_prompt = chat_history[-1]["user_prompt"] 
     last_dm_response = chat_history[-1]["dm_response"]
 
-    pattern = re.compile(r"\(\d+\)\s*\n(.*?)\n}", re.DOTALL)
+    pattern = re.compile(r"\(\d+\)\n(.*?)\n}", re.DOTALL)
     match = pattern.search(last_dm_response)
     if match:
         return last_user_prompt, match.group(1).strip()  # Trim leading/trailing whitespace

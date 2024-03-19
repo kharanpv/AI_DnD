@@ -208,11 +208,6 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == '__main__':
-    json_path = os.path.join(pipeline_parent_dir, "chat_history.json")
-    if os.path.exists(json_path):
-        os.remove(json_path)
-    else:
-        print("File does not exist.")
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
