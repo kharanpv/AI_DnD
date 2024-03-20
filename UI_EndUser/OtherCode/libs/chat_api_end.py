@@ -13,7 +13,7 @@ from openai import OpenAI
 import re 
 import requests
 import datetime
-
+from .UI import PlaceHolder_img
 local_debug_img = True
 
 PROMPT_AI = """
@@ -72,6 +72,7 @@ class ChatGPTCalls():
                 print_fxn(str(chunk.choices[0].delta.content), end="")
                 retVal += chunk.choices[0].delta.content
         self.text = retVal
+        self.images_for_self()
         return retVal
 
     def get_coords_and_text(self, text:str=None):
@@ -80,10 +81,22 @@ class ChatGPTCalls():
 
         matches = re.findall(self.pattern, text)
         for match in matches:
-            coords, scale_size = re.findall(self.pattern_coords, match)
+            coords, scale_size = re.findall(self.pattern_coords, match, re.DOTALL)
             coords.replace(" ", "")
             scale_size.replace(" ", "")
         return matches
     
+    def get_names(self):
+        search_text = self.text
+
     def user_prompt(self, user_input:str):
         return self.get_coords_and_text(self.text_prompt(user_input))
+
+    def images_for_self(self):
+        for a_match in self.get_coords_and_text():
+            print("ATTENTION HUMAS:")
+            print(a_match)
+            print("ATTENTION HUMAS END")
+            #PlaceHolder_img.generate_image(a_match)
+        
+            
