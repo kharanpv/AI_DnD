@@ -21,7 +21,6 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QHBoxLayout, QV
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
-from OtherCode.libs import token_lib as token_lib
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup, ScrollableTextEdit
 
 DEBUGGING = True
@@ -99,19 +98,6 @@ class MainWindow(QMainWindow):
         populate_canvas_action = QAction('Populate Canvas', self)
         populate_canvas_action.triggered.connect(self.populate_canvas)
         canvas_menu.addAction(populate_canvas_action)
-
-        # API Menu
-        api_menu = menubar.addMenu('API')
-        
-        sublist_api_menu = api_menu.addMenu('Select API')
-        for a_name, a_function in token_lib.list_of_apis.items():
-            api_name = a_name
-            api_function = a_function
-
-            api_action = QAction(api_name, self)
-            api_action.triggered.connect(api_function)
-
-            sublist_api_menu.addAction(api_action)
             
     def setup_side_bar(self):
         pass
@@ -181,15 +167,6 @@ class MainWindow(QMainWindow):
                 # Create ImageOnCanvas instance and append to image_list
                 image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
                 self.image_widget.addImageOnCanvas(image_item)
-
-
-
-
-    # API Stuff
-    def select_api(self):
-        pass
-        #for item in token_lib.api_list:
-        #    pass
 
     def open_popup(self):
         popup = Popup.Popup(self)
