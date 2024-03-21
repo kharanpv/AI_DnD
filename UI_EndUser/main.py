@@ -50,7 +50,7 @@ class MainWindow(QMainWindow):
 
 
 # Init API TODO move to self function which then forces init_ui to have a dependancy upon it
-        self.current_api = chat_api_end.ChatGPTCalls()
+        self.current_api = chat_api_end.ChatGPTCalls(parent_widget=self.image_widget)
 # END API INIT
         self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.current_api.text_prompt)
         splitter.addWidget(self.side_bar)

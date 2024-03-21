@@ -14,7 +14,10 @@ import re
 import requests
 import datetime
 from .UI import PlaceHolder_img
+from .UI import ViewWindow
+from .UI import ImageOnCanvas   
 local_debug_img = True
+import random
 
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
@@ -44,9 +47,10 @@ Size should only be 1 integer, and wrapped in (). Coordinates should be separate
 # The cont file system is flawed, redo
 #
 class ChatGPTCalls():
-    def __init__(self):
+    def __init__(self, parent_widget:ViewWindow.ViewWindow=None):
         self.pattern_coords = r'\(((?:.|\n)*?)\)'
         self.pattern = r'\{((?:.|\n)*?)\}'
+        self.parent_widget = parent_widget
         with open('../../chat_gpt_key.key', 'r') as file:
             CHAT_GPT_TOKEN = file.read().splitlines()
 
@@ -86,17 +90,39 @@ class ChatGPTCalls():
             scale_size.replace(" ", "")
         return matches
     
-    def get_names(self):
-        search_text = self.text
+    def get_names(self, text:str=None):
+        if text is None:
+            text = self.text
+        print(text)
+        retVal = re.findall(r"^(.+)$", text)
+        print(retVal, id(retVal))
+        return retVal
+
+    def get_xyz(self, text:str=None):
+        if text is None:
+            text = self.text
+        matches = re.findall(r"\((.*?)\)", text)
+        print(matches)
+        if matches:
+            text = matches[0].replace("(","").replace(")","").replace(" ","")
+            return text.split(',')
+        else:
+            return []
 
     def user_prompt(self, user_input:str):
         return self.get_coords_and_text(self.text_prompt(user_input))
 
     def images_for_self(self):
         for a_match in self.get_coords_and_text():
-            print("ATTENTION HUMAS:")
-            print(a_match)
-            print("ATTENTION HUMAS END")
-            #PlaceHolder_img.generate_image(a_match)
+            x,y,z = self.get_xyz(text=a_match)
+            #name = self.get_names(text=a_match)
+            name = a_match.split('\n')[1]
+            print(f"Name:{name}")
+            current_image = PlaceHolder_img.generate_image(name)
+            image_path = f"assets/{name}{random.randint(0,255)}.png"
+            current_image.save(image_path)
+            self.parent_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), 0.0, image_path))
+        return True
+
         
             
