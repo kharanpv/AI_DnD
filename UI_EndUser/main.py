@@ -127,7 +127,9 @@ class MainWindow(QMainWindow):
         # Get the latest modified image file
         latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
         latest_image_path = os.path.join(folder_path, latest_image)
-        self.image_widget.set_image(latest_image_path)
+        if latest_image:
+            self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(10, 10, 10, 0.0, image_path))
+
 
 
     def list_images(self):
