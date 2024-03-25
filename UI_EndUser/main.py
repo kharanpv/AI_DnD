@@ -130,7 +130,7 @@ class MainWindow(QMainWindow):
         latest_image_path = os.path.join(folder_path, latest_image)
         # WE NEED COORDS HERE
         if latest_image:
-            self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(10, 10, 10, 0.0, image_path))
+            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(10, 10, 10, 0.0, image_path))
 
 
 
