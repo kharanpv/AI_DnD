@@ -6,7 +6,8 @@ import re
 import threading
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTextEdit
-from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget
+from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget, QListWidgetItem
+from PyQt5.QtGui import QColor
 
 # Add the parent directory of Pipeline to the Python module search path
 pipeline_parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../Pipeline"))
@@ -58,14 +59,23 @@ class ScrollableTextEdit(QTextEdit):
 class HistoryWidget(QListWidget):
     def __init__(self):
         super().__init__()
+        self.setWordWrap(True)
 
     def updateHistory(self):
-        prompt, response = extract_json_response()       
-        if prompt and response: 
-            self.addItem("Player: " + prompt + '\n' + "DM: " + response)
+        prompt, response = extract_json_response()    
+        if prompt:
+            item = QListWidgetItem("Player: " + prompt)
+            self.addItem(item)
+            self.scrollToBottom()
+        if response: 
+            item = QListWidgetItem("DM: " + response)
+            item.setBackground(QColor("darkgray"))
+            self.addItem(item)
             self.scrollToBottom()
         else:
-            self.addItem("RESPONSE ERROR")
+            item = QListWidgetItem("RESPONSE ERROR")
+            item.setBackground(QColor("red"))
+            self.addItem(item)
             self.scrollToBottom()
 
 
@@ -78,7 +88,9 @@ class TextEntryAndHistory(QWidget):
         layout = QVBoxLayout()
 
         self.historyWidget = HistoryWidget()
-        self.historyWidget.addItem("DM: What would you like to generate")
+        item = QListWidgetItem("DM: What would you like to generate?")
+        item.setBackground(QColor("gray"))
+        self.historyWidget.addItem(item)
 
         self.scrollableTextEdit = ScrollableTextEdit()
 
