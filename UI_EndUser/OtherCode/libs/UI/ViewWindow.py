@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QW
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 from .. import LocationObject
+import os
 
 class ViewWindow(QGraphicsView):
     def __init__(self, parent=None):
@@ -33,7 +34,7 @@ class ViewWindow(QGraphicsView):
         self.image_item.setPixmap(image)
 
     def add_image(self, image_path:str, x:int, y:int, rotation:float, scale:float):
-        self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
+        self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(x=x, y=y, scale=scale, rotation=rotation, image_path=image_path))
 
     def add_LocationObject(self, obj: LocationObject):
         self.add_image(obj.image_path, obj.x, obj.y, obj.rotation, obj.scale)
@@ -98,16 +99,32 @@ class ViewWindow(QGraphicsView):
                 retValue += x_image
         return retValue
 
-    def save(self, file_path):
+    def save(self, folder_path):
+        # Create the folder if it doesn't exist
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
         location_objects = []
         for item in self.scene.items():
-            if isinstance(item, ImageOnCanvas):
-                location_object = item.save_to_location_object()
+            if isinstance(item, ImageOnCanvas.ImageOnCanvas):
+                location_object = item.save_to_LocationObject()
                 location_objects.append(location_object)
 
         for i, location_object in enumerate(location_objects):
-            location_file_path = f"{file_path}_{i + 1}.json"
-            location_object.save(location_file_path)
-            print("LocationObject saved to:", location_file_path)
-    def load_images(self, file_path):
-        pass
+            #file_path = os.path.join(folder_path, f"location_{i + 1}.json")
+            location_object.save(folder_path)
+            print("LocationObject saved to:", folder_path)
+
+    def load_images_folder(self, folder_path):
+        location_objects = []
+        # Iterate over all files in the folder
+        for filename in os.listdir(folder_path):
+            # Check if the file is a .lobj file
+            if filename.endswith(".lobj"):
+                # Construct the full file path
+                file_path = os.path.join(folder_path, filename)
+                # Load the location object from the file
+                location_object = LocationObject.LocationObject.load(file_path)  # Assuming LocationObject has a class method 'load'
+                location_objects.append(location_object)
+        for i in location_objects:
+            self.add_LocationObject(obj=i)

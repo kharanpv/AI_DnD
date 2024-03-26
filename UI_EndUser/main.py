@@ -84,6 +84,10 @@ class MainWindow(QMainWindow):
         save_images_action.triggered.connect(self.save_images)
         file_menu.addAction(save_images_action)
 
+        load_images_action = QAction('Load State', self)
+        load_images_action.triggered.connect(self.load_images)
+        file_menu.addAction(load_images_action)
+
         
         # Canvas Menu
         canvas_menu = menubar.addMenu('Canvas')
@@ -147,14 +151,14 @@ class MainWindow(QMainWindow):
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getSaveFileName(self, "Save File", "", "All Files (*);;Text Files (*.txt)", options=options)
         if file_name:
-            self.image_widget.save(file_path=file_name)
+            self.image_widget.save(folder_path=file_name)
     
     def load_images(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open Set", "", "Custom Continuity files (*.cont);;All Files (*)", options=options)
-        if file_name:
-            self.image_widget.load_images(file_path=file_name)
+        folder_path = QFileDialog.getExistingDirectory(self, "Select Folder", "", options=options)
+        if folder_path:
+            self.image_widget.load_images_folder(folder_path=folder_path)
 
     # This will eventually consume some other kind of data, ie a text file full of image links
     # this is proof of concept for now

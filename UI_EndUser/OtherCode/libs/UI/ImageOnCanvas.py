@@ -3,8 +3,9 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QW
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
 from . import Popup
+from .. import LocationObject
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QTabWidget, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QWidget, QTabWidget, QHBoxLayout
 from PyQt5.QtWidgets import QLabel, QLineEdit
 #
 # Below should eventually be replaced with 
@@ -213,7 +214,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     def save_to_LocationObject(self):
         # Need a load and edit method
         # As some LocationObjects are already saved
-        location_object = LocationObject(
+        location_object = LocationObject.LocationObject(
             name=self.data_name,
             data=self.data_text,
             image_path=self.image_path,
