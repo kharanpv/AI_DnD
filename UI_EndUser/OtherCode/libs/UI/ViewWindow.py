@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QW
 
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
+from .. import LocationObject
 
 class ViewWindow(QGraphicsView):
     def __init__(self, parent=None):
@@ -15,12 +16,11 @@ class ViewWindow(QGraphicsView):
         self.setScene(self.scene)
         self.setRenderHint(QPainter.Antialiasing, True)
         self.setRenderHint(QPainter.SmoothPixmapTransform, True)
-
         self.image_item = QGraphicsPixmapItem()
         self.scene.addItem(self.image_item)
 
         # Images
-        self.image_items = []  
+        self.image_items = []
 
         # Mouse
         self.setDragMode(QGraphicsView.ScrollHandDrag)
@@ -31,6 +31,12 @@ class ViewWindow(QGraphicsView):
     def set_image(self, image_path):
         image = QPixmap(image_path)
         self.image_item.setPixmap(image)
+
+    def add_image(self, image_path:str, x:int, y:int, rotation:float, scale:float):
+        self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
+
+    def add_LocationObject(self, obj: LocationObject):
+        self.add_image(obj.image_path, obj.x, obj.y, obj.rotation, obj.scale)
 
     def wheelEvent(self, event: QGraphicsSceneWheelEvent):
         factor = 1.2
@@ -63,7 +69,7 @@ class ViewWindow(QGraphicsView):
         elif event.button() == Qt.RightButton: 
             pos = self.mapToScene(event.pos())
             #rotation = Qt.QInput
-            image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg);;All Files (*)")
+            image_path, _ = QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.gif *.jpeg *.lobj);;All Files (*)")
             if image_path:
                 self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(pos.x(), pos.y(), 1.0, 0.0, image_path))
 
@@ -91,3 +97,17 @@ class ViewWindow(QGraphicsView):
             if x_image.selected == True:
                 retValue += x_image
         return retValue
+
+    def save(self, file_path):
+        location_objects = []
+        for item in self.scene.items():
+            if isinstance(item, ImageOnCanvas):
+                location_object = item.save_to_location_object()
+                location_objects.append(location_object)
+
+        for i, location_object in enumerate(location_objects):
+            location_file_path = f"{file_path}_{i + 1}.json"
+            location_object.save(location_file_path)
+            print("LocationObject saved to:", location_file_path)
+    def load_images(self, file_path):
+        pass

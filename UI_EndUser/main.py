@@ -79,6 +79,11 @@ class MainWindow(QMainWindow):
         list_images_action = QAction('List Images', self)
         list_images_action.triggered.connect(self.list_images)
         file_menu.addAction(list_images_action)
+
+        save_images_action = QAction('Save State', self)
+        save_images_action.triggered.connect(self.save_images)
+        file_menu.addAction(save_images_action)
+
         
         # Canvas Menu
         canvas_menu = menubar.addMenu('Canvas')
@@ -90,6 +95,8 @@ class MainWindow(QMainWindow):
         populate_canvas_action = QAction('Populate Canvas', self)
         populate_canvas_action.triggered.connect(self.populate_canvas)
         canvas_menu.addAction(populate_canvas_action)
+
+
             
     def setup_side_bar(self):
         pass
@@ -135,6 +142,20 @@ class MainWindow(QMainWindow):
             #print(f"  Rotation: {image_info['rotation']} degrees")
             print(f"  File Name: {image_info['image_path']}")
             print()
+    
+    def save_images(self):
+        options = QFileDialog.Options()
+        file_name, _ = QFileDialog.getSaveFileName(self, "Save File", "", "All Files (*);;Text Files (*.txt)", options=options)
+        if file_name:
+            self.image_widget.save(file_path=file_name)
+    
+    def load_images(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        file_name, _ = QFileDialog.getOpenFileName(self, "Open Set", "", "Custom Continuity files (*.cont);;All Files (*)", options=options)
+        if file_name:
+            self.image_widget.load_images(file_path=file_name)
+
     # This will eventually consume some other kind of data, ie a text file full of image links
     # this is proof of concept for now
     def populate_canvas(self):

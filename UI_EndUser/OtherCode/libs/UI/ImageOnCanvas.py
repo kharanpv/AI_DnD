@@ -135,7 +135,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     # Define a custom signal
     #destroyed = pyqtSignal()
 
-    def __init__(self, x, y, scale, rotation, image_path, parent=None):
+    def __init__(self, x, y, scale, rotation, image_path, parent=None, data_name:str = None, data_text:str = None):
         super(ImageOnCanvas, self).__init__()
         self.setPos(x, y)
         self.setScale(scale)
@@ -144,6 +144,8 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         self.image_path = image_path
         self.selected = False
         self.parent = parent
+        self.data_name = data_name
+        self.data_text = data_text
         # TODO, saving Z value, needs to reorder height of images it overlaps with upon update
         # possibly ViewWindow needs to be updated
         self.z = None
@@ -208,19 +210,22 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
             self.parent.removeItem(self)
     
 
-    def save_state(self):
-        state = {
-            'x': self.x(),
-            'y': self.y(),
-            'z': self.z,
-            'scale': self.scale(),
-            'rotation': self.rotation(),
-            'image_path': self.image_path
-        }
-        return state
+    def save_to_LocationObject(self):
+        # Need a load and edit method
+        # As some LocationObjects are already saved
+        location_object = LocationObject(
+            name=self.data_name,
+            data=self.data_text,
+            image_path=self.image_path,
+            x=self.x(),
+            y=self.y(),
+            rotation=self.rotation(),
+            scale=self.scale()
+        )
+        return location_object
         
     #
-    # Unnecessary 
+    # Unnecessary currently
     #
     #def __del__(self):
     #    remove_self()
