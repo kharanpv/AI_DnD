@@ -21,7 +21,7 @@ from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QHBoxLayout, QV
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
-from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, Popup, ScrollableTextEdit
+from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, ScrollableTextEdit
 
 DEBUGGING = True
 if DEBUGGING:
@@ -79,15 +79,7 @@ class MainWindow(QMainWindow):
         list_images_action = QAction('List Images', self)
         list_images_action.triggered.connect(self.list_images)
         file_menu.addAction(list_images_action)
-
-        list_selected_images_action = QAction('Show Selected Details', self)
-        list_selected_images_action.triggered.connect(self.show_selected)
-        file_menu.addAction(list_selected_images_action)
-
-
-        pop_action = QAction('Popup', self)
-        pop_action.triggered.connect(self.open_popup)
-        file_menu.addAction(pop_action)
+        
         # Canvas Menu
         canvas_menu = menubar.addMenu('Canvas')
 
@@ -171,19 +163,6 @@ class MainWindow(QMainWindow):
                 # Create ImageOnCanvas instance and append to image_list
                 image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
                 self.image_widget.addImageOnCanvas(image_item)
-
-    def open_popup(self):
-        popup = Popup.Popup(self)
-        popup.show()
-    
-    def show_selected(self):
-        for x in self.image_widget.get_selected_images():
-            print(x)
-            popup = Popup.Popup(self)
-
-
-    def open_selected_popup(self, title, text):
-        Popup = Popup.Popup(self, "")
 
 
 
