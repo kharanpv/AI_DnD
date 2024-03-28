@@ -32,13 +32,16 @@ class ViewWindow(QGraphicsView):
         self.left_mouse_pressed = False
         self.setMouseTracking(True)
 
+    # def drawBackground(self, painter, rect):
+    #     super().drawBackground(painter, rect)
+    #     sceneRect = self.sceneRect()
+    #     print(self.texturePath)
+    #     pixmap = QPixmap(self.texturePath)
+    #     rectf = QRectF(pixmap.rect())
+    #     painter.drawPixmap(sceneRect, pixmap, rect)
     def drawBackground(self, painter, rect):
         super().drawBackground(painter, rect)
-        sceneRect = self.sceneRect()
-        print(self.texturePath)
-        pixmap = QPixmap(self.texturePath)
-        rectf = QRectF(pixmap.rect())
-        painter.drawPixmap(sceneRect, pixmap, rect)
+        self.setBackgroundBrush(QBrush((QColor(63, 155, 11))))
 
     def set_image(self, image_path):
         image = QPixmap(image_path)
@@ -102,6 +105,11 @@ class ViewWindow(QGraphicsView):
 
     def list_images_on_canvas(self):
         return self.image_items
+
+
+    def clear_canvas(self):
+        self.scene.clear()
+        self.image_items.clear()
 
     def get_selected_images(self):
         retValue = []
