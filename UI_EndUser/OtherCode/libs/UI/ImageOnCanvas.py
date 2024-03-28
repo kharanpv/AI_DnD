@@ -192,7 +192,13 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
             self.popup.show()
             # Somehow we need a highlight function here
         else:
-            self.popup.closeEvent(None)
+            try:
+                if self.popup:
+                    self.popup.closeEvent(None)
+            except TypeError:
+                pass
+            
+
 
     def swap_selection(self):
         self.selected = not self.selected

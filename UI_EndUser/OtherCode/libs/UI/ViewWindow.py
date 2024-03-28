@@ -3,10 +3,11 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction,
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent
 
 
-from PyQt5.QtGui import QPixmap, QPainter
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QImage, QBrush
 from PyQt5.QtCore import Qt
 from .. import LocationObject
 import os
+from PyQt5.QtCore import QRectF
 
 class ViewWindow(QGraphicsView):
     def __init__(self, parent=None):
@@ -19,6 +20,8 @@ class ViewWindow(QGraphicsView):
         self.setRenderHint(QPainter.SmoothPixmapTransform, True)
         self.image_item = QGraphicsPixmapItem()
         self.scene.addItem(self.image_item)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.texturePath = script_dir + "/tessalation-grass.png"
 
         # Images
         self.image_items = []
@@ -28,6 +31,14 @@ class ViewWindow(QGraphicsView):
         self.middle_mouse_pressed = False
         self.left_mouse_pressed = False
         self.setMouseTracking(True)
+
+    def drawBackground(self, painter, rect):
+        super().drawBackground(painter, rect)
+        sceneRect = self.sceneRect()
+        print(self.texturePath)
+        pixmap = QPixmap(self.texturePath)
+        rectf = QRectF(pixmap.rect())
+        painter.drawPixmap(sceneRect, pixmap, rect)
 
     def set_image(self, image_path):
         image = QPixmap(image_path)

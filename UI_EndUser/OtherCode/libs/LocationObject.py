@@ -1,6 +1,6 @@
 import os
 import json
-
+import random
 class LocationObject:
     def __init__(self, name:str, data:str, image_path:str, x:int, y:int, rotation:float, scale:float):
         self.name = name
@@ -16,7 +16,9 @@ class LocationObject:
         if self.name:
             file_name = f"{self.name.replace(' ', '_').lower()}_info.lobj"
         else:
-            file_name = "temp.lobj"
+             # Format the date and time as a string
+            timestamp_string = str(random.randint(0, 20000000))
+            file_name = timestamp_string + ".lobj"
         
         # If directory is not provided, use current directory
         if not directory:
