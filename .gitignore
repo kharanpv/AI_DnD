@@ -8,10 +8,10 @@
 ComfyUI_windows_portable/python_embeded/Lib/site-packages/torch/*
 
 # ignore pycache
-__pycache__/
+**/__pycache__/
 
 */assets/*
 # Ignore chat_gpt_key.txt
 chat_gpt_key.txt
-
+*/chat_history.json
 
