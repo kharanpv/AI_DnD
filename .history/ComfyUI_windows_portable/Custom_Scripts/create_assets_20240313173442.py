@@ -1,6 +1,5 @@
 import subprocess
 import os
-import json
 
 # Get the current script's directory
 script_directory = os.path.dirname(os.path.realpath(__file__))
@@ -28,31 +27,6 @@ image_to_text_script = os.path.join(
 tinyLlama_script = os.path.join(
     script_directory, "..", "TinyLlama1.0", "run_Llama.py"
 )
-
-# read the positive prompt from the temp.json file
-with open('temp.json', 'r') as json_file:
-    data = json.load(json_file)
-    positive_prompt = data.get("positive_prompt")
-
-def check_if_exists():
-    positive_prompt = [word.lower() for word in positive_prompt.split()]
-    max_count = 0
-    max_match_img_name = ''
-
-    # Filter out only the image files
-    image_files = [f.lower() for f in os.listdir(ui_images_path) if f.lower().endswith('.png')]
-
-    for image in image_files:
-        image_words = image.replace('.png', '').split('_')
-        # Count the number of similar words between image name and positive prompt
-        similar_words_count = sum(1 for word in positive_prompt if word in image_words)
-
-        # Update max_count and max_image_name if needed
-        if similar_words_count > max_count:
-            max_count = similar_words_count
-            max_image_name = image
-        
-        return max_count
 
 # Run the image generation script
 try:

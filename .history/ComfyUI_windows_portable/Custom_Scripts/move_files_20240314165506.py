@@ -17,16 +17,6 @@ def move_images(destination_folder):
             for image_path in data["images_to_move"]:
                 # Extract file name from the image path
                 file_name = os.path.basename(image_path)
-
-                # separate the extension from the file name
-                file_name_text, extension = file_name.rsplit('.', 1)
-                # split the file name text into its constituent words
-                words = file_name_text.split('_')
-                # remove words that have 'pixel' in them
-                filtered_words = [word for word in words if 'pixel' not in word]
-                # merge back to get file_name
-                file_name = '_'.join(filtered_words) + '.' + extension
-
                 # Construct destination path
                 destination_path = os.path.join(destination_folder, file_name)
                 # Move the image to the destination folder

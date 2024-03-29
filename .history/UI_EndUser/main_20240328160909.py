@@ -206,9 +206,6 @@ if __name__ == '__main__':
     image_files = glob.glob(os.path.join(output_images_dir, "*.png"))
     image_files.extend(glob.glob(os.path.join(output_images_dir, "*.jpg")))
     image_files.extend(glob.glob(os.path.join(output_images_dir, "*.jpeg")))
-    for image_file in image_files:
-        os.remove(image_file)
-    print("Cleared previous image files.")
 
     app = QApplication(sys.argv)
     window = MainWindow()

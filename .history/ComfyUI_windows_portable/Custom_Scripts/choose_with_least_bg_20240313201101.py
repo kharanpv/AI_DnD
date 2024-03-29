@@ -1,5 +1,4 @@
 import os
-import json
 from PIL import Image
 
 def count_transparent_pixels(image_path):
@@ -42,19 +41,14 @@ if __name__ == '__main__':
     image_with_most_transparent_pixels = find_image_with_most_transparent_pixels(image_folder_path)
 
     if image_with_most_transparent_pixels:
-        with open(os.path.dirname(os.path.abspath(__file__)) + "\\temp.json", 'r') as file:
-            data = json.load(file)
-            new_string = data.get("positive_prompt", None)
-            new_string = new_string.replace(' ', '_')
+        with open(os.path.dirname(os.path.abspath(__file__)) + "\\temp.txt", 'r') as file:
+            first_line = file.readline().rstrip('\n')
+            new_string = first_line.replace(' ', '_')
             new_string += image_with_most_transparent_pixels[image_with_most_transparent_pixels.rfind('.'):]
         image_path = os.path.join(image_folder_path, image_with_most_transparent_pixels)
         os.rename(image_path, os.path.join(image_folder_path, new_string))
         print(f'The image with the most transparent pixels is: {image_with_most_transparent_pixels}')
-        with open(os.path.dirname(os.path.abspath(__file__)) + "\\temp.json", 'w') as file:
-            data["images_to_move"] = [os.path.join(image_folder_path, new_string)]
-            file.seek(0)
-            json.dump(data, file, indent=4)
-            file.truncate()
-
+        with open(os.path.dirname(os.path.abspath(__file__)) + "\\temp.txt", 'a') as file:
+            file.write(f'\n\n{os.path.join(image_folder_path, new_string)}')
     else:
         print('No PNG images found in the specified folder.')

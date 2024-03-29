@@ -48,9 +48,9 @@ def check_if_exists():
         similar_words_count = sum(1 for word in positive_prompt if word in image_words)
 
         # Update max_count and max_image_name if needed
-        if similar_words_count > max_count:
-            max_count = similar_words_count
-            max_image_name = image
+            if similar_words_count > max_count:
+                max_count = similar_words_count
+                max_image_name = image_name
         
         return max_count
 

@@ -52,9 +52,6 @@ if __name__ == '__main__':
         print(f'The image with the most transparent pixels is: {image_with_most_transparent_pixels}')
         with open(os.path.dirname(os.path.abspath(__file__)) + "\\temp.json", 'w') as file:
             data["images_to_move"] = [os.path.join(image_folder_path, new_string)]
-            file.seek(0)
-            json.dump(data, file, indent=4)
-            file.truncate()
 
     else:
         print('No PNG images found in the specified folder.')

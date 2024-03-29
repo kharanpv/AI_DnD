@@ -159,7 +159,7 @@ def generate_response(USER_PROMPT):
     global chat_history_path, INIT_PROMPT_AI
 
     setup()
-    text_prompt(USER_PROMPT, INIT_PROMPT_AI, "gpt-3.5-turbo")
+    text_prompt(USER_PROMPT, INIT_PROMPT_AI, "gpt-4")
     queue_prompt()
 
 def run_workflow():

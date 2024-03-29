@@ -17,11 +17,10 @@ image_caption_list = {}
 data = None
 with open(file_path, "r") as file:
     data = json.load(file)
-    positive_prompt = data.get("positive_prompt", None)
     image_caption_list = data.get("image_caption_list", {})
 
 # Select the first line
-# first_line = list(image_caption_list.values())[0].strip().split()
+first_line = list(image_caption_list.values())[0].strip().split()
 
 # Get the 100 most common words in the English language
 common_words = ["the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on",
@@ -45,7 +44,7 @@ best_image = None
 
 for filename, caption in image_caption_list.items():
     words = caption.strip().split()
-    matches = sum(word.lower() in positive_prompt for word in words if word.lower() not in common_words)
+    matches = sum(word.lower() in first_line for word in words if word.lower() not in common_words)
     if matches > max_matches:
         max_matches = matches
         best_image = caption.strip()
