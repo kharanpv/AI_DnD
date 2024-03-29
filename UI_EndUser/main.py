@@ -49,6 +49,9 @@ class MainWindow(QMainWindow):
         self.image_widget = ViewWindow.ViewWindow(self)
         splitter.addWidget(self.image_widget)
 
+        # Load the default
+        self.image_widget.load_images_folder(folder_path="./test_images/mar28thexample/")
+
         self.side_bar = ScrollableTextEdit.TextEntryAndHistory()
         splitter.addWidget(self.side_bar)
         self.side_bar.image_ready.connect(self.open_latest_image)
@@ -101,6 +104,10 @@ class MainWindow(QMainWindow):
         populate_canvas_action = QAction('Populate Canvas', self)
         populate_canvas_action.triggered.connect(self.populate_canvas)
         canvas_menu.addAction(populate_canvas_action)
+
+        clear_canvas_action = QAction('Clear Canvas', self)
+        clear_canvas_action.triggered.connect(self.clear_canvas)
+        canvas_menu.addAction(clear_canvas_action)
 
 
             
@@ -191,7 +198,8 @@ class MainWindow(QMainWindow):
                 image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
                 self.image_widget.addImageOnCanvas(image_item)
 
-
+    def clear_canvas(self):
+        self.image_widget.clear_canvas()
 
 
 if __name__ == '__main__':
