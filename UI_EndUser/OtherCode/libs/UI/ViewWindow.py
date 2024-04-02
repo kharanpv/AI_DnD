@@ -137,9 +137,7 @@ class ViewWindow(QGraphicsView):
     def load_images_folder(self, folder_path):
         location_objects = []
         # Iterate over all files in the folder
-        print("DEBUG: TESTING PATH ", folder_path)
         for filename in os.listdir(folder_path):
-            print("DEBUG: VIEWING FILE:", filename)
             # Check if the file is a .lobj file
             if filename.endswith(".lobj"):
                 # Construct the full file path
