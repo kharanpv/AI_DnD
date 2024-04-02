@@ -23,6 +23,7 @@ from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, ScrollableTextEdit
+import prompt_master
 
 DEBUGGING = True
 if DEBUGGING:
@@ -52,9 +53,8 @@ class MainWindow(QMainWindow):
         # Load the default
         self.image_widget.load_images_folder(folder_path="./test_images/mar28thexample/")
 
-        self.side_bar = ScrollableTextEdit.TextEntryAndHistory()
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=prompt_master.generate_response)
         splitter.addWidget(self.side_bar)
-        self.side_bar.image_ready.connect(self.open_latest_image)
 
         # Set the size ratio for the widgets (80% - 20%)
         splitter.setSizes([4 * splitter.size().width() // 5, splitter.size().width() // 5])
@@ -122,6 +122,7 @@ class MainWindow(QMainWindow):
             self.image_widget.set_image(file_name)
     
     # REWRITE TODO SW
+    # NUKE TODO
     @pyqtSlot()
     def open_latest_image(self):
         folder_path = os.path.join(os.path.dirname(__file__), "test_images")

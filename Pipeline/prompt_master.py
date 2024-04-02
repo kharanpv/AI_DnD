@@ -34,6 +34,11 @@ Paragraph
 Size should only be 1 integer, and wrapped in (). Coordinates should be separated by commas.
 """
 
+#
+# this all needs to be rewritten as a class
+# as setup is called every time instead of simply once
+# 
+
 def setup():
     global script_dir, file_path, img_pipeline_script, workflow_api_folder, CHAT_GPT_TOKEN, client
     global chat_history_path, INIT_PROMPT_AI
@@ -153,6 +158,8 @@ def queue_prompt():
         request_path = os.path.join(workflow_api_folder, "request.json") 
         with open(request_path, "w") as file:
             json.dump(prompt, file)
+    # Here I add method to output
+
 
 def generate_response(USER_PROMPT):
     global script_dir, file_path, img_pipeline_script, workflow_api_folder, CHAT_GPT_TOKEN, client
