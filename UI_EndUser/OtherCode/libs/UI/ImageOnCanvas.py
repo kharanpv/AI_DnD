@@ -28,6 +28,7 @@ class ImageControllerPopup(Popup.Popup):
         self.add_move_tab()
         self.add_tab("Delete", self.handle_delete)
         self.add_rotate_tab()
+        self.add_scale_tab()
 
         # Add the tab widget to the main layout
         self.layout().addWidget(self.tab_widget)
@@ -115,6 +116,34 @@ class ImageControllerPopup(Popup.Popup):
         # Add the tab to the tab widget
         self.tab_widget.addTab(tab, title)
 
+    def add_scale_tab(self):
+        title = "Scale"
+        
+        # Create a tab and layout
+        tab = QWidget()
+        tab_layout = QVBoxLayout()
+        
+        # Add labels and input boxes for X, Y, and Z coordinates
+        scal_label = QLabel("Factor:")
+        scal_input = QLineEdit(self)
+        tab_layout.addWidget(scal_label)
+        tab_layout.addWidget(scal_input)
+        
+        # Adding buttons to the tab
+        button = QPushButton(title, self)
+        handler_function = lambda: self.alternate_parent.scale_item(scal_input.text())
+        button.clicked.connect(handler_function)
+
+        # Add the button to the layout
+        tab_layout.addWidget(button)
+
+        # Set the layout for the tab
+        tab.setLayout(tab_layout)
+
+        # Add the tab to the tab widget
+        self.tab_widget.addTab(tab, title)
+
+
     def handle_data(self):
         # Implements file reading here
         pass
@@ -175,7 +204,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     
     def scale_item(self, factor):
         current_scale = self.scale()
-        new_scale = current_scale * factor
+        new_scale = current_scale * int(factor)
         self.setScale(new_scale)
     
     def move_item(self, x, y, z=None):

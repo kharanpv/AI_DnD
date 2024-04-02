@@ -52,7 +52,6 @@ class LocationObject:
         name = obj_info.get("Name")
         data = obj_info.get("Data")
         image_path = obj_info.get("Image Path")
-        print("DEBUG: ABS PATH = ", image_path)
         position = obj_info.get("Position", {})
         x = position.get("x", 0)
         y = position.get("y", 0)
