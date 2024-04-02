@@ -39,6 +39,8 @@ Size should only be 1 integer, and wrapped in (). Coordinates should be separate
 # as setup is called every time instead of simply once
 # 
 
+
+
 def setup():
     global script_dir, file_path, img_pipeline_script, workflow_api_folder, CHAT_GPT_TOKEN, client
     global chat_history_path, INIT_PROMPT_AI

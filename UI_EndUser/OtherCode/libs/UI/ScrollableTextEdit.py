@@ -133,6 +133,7 @@ class ScrollableTextEdit(QTextEdit):
 class HistoryWidget(QListWidget):
     def __init__(self):
         super().__init__()
+        self.setWordWrap(True)
 
     def updateHistory(self, text):
         item = QListWidgetItem(text)
@@ -142,7 +143,7 @@ class HistoryWidget(QListWidget):
     def updateResponse(self, text):
         item = QListWidgetItem(text)
         item.setBackground(QColor("lightgray"))
-        if text is None:
+        if text is None or len(text) == 0:
             item.setBackground(QColor("red"))
             item.setText("Response Error!")
         self.addItem(item)
