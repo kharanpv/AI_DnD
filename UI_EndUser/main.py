@@ -171,34 +171,34 @@ class MainWindow(QMainWindow):
         if folder_path:
             self.image_widget.load_images_folder(folder_path=folder_path)
 
-    # This will eventually consume some other kind of data, ie a text file full of image links
-    # this is proof of concept for now
-    def populate_canvas(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open Set", "", "Custom Continuity files (*.cont);;All Files (*)", options=options)
+    # # This will eventually consume some other kind of data, ie a text file full of image links
+    # # this is proof of concept for now
+    # def populate_canvas(self):
+    #     options = QFileDialog.Options()
+    #     options |= QFileDialog.DontUseNativeDialog
+    #     file_name, _ = QFileDialog.getOpenFileName(self, "Open Set", "", "Custom Continuity files (*.cont);;All Files (*)", options=options)
 
-        asset_folder = "./assets/"
-        with open(file_name) as handle:
-            for line in handle:
-                image_path, x, y, z, scale =  map(str.strip, line.split(','))
-                # Rotation is currently unused for our generations
-                # So is Z, it would require a queing system or something
-                rotation = 0
-                # Currently X and Y have a bad offset, as images are positioned to the top left corner not the middle
-                # We need to calculate this based off of scale, where positioning is x-scale/2, y-scale/2
-                # Convert numeric values to appropriate types
-                x = int(float(x)*1024)
-                y = int(float(y)*1024)
-                scale = float(scale)
+    #     asset_folder = "./assets/"
+    #     with open(file_name) as handle:
+    #         for line in handle:
+    #             image_path, x, y, z, scale =  map(str.strip, line.split(','))
+    #             # Rotation is currently unused for our generations
+    #             # So is Z, it would require a queing system or something
+    #             rotation = 0
+    #             # Currently X and Y have a bad offset, as images are positioned to the top left corner not the middle
+    #             # We need to calculate this based off of scale, where positioning is x-scale/2, y-scale/2
+    #             # Convert numeric values to appropriate types
+    #             x = int(float(x)*1024)
+    #             y = int(float(y)*1024)
+    #             scale = float(scale)
 
-                x = x - int(scale*1024/2)
-                y = y - int(scale*1024/2)
-                rotation = int(rotation)
+    #             x = x - int(scale*1024/2)
+    #             y = y - int(scale*1024/2)
+    #             rotation = int(rotation)
 
-                # Create ImageOnCanvas instance and append to image_list
-                image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
-                self.image_widget.addImageOnCanvas(image_item)
+    #             # Create ImageOnCanvas instance and append to image_list
+    #             image_item = ImageOnCanvas.ImageOnCanvas(x, y, scale, rotation, asset_folder+image_path)
+    #             self.image_widget.addImageOnCanvas(image_item)
 
     def clear_canvas(self):
         self.image_widget.clear_canvas()
