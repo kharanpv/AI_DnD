@@ -10,10 +10,6 @@ workflow_api_script = os.path.join(
     script_directory, "..", "ComfyUI", "ComfyUI-to-Python-Extension", "workflow_api.py"
 )
 
-workflow_api_directory = os.path.join(
-    script_directory, "..", "ComfyUI", "ComfyUI-to-Python-Extension"
-)
-
 # Relative path to the image folders
 images_folder_path = os.path.join(
     script_directory, "..", "ComfyUI", "output"
@@ -34,7 +30,7 @@ tinyLlama_script = os.path.join(
 )
 
 # read the positive prompt from the temp.json file
-with open(os.path.join(workflow_api_directory, 'request.json'), 'r') as json_file:
+with open(os.path.join(script_directory, 'temp.json'), 'r') as json_file:
     data = json.load(json_file)
     positive_prompt = data.get("positive_prompt")
 
