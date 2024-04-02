@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
         splitter.addWidget(self.image_widget)
 
         # Load the default
-        self.image_widget.load_images_folder(folder_path=os.path.join(script_directory, "test_images\\mar28thexample\\"))
+        self.image_widget.load_images_folder(folder_path=os.path.join(script_directory, "test_images/mar28thexample"))
 
         self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=prompt_master.generate_response)
         splitter.addWidget(self.side_bar)
