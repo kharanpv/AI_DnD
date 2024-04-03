@@ -31,6 +31,8 @@ class PromptMaster:
         self.client = OpenAI(api_key=self.CHAT_GPT_TOKEN[0])
         self.chat_history_path = os.path.join(self.script_dir, 'chat_history.json')
 
+        self.chat_history = []
+
         self.INIT_PROMPT_AI = """
         You are a generating descriptions for a 2d map.
         The user will give you a description of a place. 
