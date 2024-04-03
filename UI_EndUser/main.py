@@ -23,6 +23,9 @@ from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, ScrollableTextEdit
+ 
+
+sys.path.insert(0, '../Pipeline/')
 import prompt_master
 
 DEBUGGING = True
@@ -37,6 +40,8 @@ output_images_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),"../C
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        self.pipeline_controller = prompt_master.PromptMaster()
 
         self.init_ui()
 
@@ -54,7 +59,7 @@ class MainWindow(QMainWindow):
         # Load the default
         self.image_widget.load_images_folder(folder_path=os.path.join(script_directory, "test_images/mar28thexample"))
 
-        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=prompt_master.generate_response)
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.pipeline_controller.generate_response)
         splitter.addWidget(self.side_bar)
 
         # Set the size ratio for the widgets (80% - 20%)
@@ -101,10 +106,6 @@ class MainWindow(QMainWindow):
         list_images_action = QAction('List Images', self)
         list_images_action.triggered.connect(self.list_images)
         canvas_menu.addAction(list_images_action)
-
-        populate_canvas_action = QAction('Populate Canvas', self)
-        populate_canvas_action.triggered.connect(self.populate_canvas)
-        canvas_menu.addAction(populate_canvas_action)
 
         clear_canvas_action = QAction('Clear Canvas', self)
         clear_canvas_action.triggered.connect(self.clear_canvas)
