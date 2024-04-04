@@ -23,15 +23,13 @@ from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow, ScrollableTextEdit
- 
 
-sys.path.insert(0, '../Pipeline/')
-import prompt_master
-
+from prompt_master import PromptMaster
 DEBUGGING = True
 if DEBUGGING:
     from pygit2 import Repository
     DEBUG_NAME = Repository('.').head.shorthand 
+
 
 script_directory = os.path.dirname(os.path.realpath(__file__))
 pipeline_parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../Pipeline"))
@@ -41,7 +39,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        self.pipeline_controller = prompt_master.PromptMaster()
+        self.pipeline_controller = PromptMaster(parent_widget=self)
 
         self.init_ui()
 
@@ -59,7 +57,7 @@ class MainWindow(QMainWindow):
         # Load the default
         self.image_widget.load_images_folder(folder_path=os.path.join(script_directory, "test_images/mar28thexample"))
 
-        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.pipeline_controller.generate_response)
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.pipeline_controller.text_prompt)
         splitter.addWidget(self.side_bar)
 
         # Set the size ratio for the widgets (80% - 20%)
@@ -123,10 +121,8 @@ class MainWindow(QMainWindow):
         if file_name:
             self.image_widget.set_image(file_name)
     
-    # REWRITE TODO SW
-    # NUKE TODO
-    @pyqtSlot()
-    def open_latest_image(self):
+
+    def open_latest_image(self, x, y, z, rotation = 0.0):
         folder_path = os.path.join(os.path.dirname(__file__), "test_images")
         files = os.listdir(folder_path)
         if not files:
@@ -145,7 +141,7 @@ class MainWindow(QMainWindow):
         latest_image_path = os.path.join(folder_path, latest_image)
         # WE NEED COORDS HERE
         if latest_image:
-            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(10, 10, 10, 0.0, latest_image_path))
+            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(x, y, z, rotation, latest_image_path))
 
 
 

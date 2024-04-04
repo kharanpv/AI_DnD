@@ -96,4 +96,7 @@ class Worker(QThread):
 
     def run(self):
         response = self.gpt_endpoint(self.text)
-        self.finished.emit(response)
+        if type(response) == list:
+            response = ",".join(str(element) for element in response)
+
+        self.finished.emit(str(response))

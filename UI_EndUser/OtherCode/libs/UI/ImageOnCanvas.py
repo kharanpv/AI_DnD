@@ -2,11 +2,11 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction,
 from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QVBoxLayout, QWidget, QGraphicsSceneWheelEvent, QPushButton, QHBoxLayout
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtCore import Qt
-from . import Popup
-from .. import LocationObject
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtWidgets import QWidget, QTabWidget, QHBoxLayout
 from PyQt5.QtWidgets import QLabel, QLineEdit
+
+from . import Popup
 #
 # Below should eventually be replaced with 
 #
