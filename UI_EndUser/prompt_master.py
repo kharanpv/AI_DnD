@@ -81,6 +81,10 @@ class PromptMaster:
 
         self.chat_history = []
 
+        self.workflow_api_folder =     workflow_api_folder = os.path.join(os.path.dirname(
+            os.path.realpath(__file__)), "..", "ComfyUI_windows_portable", "ComfyUI", "ComfyUI-to-Python-Extension")
+
+
         self.x = 0
         self.y = 0
         self.z = 0
@@ -100,12 +104,44 @@ class PromptMaster:
                 ],
             stream=True,
         )
+
+    
         retVal = ""
         for chunk in stream:
             if chunk.choices[0].delta.content is not None:
                 print_fxn(str(chunk.choices[0].delta.content), end="")
                 retVal += chunk.choices[0].delta.content
         self.text = retVal
+
+        # Ensure file exists and initialize with empty JSON object if it doesn't
+        if not os.path.exists(self.chat_history_path):
+            with open(self.chat_history_path, 'w') as file:
+                json.dump([], file)
+
+        # Read existing chat history or initialize as empty list
+        with open(self.chat_history_path, 'r') as file:
+            try:
+                chat_history = json.load(file)
+            except json.decoder.JSONDecodeError:
+                chat_history = []
+
+        chat_history.append({"user_prompt": user_prompt, "dm_response": retVal})
+
+        positive_prompt = retVal
+        if positive_prompt:
+            prompt = {
+                "positive_prompt": positive_prompt,
+                "negative_prompt": None,
+                "num_samples": 5
+            }
+            request_path = os.path.join(self.workflow_api_folder, "request.json") 
+            with open(request_path, "w") as file:
+                json.dump(prompt, file)
+
+        # Write updated chat history back to file
+        with open(self.chat_history_path, 'w') as file:
+            json.dump(chat_history, file)
+
         self.images_for_self()
         return retVal
 
