@@ -32,7 +32,7 @@ After each paragraph send the message "}" on its own line.
 Example:
 {
 Name
-(coordinates as integers), (size as integer) 
+(x, y, z), (size as integer) 
 Paragraph
 }
 
@@ -84,7 +84,7 @@ class PromptMaster:
     #
 
 
-    def text_prompt(self, user_prompt:str, prompt_ai:str=PROMPT_AI, model_used:str="gpt-3.5-turbo", print_fxn=print):
+    def text_prompt(self, user_prompt:str, prompt_ai:str=PROMPT_AI, model_used:str="gpt-4", print_fxn=print):
         stream = self.client.chat.completions.create(
             model=model_used,
             messages=[
@@ -132,8 +132,7 @@ class PromptMaster:
             text = text.split(',')
             self.x = text[0]
             self.y = text[1]
-            self.z = text[2]
-            return text.split(',')
+            return text
         else:
             return []
 
@@ -153,7 +152,7 @@ class PromptMaster:
             #current_image = PlaceHolder_img.generate_image(name)
             #image_path = f"assets/{name}{random.randint(0,255)}.png"
             #current_image.save(image_path)
-            self.parent_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), 0.0, image_path))
+            build_images(a_Prompt=self)
         return True
 
 def build_images(a_Prompt:PromptMaster):
@@ -162,7 +161,7 @@ def build_images(a_Prompt:PromptMaster):
     try:
         subprocess.run(["python", img_pipeline_script], check=True)
         subprocess.wait()
-        PromptMaster.parent_widget.open_latest_image(PromptMaster.x, PromptMaster.y, PromptMaster.z)
+        PromptMaster.parent_widget.image_widget.open_latest_image(PromptMaster.x, PromptMaster.y, 0)
     except subprocess.CalledProcessError as e:
         print(f"Error running workflow_api.py: {e}")
         exit(1)
