@@ -12,6 +12,7 @@
 from openai import OpenAI
 import re, os, json
 import requests
+import subprocess
 local_debug_img = True
 
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow
@@ -32,7 +33,7 @@ After each paragraph send the message "}" on its own line.
 Example:
 {
 Name
-(x, y, z), (size as integer) 
+(set of coordinates), (size as integer) 
 Paragraph
 }
 
@@ -49,6 +50,11 @@ chat_history_path = None
 
 script_dir = script_dir = os.path.dirname(os.path.abspath(__file__))
 script_dir = os.path.join(script_dir, '..', 'Pipeline')
+
+
+img_pipeline_script = os.path.join(
+script_dir, "..", "ComfyUI_windows_portable", "Custom_Scripts", "create_assets.py"
+)
 
 class PromptMaster:
     def __init__(self, parent_widget:ViewWindow.ViewWindow=None):
@@ -155,13 +161,16 @@ class PromptMaster:
             build_images(a_Prompt=self)
         return True
 
+    def get_pipeline_path(self):
+        return self.img_pipeline_script
+
 def build_images(a_Prompt:PromptMaster):
-    img_pipeline_script = PromptMaster.img_pipeline_script
+    img_pipeline_script = a_Prompt.img_pipeline_script
 
     try:
         subprocess.run(["python", img_pipeline_script], check=True)
         subprocess.wait()
-        PromptMaster.parent_widget.image_widget.open_latest_image(PromptMaster.x, PromptMaster.y, 0)
+        a_Prompt.parent_widget.image_widget.open_latest_image(a_Prompt.x, a_Prompt.y, 0)
     except subprocess.CalledProcessError as e:
         print(f"Error running workflow_api.py: {e}")
         exit(1)
