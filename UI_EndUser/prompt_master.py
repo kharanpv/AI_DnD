@@ -81,8 +81,7 @@ class PromptMaster:
 
         self.chat_history = []
 
-        self.workflow_api_folder =     workflow_api_folder = os.path.join(os.path.dirname(
-            os.path.realpath(__file__)), "..", "ComfyUI_windows_portable", "ComfyUI", "ComfyUI-to-Python-Extension")
+        self.workflow_api_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "ComfyUI_windows_portable", "ComfyUI", "ComfyUI-to-Python-Extension")
 
 
         self.x = 0
