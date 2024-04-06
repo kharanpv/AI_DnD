@@ -213,10 +213,22 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         if z:
             self.z = int(z)
 
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.swap_selection()
-        if (self.selected):
+def mousePressEvent(self, event):
+    if event.button() == Qt.RightButton:
+        # Calculate center to place
+        mouse_pos = event.scenePos()
+
+        item_width = self.pixmap().width() * self.scale()
+        item_height = self.pixmap().height() * self.scale()
+
+        new_x = mouse_pos.x() - (item_width / 2)
+        new_y = mouse_pos.y() - (item_height / 2)
+
+        self.setPos(new_x, new_y)
+        
+    elif event.button() == Qt.LeftButton:
+        self.swap_selection()
+        if self.selected:
             self.popup = ImageControllerPopup(parent=self.parent, alternate_parent=self)
             self.popup.show()
             # Somehow we need a highlight function here
@@ -226,7 +238,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
                     self.popup.closeEvent(None)
             except TypeError:
                 pass
-            
+
 
 
     def swap_selection(self):
