@@ -162,6 +162,7 @@ class ViewWindow(QGraphicsView):
             print("No image files found in test_images folder.")
             return
 
+        print("About to crash...")
         # Get the latest modified image file
         latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
         latest_image_path = os.path.join(folder_path, latest_image)

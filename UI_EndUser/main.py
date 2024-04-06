@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
         # Load the default
         self.image_widget.load_images_folder(folder_path=os.path.join(script_directory, "test_images/mar28thexample"))
 
-        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(gpt_endpoint_fxn=self.pipeline_controller.text_prompt)
+        self.side_bar = ScrollableTextEdit.TextEntryAndHistory(fxn_connection=self.open_latest_image, gpt_endpoint_fxn=self.pipeline_controller.text_prompt)
         splitter.addWidget(self.side_bar)
 
         # Set the size ratio for the widgets (80% - 20%)

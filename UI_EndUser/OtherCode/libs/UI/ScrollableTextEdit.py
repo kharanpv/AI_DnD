@@ -4,6 +4,19 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTextEdit
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget, QListWidgetItem
 from PyQt5.QtGui import QColor
 
+
+def get_xyz(text:str=None):
+    matches = re.findall(r"\((.*?)\)", text)
+    print(matches)
+    if matches:
+        text = matches[0].replace("(","").replace(")","").replace(" ","")
+        text = text.split(',')
+        x = text[0]
+        y = text[1]
+        return x, y
+    else:
+        return 0, 0
+
 # GOOD MERGED
 class ScrollableTextEdit(QTextEdit):
     enterPressed = pyqtSignal()
@@ -85,6 +98,8 @@ class TextEntryAndHistory(QWidget):
 
     def handle_response(self, text):
         self.historyWidget.updateResponse(text)
+        x, y = get_xyz(text=text)
+        self.fxn_connection(x=x, y=y, z=0) 
 
 class Worker(QThread):
     finished = pyqtSignal(str)
