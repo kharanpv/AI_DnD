@@ -139,6 +139,8 @@ class MainWindow(QMainWindow):
         # Get the latest modified image file
         latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
         latest_image_path = os.path.join(folder_path, latest_image)
+        print(latest_image_path)
+        print(f"x:{x}\ny:{y}\nz:{z}\nrot:{rotation}")
         # WE NEED COORDS HERE
         if latest_image:
             self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), rotation, latest_image_path))
