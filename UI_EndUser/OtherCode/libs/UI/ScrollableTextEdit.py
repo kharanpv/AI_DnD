@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt, pyqtSignal, QObject, QThread
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTextEdit
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QScrollBar, QDialog, QListWidget, QListWidgetItem
 from PyQt5.QtGui import QColor
+import re
 
 
 def get_xyz(text:str=None):
@@ -73,6 +74,7 @@ class TextEntryAndHistory(QWidget):
         item.setBackground(QColor("lightgray"))
         self.historyWidget.addItem(item)
         self.scrollableTextEdit = ScrollableTextEdit()
+        self.fxn_connection = fxn_connection
         #if fxn_connection != None:
         #    self.scrollableTextEdit.enterPressed.connect(fxn_connection)
         self.scrollableTextEdit.enterPressed.connect(self.interaction)
