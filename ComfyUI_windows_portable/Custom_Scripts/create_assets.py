@@ -34,9 +34,9 @@ tinyLlama_script = os.path.join(
 )
 
 # read the positive prompt from the temp.json file
-with open(os.path.join(workflow_api_directory, 'request.json'), 'r') as json_file:
-    data = json.load(json_file)
-    positive_prompt = data.get("positive_prompt")
+# with open(os.path.join(workflow_api_directory, 'request.json'), 'r') as json_file:
+#     data = json.load(json_file)
+#     positive_prompt = data.get("positive_prompt")
 
 def check_if_exists():
     positive_prompt = [word.lower() for word in positive_prompt.split()]

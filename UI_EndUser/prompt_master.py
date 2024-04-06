@@ -71,7 +71,7 @@ class PromptMaster:
         self.file_path = os.path.join(script_dir, 'chat_gpt_key.txt')
 
         self.workflow_api_folder = os.path.join(os.path.dirname(
-            script_dir), "..", "ComfyUI_windows_portable", "ComfyUI", "ComfyUI-to-Python-Extension")
+            script_dir), "ComfyUI_windows_portable", "ComfyUI", "ComfyUI-to-Python-Extension")
 
         with open(self.file_path, 'r') as file:
             self.CHAT_GPT_TOKEN = file.read().splitlines()
@@ -200,7 +200,7 @@ def build_images(a_Prompt:PromptMaster):
     img_pipeline_script = a_Prompt.img_pipeline_script
 
     try:
-        process_handle = subprocess.Popen(["python", img_pipeline_script], check=True)
+        process_handle = subprocess.Popen(["python", img_pipeline_script])
         process_handle.communicate()
         a_Prompt.parent_widget.image_widget.open_latest_image(a_Prompt.x, a_Prompt.y, 0)
     except subprocess.CalledProcessError as e:

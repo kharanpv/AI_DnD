@@ -147,3 +147,24 @@ class ViewWindow(QGraphicsView):
                 location_objects.append(location_object)
         for i in location_objects:
             self.add_LocationObject(obj=i)
+            
+    def open_latest_image(self, x, y, z, rotation = 0.0):
+        folder_path = os.path.join(os.path.dirname(__file__), '..', '..', '..',"test_images")
+        files = os.listdir(folder_path)
+        if not files:
+            print("No images found in test_images folder.")
+            return
+
+        # Filter only image files
+        image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.bmp', '.gif', '.jpeg'))]
+
+        if not image_files:
+            print("No image files found in test_images folder.")
+            return
+
+        # Get the latest modified image file
+        latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
+        latest_image_path = os.path.join(folder_path, latest_image)
+        # WE NEED COORDS HERE
+        if latest_image:
+            self.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), rotation, latest_image_path))
