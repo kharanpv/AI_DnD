@@ -202,6 +202,7 @@ def build_images(a_Prompt:PromptMaster):
     try:
         process_handle = subprocess.Popen(["python", img_pipeline_script])
         process_handle.communicate()
+        print("Ok, so the issue is in calling our open function.")
         a_Prompt.parent_widget.image_widget.open_latest_image(a_Prompt.x, a_Prompt.y, 0)
     except subprocess.CalledProcessError as e:
         print(f"Error running workflow_api.py: {e}")
