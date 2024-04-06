@@ -73,8 +73,8 @@ class TextEntryAndHistory(QWidget):
         item.setBackground(QColor("lightgray"))
         self.historyWidget.addItem(item)
         self.scrollableTextEdit = ScrollableTextEdit()
-        if fxn_connection != None:
-            self.scrollableTextEdit.enterPressed.connect(fxn_connection)
+        #if fxn_connection != None:
+        #    self.scrollableTextEdit.enterPressed.connect(fxn_connection)
         self.scrollableTextEdit.enterPressed.connect(self.interaction)
 
         layout.addWidget(self.historyWidget, 9)  # 80 of the content
