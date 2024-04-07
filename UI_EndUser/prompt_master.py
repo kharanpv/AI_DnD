@@ -10,7 +10,7 @@
 # 5. save
 
 from openai import OpenAI
-import re, os, json
+import re, os, json, glob
 import requests
 import subprocess
 local_debug_img = True
@@ -24,6 +24,7 @@ Put each described object in the scene in the list `objects`.
 For each description in `objects`, write a 1 paragraph description of the object. Catagorized the size of the object in meters, using x and y.
 Make the paragraph description be only physical. 
 For each object in the `objects` list, give it a logical set of coordinates (x,y,z), as if we were looking from a top down view. Z represents height. This coordinate set is unrelated to the size.
+Make both x and y in the range -1500 to 5500.
 For example, if a tree is on a hill, it would share x,y coordinates and have a larger z coordinate than the hill.
 Make each pair of coordinates be based upon the description paragraphs generated. 
 Before each paragraph send the message "{" on its own line.
@@ -55,6 +56,8 @@ script_dir = os.path.join(script_dir, '..', 'Pipeline')
 img_pipeline_script = os.path.join(
 script_dir, "..", "ComfyUI_windows_portable", "Custom_Scripts", "create_assets.py"
 )
+
+output_images_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),"../ComfyUI_windows_portable/ComfyUI/output"))
 
 class PromptMaster:
     def __init__(self, parent_widget:ViewWindow.ViewWindow=None):
@@ -123,8 +126,12 @@ class PromptMaster:
 
         chat_history.append({"user_prompt": user_prompt, "dm_response": retVal})
 
-        
-        positive_prompt = retVal
+        pattern = r'{\n?([.,;:?!\"\'A-Za-z\s]+)\n'
+        match = re.search(pattern, retVal)
+        if match:
+            positive_prompt = match.group(1)
+        else:
+            positive_prompt = retVal
         if positive_prompt:
             prompt = {
                 "positive_prompt": positive_prompt,
@@ -204,6 +211,14 @@ def build_images(a_Prompt:PromptMaster):
         process_handle = subprocess.Popen(["python", img_pipeline_script])
         process_handle.communicate()
         print("Finished generating!")
+        
+        # Remove any lingering images in output folder
+        image_files = glob.glob(os.path.join(output_images_dir, "*.png"))
+        image_files.extend(glob.glob(os.path.join(output_images_dir, "*.jpg")))
+        image_files.extend(glob.glob(os.path.join(output_images_dir, "*.jpeg")))
+        for image_file in image_files:
+            os.remove(image_file)
+        print("Cleared previous image files.")
     except subprocess.CalledProcessError as e:
         print(f"Error running workflow_api.py: {e}")
         exit(1)
