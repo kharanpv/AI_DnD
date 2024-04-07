@@ -169,7 +169,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
 
     def __init__(self, x, y, scale, rotation, image_path, parent=None, data_name:str = None, data_text:str = None):
         super(ImageOnCanvas, self).__init__()
-        self.setPos(x*512, y*512)
+        self.setPos(x, y)
         self.setScale(scale)
         self.setRotation(rotation)
         self.set_image(image_path)
@@ -210,8 +210,9 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         self.setScale(new_scale)
     
     def move_item(self, x, y, z=None):
+        xy_scale = 512
         if x and y:
-            self.setPos(int(x)*512, int(y)*512)
+            self.setPos(int(x)*xy_scale, int(y)*xy_scale)
         if z:
             self.z = int(z)
 

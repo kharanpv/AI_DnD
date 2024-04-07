@@ -101,7 +101,7 @@ class TextEntryAndHistory(QWidget):
     def handle_response(self, text):
         self.historyWidget.updateResponse(text)
         x, y = get_xyz(text=text)
-        self.fxn_connection(x=x, y=y, scale=1) 
+        self.fxn_connection(x=x, y=y, z=1) 
 
 class Worker(QThread):
     finished = pyqtSignal(str)

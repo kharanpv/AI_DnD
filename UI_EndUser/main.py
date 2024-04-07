@@ -116,6 +116,7 @@ class MainWindow(QMainWindow):
             print("No images found in test_images folder.")
             return
 
+        xy_scale =512
         # Filter only image files
         image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.bmp', '.gif', '.jpeg'))]
 
@@ -132,7 +133,7 @@ class MainWindow(QMainWindow):
         print(f"x:{x}\ny:{y}\nz:{z}\nrot:{rotation}")
         # WE NEED COORDS HERE
         if latest_image:
-            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), rotation, latest_image_path))
+            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x)*xy_scale, int(y)*xy_scale, int(z), rotation, latest_image_path))
 
 
 
