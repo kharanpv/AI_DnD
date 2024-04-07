@@ -141,11 +141,11 @@ class MainWindow(QMainWindow):
         latest_image_path = os.path.join(folder_path, latest_image)
         print(latest_image_path)
         # This is a bad patch
-        latest_image_path.replace('\\', '/')
+        latest_image_path.replace('/', '\\')
         print(f"x:{x}\ny:{y}\nz:{z}\nrot:{rotation}")
         # WE NEED COORDS HERE
         if latest_image:
-            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), int(z), rotation, latest_image_path))
+            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x), int(y), 1, rotation, latest_image_path))
 
 
 
