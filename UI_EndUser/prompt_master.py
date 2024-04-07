@@ -123,6 +123,7 @@ class PromptMaster:
 
         chat_history.append({"user_prompt": user_prompt, "dm_response": retVal})
 
+        
         positive_prompt = retVal
         if positive_prompt:
             prompt = {
