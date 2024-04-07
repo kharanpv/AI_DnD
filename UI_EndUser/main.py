@@ -116,7 +116,7 @@ class MainWindow(QMainWindow):
             print("No images found in test_images folder.")
             return
 
-        xy_scale =512
+        xy_scale = 256
         # Filter only image files
         image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.bmp', '.gif', '.jpeg'))]
 
