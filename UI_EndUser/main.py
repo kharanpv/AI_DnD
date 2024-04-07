@@ -1,16 +1,3 @@
-#
-# Currently scrolling works fine, dragging doesn't
-# TODO finish dragging, I will probably separate out mouse when I fix this
-# - fix Z, it currently is generated but not used. Higher Z should over lay lower Z images
-#        - this will require someform of Z system probably
-# - add rotation to generations
-# - add wall combinations
-#   - this will probably be hard
-#   
-#
-#
-
-# This is all garbage I will clean later I swear jk sorry
 import sys
 import os
 import glob
