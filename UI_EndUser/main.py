@@ -140,6 +140,8 @@ class MainWindow(QMainWindow):
         latest_image = max(image_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
         latest_image_path = os.path.join(folder_path, latest_image)
         print(latest_image_path)
+        # This is a bad patch
+        latest_image_path.replace('\\', '/')
         print(f"x:{x}\ny:{y}\nz:{z}\nrot:{rotation}")
         # WE NEED COORDS HERE
         if latest_image:
