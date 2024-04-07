@@ -2,6 +2,7 @@ import os
 import argparse
 import subprocess
 import json
+import re
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -62,7 +63,10 @@ for filename, caption in image_caption_list.items():
             
             if best_image_name:
                 # image_file = next((file for file in image_files if file.lower() == best_image_name.lower()), None)
-                new_name = '_'.join(word for word in words if word.lower() not in common_words)
+                
+                # for legal file naming conventions
+                file_name_pattern = r'[^\w.-]'
+                new_name = '_'.join(re.sub(file_name_pattern, '', word) for word in words if word.lower() not in common_words)
                 new_name = os.path.join(args.image_folder_path, new_name + os.path.splitext(filename)[1])
                 
                 # Check if the new name already exists

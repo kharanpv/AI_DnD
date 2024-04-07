@@ -136,7 +136,7 @@ class PromptMaster:
             prompt = {
                 "positive_prompt": positive_prompt,
                 "negative_prompt": None,
-                "num_samples": 5
+                "num_samples": 3
             }
             request_path = os.path.join(self.workflow_api_folder, "request.json") 
             with open(request_path, "w+") as file:
