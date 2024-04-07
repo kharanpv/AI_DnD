@@ -10,6 +10,8 @@ from . import Popup
 #
 # Below should eventually be replaced with 
 #
+
+scale_for_image_size = 512
 class ImageControllerPopup(Popup.Popup):
     def __init__(self, parent=None, text:str=None, title:str="Controller Image", alternate_parent=None):
         super().__init__(parent, text, title)
@@ -167,7 +169,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
 
     def __init__(self, x, y, scale, rotation, image_path, parent=None, data_name:str = None, data_text:str = None):
         super(ImageOnCanvas, self).__init__()
-        self.setPos(x, y)
+        self.setPos(x*512, y*512)
         self.setScale(scale)
         self.setRotation(rotation)
         self.set_image(image_path)
@@ -209,7 +211,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
     
     def move_item(self, x, y, z=None):
         if x and y:
-            self.setPos(int(x), int(y))
+            self.setPos(int(x)*512, int(y)*512)
         if z:
             self.z = int(z)
 
