@@ -210,7 +210,7 @@ class ImageOnCanvas(QGraphicsPixmapItem, QObject):
         self.setScale(new_scale)
     
     def move_item(self, x, y, z=None):
-        xy_scale = 512
+        xy_scale = 256
         if x and y:
             self.setPos(int(x)*xy_scale, int(y)*xy_scale)
         if z:
