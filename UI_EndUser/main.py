@@ -131,9 +131,17 @@ class MainWindow(QMainWindow):
         # This is a bad patch
         latest_image_path.replace('/', '\\')
         print(f"x:{x}\ny:{y}\nz:{z}\nrot:{rotation}")
+        if int(x) > 6500: 
+            x=6500
+        elif int(x) < -1500:
+            x = -1500
+        if int(y) > 6500:
+            y=6500
+        elif int(y) < -1500:
+            y = -1500
         # WE NEED COORDS HERE
         if latest_image:
-            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x)*xy_scale, int(y)*xy_scale, int(z), rotation, latest_image_path))
+            self.image_widget.addImageOnCanvas(ImageOnCanvas.ImageOnCanvas(int(x)*xy_scale, int(y)*xy_scale*(-1), int(z), rotation, latest_image_path))
 
 
 
