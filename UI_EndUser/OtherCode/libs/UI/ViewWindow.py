@@ -59,6 +59,14 @@ class ViewWindow(QGraphicsView):
         if event.angleDelta().y() < 0:
             factor = 1.0 / factor
 
+        # Limit the scale to a certain threshold
+        current_scale = self.transform().m11()  # Get the current horizontal scale factor
+        min_scale = 0.1 
+        new_scale = current_scale * factor
+
+        if new_scale < min_scale:
+            factor = min_scale / current_scale
+
         self.scale(factor, factor)
 
     def addImageOnCanvas(self, image_on_canvas):
