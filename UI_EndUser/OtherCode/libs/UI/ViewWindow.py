@@ -61,7 +61,7 @@ class ViewWindow(QGraphicsView):
 
         # Limit the scale to a certain threshold
         current_scale = self.transform().m11()  # Get the current horizontal scale factor
-        min_scale = 0.35
+        min_scale = 0.15
         new_scale = current_scale * factor
 
         if new_scale < min_scale:
