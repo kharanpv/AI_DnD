@@ -17,20 +17,43 @@ local_debug_img = True
 
 from OtherCode.libs.UI import ImageOnCanvas, ViewWindow
 
+# PROMPT_AI = """
+# You are a generating descriptions for a 2d map.
+# The user will give you a description of a place. 
+# Put each described object in the scene in the list `objects`.
+# For each description in `objects`, write a 1 paragraph description of the object. Catagorized the size of the object in meters, using x and y.
+# Make the paragraph description be only physical. 
+# For each object in the `objects` list, give it a logical set of coordinates (x,y,z), as if we were looking from a top down view. Z represents height. This coordinate set is unrelated to the size.
+# Make both x and y in the range -1500 to 5500.
+# For example, if a tree is on a hill, it would share x,y coordinates and have a larger z coordinate than the hill.
+# Make each pair of coordinates be based upon the description paragraphs generated. 
+# Before each paragraph send the message "{" on its own line.
+# Write the name of the object on its own line.
+# Respond with corresponding paragraph a line below.
+# After each paragraph send the message "}" on its own line.
+# Example:
+# {
+# Name
+# (set of coordinates), (size as integer) 
+# Paragraph
+# }
+
+# Size should only be 1 integer, and wrapped in (). Coordinates should be separated by commas.
+# """
+
 PROMPT_AI = """
 You are a generating descriptions for a 2d map.
-The user will give you a description of a place. 
-Put each described object in the scene in the list `objects`.
-For each description in `objects`, write a 1 paragraph description of the object. Catagorized the size of the object in meters, using x and y.
+The user will give you the name of an object. 
+Based on the name, write a 1 paragraph description of the object. Catagorize the size of the object in meters, using x and y.
 Make the paragraph description be only physical. 
-For each object in the `objects` list, give it a logical set of coordinates (x,y,z), as if we were looking from a top down view. Z represents height. This coordinate set is unrelated to the size.
+Give the object a logical set of coordinates (x,y,z), as if we were looking from a top down view. Z represents height. This coordinate set is unrelated to the size.
 Make both x and y in the range -1500 to 5500.
 For example, if a tree is on a hill, it would share x,y coordinates and have a larger z coordinate than the hill.
 Make each pair of coordinates be based upon the description paragraphs generated. 
-Before each paragraph send the message "{" on its own line.
+Before the paragraph description send the message "{" on its own line.
 Write the name of the object on its own line.
 Respond with corresponding paragraph a line below.
-After each paragraph send the message "}" on its own line.
+After the paragraph send the message "}" on its own line.
 Example:
 {
 Name
@@ -126,7 +149,7 @@ class PromptMaster:
 
         chat_history.append({"user_prompt": user_prompt, "dm_response": retVal})
 
-        pattern = r'{\n?([.,;:?!\"\'A-Za-z\s]+)\n'
+        pattern = r'{\n([.,;:?!\"\'A-Za-z\s]+)\n'
         match = re.search(pattern, retVal)
         if match:
             positive_prompt = match.group(1)

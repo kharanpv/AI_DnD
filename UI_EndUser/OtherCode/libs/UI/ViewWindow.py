@@ -41,7 +41,8 @@ class ViewWindow(QGraphicsView):
     #     painter.drawPixmap(sceneRect, pixmap, rect)
     def drawBackground(self, painter, rect):
         super().drawBackground(painter, rect)
-        self.setBackgroundBrush(QBrush((QColor(63, 155, 11))))
+        # self.setBackgroundBrush(QBrush((QColor(63, 155, 11))))
+        self.setBackgroundBrush(QBrush((QColor(0, 0, 0))))
 
     def set_image(self, image_path):
         image = QPixmap(image_path)

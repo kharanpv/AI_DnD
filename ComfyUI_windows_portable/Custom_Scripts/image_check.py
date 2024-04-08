@@ -65,7 +65,7 @@ for filename, caption in image_caption_list.items():
                 # image_file = next((file for file in image_files if file.lower() == best_image_name.lower()), None)
                 
                 # for legal file naming conventions
-                file_name_pattern = r'[^\w.-]'
+                file_name_pattern = r'[^\w.\s-]|[\n\t]'
                 new_name = '_'.join(re.sub(file_name_pattern, '', word) for word in words if word.lower() not in common_words)
                 new_name = os.path.join(args.image_folder_path, new_name + os.path.splitext(filename)[1])
                 

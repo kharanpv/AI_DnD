@@ -41,7 +41,8 @@ def remove_background(image_folder_path, tolerance=30):
 def main():
     parser = argparse.ArgumentParser(description="Remove background from images using flood-fill.")
     parser.add_argument("image_folder_path", help="Path to the folder containing images.")
-    parser.add_argument("--tolerance", type=int, default=30, help="Tolerance for flood-fill (default: 30).")
+    # parser.add_argument("--tolerance", type=int, default=30, help="Tolerance for flood-fill (default: 30).")
+    parser.add_argument("--tolerance", type=int, default=40, help="Tolerance for flood-fill (default: 40).")
     args = parser.parse_args()
 
     remove_background(args.image_folder_path, args.tolerance)
