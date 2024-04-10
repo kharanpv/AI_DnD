@@ -17,7 +17,7 @@ Team Members:
 | 5 | Spring Final PPT Presentation |
 | 6 | Final Expo Poster |
 | 7 | Assessments |
-|   | 1. Initial Self-Assessments (Fall Sem\n 2. Final Self-Assessments (Spring Sem)|
+|   | 1. Initial Self-Assessments (Fall Sem<br> 2. Final Self-Assessments (Spring Sem)|
 | 8 | Summary of Hours and Justification |
 | 9 | Summary of Expenses |
 | 10 | Appendix |
