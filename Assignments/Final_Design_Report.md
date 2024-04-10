@@ -138,6 +138,31 @@ The user interface (UI) was developed using the PyQt5 Python library. The UI con
 
 ## 4. User Manual
 
+The purpose of the user manual is to provide instructions on how to run this application, and how to interact with it within its intended use. As such, this section of the documents will primarily consist of how-to's for different components/aspects of the applications.
+
+### How to install AI DnD
+
+In order to install AI DnD, one must first clone the repository found here on GitHub. [To learn more about how to clone repositories on GitHub here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). Next, you must download the `Models` folder [found on Onedrive here](https://mailuc-my.sharepoint.com/:f:/g/personal/kharanpv_mail_uc_edu/EmVYlTuEC3FAi6xZJqB-GHkB6rmDqU_5euftu4KqU--LSw?e=L2svGm).
+
+After the necessary files and folders have been cloned and downloaded, the next step is open Terminal in the `AI_DnD/UI_EndUser`  (right-click in the folder specified and this should be one option), and then, execute the command `python main.py`.
+
+### Running AI DnD for the first time
+
+Once you enter a game session, you will see two windows. One is a larger window to the right called the "World" window and a smaller window to the left called the "Chat" window.
+- Chat Window: The chat window is where you will interact with the (LLM-powered) Dungeon Master (DM). This is also the only way you can interact with the game. At the bottom of this window you will see another text-box. The prompt you want to pose to the DM will be entered into this text box, that we will call the prompt box. Once you are ready with the prompt in the box, you must hit _Enter_ on your keyboard to send it through. The prompt you put in will be displayed just above the text box. The DM will process this prompt and then above the text box and below your prompt displayed. Older conversations will be pushed upwards as the conversation progresses. There is a scroll-bar to the right to access older parts of the conversation that may have left the screen.
+  
+- World Window: The world window reflects the consequences/output generated from the reaction of the AI models running behind the scenes in the form of images that stitch themselves together to create a cohesive world/map of the immediate surrounding. You will be able to zoom in and zoom out (using the mouse scroll wheel) and drag around the map to view all different parts of it (using the mouse left and right buttons). It only reacts after you put in a prompt, and until then, the world remains stationary. At the top-left of the world window is the _options_ menu.
+  
+- Options: In the top-left of the screen, there exist options _File_ and _Canvas_ that have the ability to load save states or individual images, save states, clear the World Window, and list all images on the Window. The metadata for the images and the save files are of the `.lobj` format.
+
+### Playing AI DnD
+
+#### Dungeon Master Interaction
+In this game, the dungeon Master (DM) is operated by a Large Language Model (LLM), which means it is run by AI. No human input is needed to asssume the role of the DM. In the text box at the bottom of the _chat window_, you will interact with the DM, and above, in the chat history, the DM will respond. Simultaneously, AI-generated images will populate the _world window_ reflecting any changes that occured since your prompt was entered. If you do not like the assets/sprites the DM generates or believe there is an issue with the DM's response, you can ask to create the sprites or a new response again.
+
+#### World Map Interaction
+The world map of the Dungeons and Dragons game will be displayed on the _world view_ window. Aside from the controls described in the [Running AI DnD for the first time](#running-ai-dnd-for-the-first-time) section, you will be able to move, rotate, and scale AI-generated sprites spawned in. This feature is intended to be used if the AI-determined placement is incorrect, but it is not limited to such uses.
+
 ## 5. Spring Final PPT Presentation
 
 ## 6. Final Expo Poster
