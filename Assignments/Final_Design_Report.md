@@ -31,8 +31,8 @@ The user interface (UI) was developed using the PyQt5 Python library. The UI con
 
 1. Map Canvas
 2. Chat Section
-   2.1. Chat History
-   2.2. Prompt Box
+   * Chat History
+   * Prompt Box
    
 ![image](https://github.com/kharanpv/AI_DnD/assets/126278220/004b67c7-3ea0-4ac8-a8b9-b5a4881fa0a9)
 
