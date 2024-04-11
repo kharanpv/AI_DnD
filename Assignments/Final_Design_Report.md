@@ -181,10 +181,43 @@ The world map of the Dungeons and Dragons game will be displayed on the _world v
 ![Slide14](https://github.com/kharanpv/AI_DnD/assets/126278220/96f49250-f411-4a9a-abe7-64a551a076b5)
 
 ## 6. Final Expo Poster
+![AI_DnD_Poster](https://github.com/kharanpv/AI_DnD/assets/126278220/37b4132f-845a-4469-ad90-e30869d5d666)
 
 ## 7. Assessments
 ### 1. Initial Self-Assessments (Fall Sem)
+
+#### Prateek Kharangate
+
+My senior design project revolves around developing a Dungeons and Dragons video game or tools that could be used to make such a game (depending on time constraints) using generative AI. This project aims to empower an AI dungeon master to create unique worlds, characters, and storylines. It's a fusion of my interest in video games, artificial intelligence, and being at the bleeding-edge of technology. I'm undertaking this project in collaboration with Sam Weese, and together, we’re hopeful that our project will come to fruition.
+
+Throughout my college life, I've been studious, although I never fully grasped the true value of subjects I was cramming for until a little over a year ago. It was then that I had an epiphany about its immense value. Since that moment, I've been relentlessly pursuing my passion for learning. This senior design project is a culmination of that journey, providing me with a golden opportunity to gain hands-on experience in a field I'm deeply passionate about. It's a chance to bridge the gap between theory and practice, allowing me to apply the knowledge I've acquired in a real-world context, and I couldn't be more enthusiastic about the prospects it holds.  While I believe that the Software Engineering course is the precursor to Senior Design (pardon me for not being able to recollect exact course numbers), I can’t say there is any one course or a couple of courses that have prepared me for this moment, but I would like to thank some of the professors I had the privilege of studying under, such as Dr. William Hawkins, Dr. John D. Gallagher, and Dr. Charles Zimmer, under whom I learned Programming Languages, Operating Systems, and Algorithms respectively.
+
+My co-op experiences been diverse, spanning various industries and roles. I've assumed the role of a software engineer at a startup by the name of Payload, delved into web development with a logistics company called TCP, and engaged in research at the University of Cincinnati. While it's true that not all of the technical skills I've honed in these roles may be directly transferable to my senior design project, I firmly believe that the invaluable soft skills I've cultivated will undoubtedly prove instrumental. These experiences have endowed me with a robust work ethic, sharpened my decision-making abilities, and enhanced my communication skills. These soft skills, acquired through the diverse challenges of my co-op journey, will undoubtedly play a pivotal role in the success of our senior design project.
+
+I am motivated about this project for a multitude of compelling reasons. Firstly, my confidence in my chosen partner, Sam Weese, for this endeavor is unwavering. I believe in his motivation and drive, and together, I believe we can bring this ambitious project to fruition. After all, it was he who approached me with the idea of this project. Secondly, I find myself captivated by the recent explosion of advancements in AI development, and I'm eager to contribute to this burgeoning field by creating a product that, although now feasible, remains unrealized. It's an opportunity to be on the cutting edge of innovation. Lastly, I am embarking on this project as a personal challenge, pushing myself beyond my perceived limits. I will need to deeply invest myself, and I'm determined to prove to myself that I have the capability and tenacity to see it through to success.
+
+Our preliminary approach to this project involves developing the systems required for the project independently and then layering them on top of each other. My  initial focus is on world generation. Specifically, my aim is to create intricate and immersive worlds, complete with characters and items, that would seamlessly fit into the Dungeons and Dragons universe. This foundational work holds significant value not only for our current project but also as a valuable asset for any future Dungeons and Dragons-inspired video game. While I will be dedicating my efforts to developing the world generation aspect, my project partner, Sam Weese, will be taking the lead on crafting the language models crucial for the game's narrative and interactions. Our primary objective is to establish these individual systems, ensuring their seamless integration. If we successfully implement these components by the end of the Spring semester, we will consider advancing to the next stage: the actual video game development. However, if our progress halts at this juncture, we remain confident that the standalone systems we've created will already represent a substantial achievement. We hold out hope that, in the future, either ourselves or others may pick up the mantle and carry this ambitious project to its completion.
+
+#### Sam Weese
+
 ### 2. Final Self-Assessments (Spring Sem)
+
+#### Prateek Kharangate
+
+**Part A**
+
+Our project can broadly be divided into its backend and frontend. The backend is where most of the generative AI models employed operated. I was almost entirely responsible for the image generation pipeline and worked together with my project Partner, Sam, on the large language model-based dungeon master. I also had a few contributions to the frontend UI as well. I am confident that my understanding of AI and software engineering principles has improved since I undertook this project. My greatest experience working on this project stemmed from embarking on the challenge of running generative AI models on my computer natively. 
+
+I was able to understand what different types of models exist and for what purpose, their underlying principles and the dependencies on which they operate. We did not train any models, but a lot of the requirements to run a model are very similar to training a model. I also learned how to interact with the hyperparameters for a model and understand their observed effects. This new knowledge came from my culminated effort to find the “right model” for the task as much of the quality indicators for our project depended on them. I would describe my success as being able to utilize Stable Diffusion to successfully and consistently generate the images expected of it. As for obstacles, I mainly faced issues with arriving at a coherent software architecture to build our project upon. As such, I experienced file path issues and threading issues that consumed more time than should have been required to patch.
+
+
+**Part B**
+
+We were successful in implementing a prototype version of the map-building component of our grander plan for AI Dungeons and Dragons. My main inference about group work that I learned was to pick your partner carefully. I consider myself fortunate to have Sam Weese as my project partner. While his interests and motivations are different from mine, we both maintained a high standard for responsibilities, deadlines, and willingness to learn. Furthermore, our understanding of what the project should be was very well defined and so conflicts on that did not arise down the line. 
+
+The biggest challenges for the two us did not stem from a difference in opinion or attitude but from a difference in circumstances and resources. Our work environments for building the application differed greatly, and especially in the Fall Semester when we took Senior Design 1, our time schedules seldom aligned, if at all. I would like to believe, and I hope Sam thinks the same, that our contributions were fairly equal in magnitude with respect to each other. We had somewhat well-defined roles as to who was tasked with what, and these tasks were equally demanding. I believe we both deserve the same level of recognition for this project.
+
+#### Sam Weese
 
 ## 8. Summary of Hours and Justification
 
