@@ -165,6 +165,13 @@ The world map of the Dungeons and Dragons game will be displayed on the _world v
 
 ## 5. Spring Final PPT Presentation
 
+![Slide1](https://github.com/kharanpv/AI_DnD/assets/126278220/b68899f8-0320-4171-a589-6b6a793c8322)
+![Slide2](https://github.com/kharanpv/AI_DnD/assets/126278220/75f893c1-ed72-4f19-b096-0cdfcf6b7f79)
+![Slide3](https://github.com/kharanpv/AI_DnD/assets/126278220/c6c9b525-7306-487a-916f-9a319f07455a)
+
+
+
+
 ## 6. Final Expo Poster
 
 ## 7. Assessments
