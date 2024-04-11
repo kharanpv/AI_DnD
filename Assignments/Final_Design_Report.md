@@ -168,9 +168,17 @@ The world map of the Dungeons and Dragons game will be displayed on the _world v
 ![Slide1](https://github.com/kharanpv/AI_DnD/assets/126278220/b68899f8-0320-4171-a589-6b6a793c8322)
 ![Slide2](https://github.com/kharanpv/AI_DnD/assets/126278220/75f893c1-ed72-4f19-b096-0cdfcf6b7f79)
 ![Slide3](https://github.com/kharanpv/AI_DnD/assets/126278220/c6c9b525-7306-487a-916f-9a319f07455a)
-
-
-
+![Slide4](https://github.com/kharanpv/AI_DnD/assets/126278220/c2cd183e-0263-4abd-99c6-d5c31c2748fd)
+![Slide5](https://github.com/kharanpv/AI_DnD/assets/126278220/6851ad9a-b3d4-46e4-8dce-3729e000723d)
+![Slide6](https://github.com/kharanpv/AI_DnD/assets/126278220/97614771-2c66-44bc-a5a5-ad7dbe6e545b)
+![Slide7](https://github.com/kharanpv/AI_DnD/assets/126278220/a0b34c26-6b25-4834-96b1-2f4bbcca18ff)
+![Slide8](https://github.com/kharanpv/AI_DnD/assets/126278220/28a4bc31-fcfd-4430-b71f-7e58a6add68e)
+![Slide9](https://github.com/kharanpv/AI_DnD/assets/126278220/df621bd0-9bef-47d9-874d-3193ff624854)
+![Slide10](https://github.com/kharanpv/AI_DnD/assets/126278220/844e8431-ea72-4d44-87ac-f0692a752523)
+![Slide11](https://github.com/kharanpv/AI_DnD/assets/126278220/7eec753a-abd1-4aca-951a-4b9cf1f356ca)
+![Slide12](https://github.com/kharanpv/AI_DnD/assets/126278220/3ef6a576-b80d-4dae-a046-692bbdc63880)
+![Slide13](https://github.com/kharanpv/AI_DnD/assets/126278220/232d4666-1a53-47da-8ac3-ce39a962bafb)
+![Slide14](https://github.com/kharanpv/AI_DnD/assets/126278220/96f49250-f411-4a9a-abe7-64a551a076b5)
 
 ## 6. Final Expo Poster
 
