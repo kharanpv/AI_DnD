@@ -320,34 +320,38 @@ We spent 20 dollars on ChatGPT tokens for calling the API, 10 for testing and 10
 
 In truth, our appendix is this repository. We have put most resources into it, and made sure to ensure our history is commited here. However, here are some of the other pieces of our work which we either reference or did not display:
 
-Additional Sources / Research Conducted
-Below are papers and websites we have been using for technical references when conducting research.
 
-Jurafsky-Stanford Paper - This is a book/collection of papers on natural language processing, and how to effectively implement text standardization. This directly has affected our project by informing us upon filtration methods for output of large language models.
-The Handbook of Computational Linquistics and Natural Language Processing - Chapter 11, Evaluation of NLP Systems - This chapter covers the methodology of using fuzzy logic to evaluate tuples, how to construct automatic and manual evaluations, and how to accurately catagorize data from textual responses using a tuple method. This directly informs our methods for linting responses given by a LLM.
-Generative Adversarial Network Rooms in Generative Graph Grammar Dungeons for The Legend of Zelda - The paper describes how implement methodology for ranking and refining objects constructed with graph grammar, which are subject to human use and evaluation. The paper also details a similar problem, and has helped us in developing criteria for what we want our project to accomplish.
-We have a number of different articles and papers on graphs we have read. They are all directly related to the problem of emplacing generated images upon a 2d network (which we can abstract to a graph). The first 3 are general knowldege on the science of graph transformations, which helped inform our decisions on where else to research within the field of graph transformations.
-Graph Transformation in a Nutshell
-Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 1
-Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 2
-Graph Rewriting for Procedural Level Generation - This blog covers graph rewriting and geometric transformations. Techniques discussed in this blog can be implemented to inform object placement and recontruction for 2d map transformation. For a more concrete example, questions like "Can we make this furniture fit into any two rooms in this house layout?" could be answered more accurately by this methodology.
-Paul Merrel, Procedural Modeling using Graph Grammars - This covers generative content being linked together by a doubly linked traversal graph. It also demostrates graph grammars, which can be used to transform and link textual descriptions to 2d maps.
-Source Code
-All source code is stored in the sub folder "Source Code". Below are links and explanations of each file.
+### Additional Sources / Research Conducted
+Below are papers and websites we have been using for technical references when conducting research. 
 
-pdf_lib - this file has functions for parsing different pdf documents, such as a player's Spell Sheet, Character Sheet, or Item Listing. It converts the pdf into a readable json dict, and then is able to later convert a similar json file to an output pdf.
-json_lib This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf. It also includes detailed json format for components within DnD character generation.
-token_lib This library is used for quick insertion of api calls. It creates a wrapper for the API of different AI services, so that only the token and the function pointer need to be swapped out in a global setup function.
-character_generator This script in takes a character sheet and user input. It converts the character sheet to a json dict, and then asks specific prompts based upon the user input, which is parsed by calls out to a LLM API.
-download_llama2 This is a file which installs the components and sets up the end user for using the LLM we selected. Be forwarned, it takes around 10 minutes with a good internet connection to run (~ 8 gb download).
-Glossary
+1. [Jurafsky-Stanford Paper](https://web.stanford.edu/~jurafsky/slp3/) - This is a book/collection of papers on natural language processing, and how to effectively implement text standardization. This directly has affected our project by informing us upon filtration methods for output of large language models.
+2. [The Handbook of Computational Linquistics and Natural Language Processing - Chapter 11, Evaluation of NLP Systems](https://home.cs.colorado.edu/~jbg/teaching/CMSC_773_2012/reading/evaluation.pdf) - This chapter covers the methodology of using fuzzy logic to evaluate tuples, how to construct automatic and manual evaluations, and how to accurately catagorize data from textual responses using a tuple method. This directly informs our methods for linting responses given by a LLM.
+3. [Generative Adversarial Network Rooms in Generative Graph Grammar Dungeons for The Legend of Zelda](https://arxiv.org/pdf/2001.05065.pdf) - The paper describes how implement methodology for ranking and refining objects constructed with graph grammar, which are subject to human use and evaluation. The paper also details a similar problem, and has helped us in developing criteria for what we want our project to accomplish.
+4. We have a number of different articles and papers on graphs we have read. They are all directly related to the problem of emplacing generated images upon a 2d network (which we can abstract to a graph). The first 3 are general knowldege on the science of graph transformations, which helped inform our decisions on where else to research within the field of graph transformations.
+- [Graph Transformation in a Nutshell](https://www.sciencedirect.com/science/article/pii/S157106610600048X)
+- [Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 1](https://www.youtube.com/watch?v=kNOtZ7P4FHk)
+- [Greta Seminar - Tutorial on Graph Transformation Concepts and Applications 2](https://www.youtube.com/watch?v=dqHTplkOSfo)
+- [Graph Rewriting for Procedural Level Generation](https://www.boristhebrave.com/2021/04/02/graph-rewriting/) - This blog covers graph rewriting and geometric transformations. Techniques discussed in this blog can be implemented to inform object placement and recontruction for 2d map transformation. For a more concrete example, questions like "Can we make this furniture fit into any two rooms in this house layout?" could be answered more accurately by this methodology.
+- [Paul Merrel, Procedural Modeling using Graph Grammars](https://www.youtube.com/watch?v=FG3LbcOGHqw) - This covers generative content being linked together by a doubly linked traversal graph. It also demostrates graph grammars, which can be used to transform and link textual descriptions to 2d maps.
+
+### Source Code
+All source code is stored in the sub folder ["Source Code"](./Source%20Code/). Below are links and explanations of each file.
+  1. [pdf_lib](./Source%20Code/pdf_manipulator.py) - this file has functions for parsing different pdf documents, such as a player's [Spell Sheet](https://www.reddit.com/r/dndnext/comments/7y1eay/expanded_spell_sheets_5e/), [Character Sheet](https://dnd.wizards.com/resources/character-sheets), or [Item Listing](https://www.reddit.com/r/dndnext/comments/5r5zkj/dd_5e_party_inventory_sheet_updated_character/). It converts the pdf into a readable json dict, and then is able to later convert a similar json file to an output pdf.
+  2. [json_lib](./Source%20Code/json_lib.py) This is for coverting both plain text produced by an LLM to usable json, trimming json to a minimal size, and setting up strucutre for passing json to a pdf. It also includes detailed json format for components within DnD character generation.
+  3. [token_lib](./Source%20Code/chatgpt_lib.py) This library is used for quick insertion of api calls. It creates a wrapper for the API of different AI services, so that only the token and the function pointer need to be swapped out in a global setup function.
+  4. [character_generator](./Source%20Code/character_generator.py) This script in takes a character sheet and user input. It converts the character sheet to a json dict, and then asks specific prompts based upon the user input, which is parsed by calls out to a LLM API.
+  5. [download_llama2](./Source%20Code/download_llama2-13b-chat-gptq.py) This is a file which installs the components and sets up the end user for using the LLM we selected. Be forwarned, it takes around 10 minutes with a good internet connection to run (~ 8 gb download).
+
+### Glossary 
+
+
 Dungeon Master (DM), Game Master (GM) - The player who operates as the narrarator and referee for a game of Dungeons and Dragons
 
 Player - a person playing dungeons and dragons who controls a player character
 
 Character - any actor within Dungeons and Dragons. All actors are currently represented as a json object, and an image.
 
-Player Character - a character within the Dungeons and Dragons game which is represented and controlled anyone other than the the Dungeon Master. It is currently represented as a json object, and an image.
+Player Character -  a character within the Dungeons and Dragons game which is represented and controlled anyone other than the the Dungeon Master. It is currently represented as a json object, and an image.
 
 Nonplayer Character - a character within the Dungeons and Dragons game which is represented and controlled by the Dungeon Master. It is currently represented as a json object, and an image.
 
@@ -359,10 +363,11 @@ Character Sheet - a sheet which has listed a character's statistics, such as hea
 
 Backstory - a story for a character which was agreed to by the Player and DM prior to begining the game of Dungeons and Dragons.It is contained as a field within the character sheet. This is currently represented as a text string.
 
-Dungeons and Dragons, 5e, DnD - A table top role playing game.
+Dungeons and Dragons, 5e, DnD - A table top role playing game. 
 
 LLM - Large language model, or any AI which takes regular text input and returns regular text input
 
-Image Generation - Any function, or AI which can be fed a prompt as a string, which then produces an image.
+Image Generation - Any function, or AI which can be fed a prompt as a string, which then produces an image. 
 
-
+### Paper for Dr. Jiang
+We wrote [a paper]([https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcB85mRibm8ZRtBj2361CTSrw?e=fxVSRe](https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcBzzbJ70Kqtw0HTBNZVKED5A?e=VUcBFY)) for Dr. Jiang which better details the problem, and gives background to why it exists. Dungeons and Dragons is a niche game, and this paper should better show a use case for the software we produced.
