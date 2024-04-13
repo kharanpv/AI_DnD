@@ -298,8 +298,25 @@ I think the competency wise, nothing was new, but lessons I should have learned 
 
  I would say the largest lesson I learned about teamwork was to have good communication between team mates. I probably spent upwards of 20 hours debugging the threading, and it could have simply been avoided if only one of us had written the threading initially. I think the biggest non-technical realization I had related to the project was that the entire team can burn out. After midterms, neither Prateek nor myself had any motivation or desire to write code, as we both had simply had enough of school work at that time due to doing both midterms and senior design. It would have been better to simply pause and step back and put the project on hold, instead of pushing hard. I think Prateek should be recognized, both he and I contributed the same amount of work.
 ## 8. Summary of Hours and Justification
+Below are the hours given, we have SHA256 commit numbers as delineation between which commit we started working on a section and when we finished. 
+#### Prateek Kharangate
+- 30 hours implementing stable diffusion (December, January and February 2023, commits d1d7ee6c39bfe8255661698ccffa3c2aba4821e3 to c3cf132df2e4f33c6005f8cb57441fe0a2c0f395).
+- 20 hours merging to call off of UI elements (March 2023, commits de12bf11afc424d4afbc3424410e969ecb1fb043 to 6a6a38cf30cd018df254867c71bef330589219a8).
+- 25 hours fixing threading and image loading (March and April 2023, commits 55d3e8ac857a65ee29dbe8abb3abd7cc59446859 to a47fa07f86857e5dff3539a91daf7ef15f972fca).
+
+#### Sam Weese
+- 25 hours for initial UI (January 2024, commits e499835e81597ffc7c07c265e1c4e4d435b72735 to 7140130f85c70aed572aef0dcce81d52c8a248a4)
+- 20 hours for implementing single output (February and March 2024, commits 18b05591985d61ba690d536d4fc233f6bf9a6ca8 to 40d739d5875e2717d37f1b1911d3b842e9c9f835)
+- 20 hours for threading bug fixing (March 2024, commits 5e36a1b56f722ff237010f1b01a73813ab9af3a0 to 113ce4f049ca14337ddbdb40a1663d53cffc2309)
+- 10 hours for expo debugging and tweaking (April 2024, commits 7716214c8c579f30bc6931499d7083322ce62188 to 3c9fce1659fc4ee5d6c5232b6269967d7febc439)
+
+Additional work can be viewed on the branch sam-temp for threading and UI changes which were not included in the final project. 
 
 ## 9. Summary of Expenses
 
+We spent 20 dollars on ChatGPT tokens for calling the API, 10 for testing and 10 for displaying at the expo. We ran the demo on Prateek's machine at the expo, hooked up to a monitor of mine for display. No hardware or software was donated.
+
 ## 10. Appendix
+
+
 
