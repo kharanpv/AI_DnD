@@ -38,11 +38,19 @@ The user interface (UI) was developed using the PyQt5 Python library. The UI con
 
 ### Map Canvas
 
+The map canvas, found on the left side of the application's UI, is an ulimitied cartesian plane that has been restricted to fit a battle-map. Images can be loaded to, deleted from, scaled up, displaced, and rotated on this canvas. The user can also mouse drag around the canvas to view different portions of the map, or zoom in and zoom out.
+
 ### Chat Section
+
+The chat section can broadly be defined as the point of communication between the AI systems employed by the application and the user. it can be found on the right side of the application's UI and can be divided into two major components - the chat history and the prompt box.
 
 #### Chat History
 
+The chat history (the upper portion of the chat section) keeps record of the conversation between the user and the ChatGPT API enabled Dungeon Master (DM). Anything that the user enters and anything the DM responds with will be stored in this part of the UI.
+
 #### Prompt Box
+
+Found in the lower portion of the chat section, the prompt box is an editable text box for the user to enter prompts to request images or specific actions. On pressing `Enter` after typing out a prompt, the user's prompt will be moved to the chat history and erased from the prompt box.
 
 ## 3. Test Plan and Results
 
