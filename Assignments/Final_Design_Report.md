@@ -8,18 +8,18 @@ Team Members:
 
 ## Table of Contents
 
-| No.| Title|
-|---|-------------|
-| 1 | Project Description |
-| 2 | User Interface Specification |
-| 3 | Test Plan and Results |
-| 4 | User Manual |
-| 5 | Spring Final PPT Presentation |
-| 6 | Final Expo Poster |
-| 7 | Assessments<br> 1. Initial Self-Assessments (Fall Sem<br> 2. Final Self-Assessments (Spring Sem) |
-| 8 | Summary of Hours and Justification |
-| 9 | Summary of Expenses |
-| 10 | Appendix |
+| No. | Title |
+|-----|-------|
+| 1 | [Project Description](#1-project-description) |
+| 2 | [User Interface Specification](#2-user-interface-specification) |
+| 3 | [Test Plan and Results](#3-test-plan-and-results) |
+| 4 | [User Manual](#4-user-manual) |
+| 5 | [Spring Final PPT Presentation](#5-spring-final-ppt-presentation) |
+| 6 | [Final Expo Poster](#6-final-expo-poster) |
+| 7 | [Assessments](#7-assessments) |
+| 8 | [Summary of Hours and Justification](#8-summary-of-hours-and-justification) |
+| 9 | [Summary of Expenses](#9-summary-of-expenses) |
+| 10 | [Appendix](#10-appendix) |
 
 ## 1. Project Description
 
