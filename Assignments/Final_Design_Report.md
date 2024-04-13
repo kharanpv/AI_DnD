@@ -370,4 +370,4 @@ LLM - Large language model, or any AI which takes regular text input and returns
 Image Generation - Any function, or AI which can be fed a prompt as a string, which then produces an image. 
 
 ### Paper for Dr. Jiang
-We wrote [a paper]([https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcB85mRibm8ZRtBj2361CTSrw?e=fxVSRe](https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcBzzbJ70Kqtw0HTBNZVKED5A?e=VUcBFY)) for Dr. Jiang which better details the problem, and gives background to why it exists. Dungeons and Dragons is a niche game, and this paper should better show a use case for the software we produced.
+We wrote [a paper](https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcB85mRibm8ZRtBj2361CTSrw?e=fxVSRe](https://mailuc-my.sharepoint.com/:w:/g/personal/weesesr_mail_uc_edu/ETWah-KLGLJLoM89YT5l_EcBzzbJ70Kqtw0HTBNZVKED5A?e=VUcBFY) for Dr. Jiang which better details the problem, and gives background to why it exists. Dungeons and Dragons is a niche game, and this paper should better show a use case for the software we produced.
