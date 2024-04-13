@@ -214,6 +214,7 @@ open internet does anyone mention hooking up LLMs to stable diffusion for intuit
 experience. If this project were to succeed, (which I suspect will be very hard in the short time
 frame of the class), it would set the groundwork for LLM being able to display simple scenes and
 ideas visually.
+
 In regards to the usefulness of classes within UC in respect to this project, the most useful
 course is Software Engineering (EECE 3093C). This course is extremely applicable, as it
 covered the nature of managing a long term software project, and showed me the pitfalls of poor
@@ -224,6 +225,7 @@ is a storage problem, as being able to read from generated content and modify it
 however, most of the classes I have taken have been largely in applicable, as the AI classes are
 not covered until Senior Year, and useful LLMs (ChatGPT 3 and beyond) public accessibility is
 less than a year old.
+
 When it comes to COOPs, the only useful one will be my current one at Cryptic Vector.
 While non-technical skill are always useful, especially in respect to human interaction, these I
 have largely picked up in highschool, not college. The reason I find Cryptic Vector so useful is
@@ -236,6 +238,7 @@ Cryptic Vector has a number of machine learning scientists, of whom I am in cont
 learning on a weekly basis. While I would like to have the accessibility to Dr. Minai that other
 students at UC do, I have that accessibility to AI researchers at Cryptic Vector on a daily basis, as
 I am currently on COOP there.
+
 My motivation for this project is three fold. First, I want to work with a project on a topic
 I already know. I play Dungeons and Dragons on a weekly basis, and building and designing
 maps is an extremely time intensive process. Being able to have an application which does this
@@ -249,6 +252,7 @@ extensible into another project. If we can get this project working, this opens 
 using LLMs to generate a fully unique, plot oriented world in video games. While character
 dialogues in some video games are already in development (Convai), the wholistic creation of
 both graphics to dialogue is unrealized at this current time.
+
 My preliminary solution to creating sprites from LLM input is to simply have LLMs take
 human input, and convert it to the commands entered in a stable diffusion model. Eventually, we
 would like to include back propagation and some form of AI lens to be able to read the data back
