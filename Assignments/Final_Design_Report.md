@@ -202,6 +202,17 @@ Our preliminary approach to this project involves developing the systems require
 
 ### 2. Final Self-Assessments (Spring Sem)
 
+**Part A**
+For this project, I think I learned a lot. Unfortunately, a lot of it was learning how to do something the wrong way in software design than learning to do it the correct way. The project accomplished what we wanted to, which was to show a proof of concept MVP which allows us to build dungeons and dragons maps from plain text alone.  Before we go over my accomplishments, I should discuss the tech stack which we used. We use a python UI which displays images in a custom graph object, along with a text input box along the side. The text input box connects to a threading/subprocess handler which is in the primary secondary configuration (better known as master/slave for a lot of coding history) which spins up a new secondary thread for an input. That thread reaches out and connects to the chat-gpt api, which is passed a custom prompt set to create an image description. That text description is then passed to the image pipeline, which is spun up as another subprocess (due to some technical advantages for parallelization), which uses a custom stable diffusion model to generate an image. The thread returns, and the image is placed on the graph according to the text description given.  
+
+I wrote the UI, the graph object, the API handling and prompt engineering, and the threading. Prateek (my only teammate, who was great to work with) wrote the stable diffusion sub processing and the custom image generation model.  I didn't get to build upon the AI correctness training I hoped to build upon, but instead mostly worked on threading and UI. I was rather disappointed with this, as the product we built was for the expo, not for what I wanted to do. I plan on continuing this project over the summer, but removing a lot of the work we did as it was made to produce fast, viewable work, not good solid behind the scenes analysis.  
+
+**Part B**
+
+I think the competency wise, nothing was new, but lessons I should have learned previously were relearned. I spent a large amount of time rewriting and having to bug fix the threading. I felt comfortable with threads prior to this project, and I still feel comfortable with them, but to a lesser degree when it interacts with code other people have written. I think I have learned to be more careful with how I write code which interacts with others. The threading issue was due to both Prateek and I working on the threading initially, and misconnecting the functions we both wrote. 
+
+ I would say the largest lesson I learned about teamwork was to have good communication between team mates. I probably spent upwards of 20 hours debugging the threading, and it could have simply been avoided if only one of us had written the threading initially. I think the biggest non-technical realization I had related to the project was that the entire team can burn out. After midterms, neither Prateek nor myself had any motivation or desire to write code, as we both had simply had enough of school work at that time due to doing both midterms and senior design. It would have been better to simply pause and step back and put the project on hold, instead of pushing hard. I think Prateek should be recognized, both he and I contributed the same amount of work.
+
 #### Prateek Kharangate
 
 **Part A**
